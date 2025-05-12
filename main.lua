@@ -524,7 +524,7 @@ SMODS.Joker {
     calculate = function(self, card, context)
 
         if context.cardarea == G.jokers then
-            if context.before
+            if context.joker_main
             and context.scoring_name == "Two Pair"
             and (pseudorandom('rage') < G.GAME.probabilities.normal / card.ability.extra.odds) then
                 card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, { message = 'Rage!', colour = G.C.MULT })
@@ -717,7 +717,7 @@ SMODS.Joker {
     config = {
         extra = {
             mult = 0,
-            multmod = 5,
+            multmod = 3,
             money = 5,
         }
     },
@@ -1355,7 +1355,7 @@ SMODS.Joker {
 
     calculate = function(self, card, context)
 
-        if context.before then
+        if context.joker_main then
             local King = false
             local Jack = false
 
