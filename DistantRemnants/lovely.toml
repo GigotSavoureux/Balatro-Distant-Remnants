@@ -1,0 +1,19 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 1
+
+[[patches]]
+[patches.pattern]
+target = '''=[SMODS _ "src/utils.lua"]'''
+pattern = '''-- TARGET: card destroyed'''
+position = "after"
+payload = '''
+if next(SMODS.find_card('j_drx1_stamp')) then
+    if destroyed == true then
+        SMODS.calculate_context({drx1_cardtryingtobedestroyed = true, other_card = card})
+    end
+    destroyed = nil
+end
+'''
+match_indent = true
