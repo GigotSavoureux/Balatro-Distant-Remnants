@@ -258,8 +258,8 @@ return {
                 text = {
                     "Played {C:attention}Enhanced cards",
                     "give {C:red}+#1#{} when scored",
-                    "Increase by {C:red}+#2#{} for each round",
-                    "started with {C:money}$#3#{} or less",
+                    "Increase by {C:red}+#2#{} if {C:attention}Blind{} is",
+                    "selected with {C:money}$#3#{} or less",
                 },
             },
         },

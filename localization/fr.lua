@@ -261,7 +261,7 @@ return {
                     "Les {C:attention}cartes améliorées{} jouées",
                     "octroient chacune {C:red}+#1#{} au Multi.",
                     "lorsqu'elles marquent des points",
-                    "Augmente de {C:red}+#2#{} pour chaque manche",
+                    "Augmente de {C:red}+#2#{} si la {C:attention}Blinde{} est",
                     "commencée avec {C:money}#3# ${} ou moins",
                 },
             },
