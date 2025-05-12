@@ -22,9 +22,9 @@ return {
                 text = {
                     'After defeating {C:attention}2',
                     '{C:attention}Boss Blinds{}, sell this card',
-                    'to create {C:attention}#1#{} {C:dark_edition, s:0,9}Negative{} {C:attention}Egg{},',
+                    'to create {C:attention}1{} {C:dark_edition, s:0,9}Negative{} {C:attention}Egg{},',
                     '{C:attention}+#2#{} per additional {C:attention}Boss Blind',
-                    '{C:inactive} (Currently {C:attention}#3# Boss{C:inactive} defeated)'
+                    '{C:inactive} (Currently {C:attention}#1# {C:dark_edition, s:0,9}Negative{C:attention} Egg{C:inactive})'
                 },
             },
             j_drx1_apathy = {

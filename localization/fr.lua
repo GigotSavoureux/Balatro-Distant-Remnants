@@ -23,9 +23,9 @@ return {
                 text = {
                     "Après avoir vaincu {C:attention}2",
                     "{C:attention}Boss Blindes{}, vendez ce Joker",
-                    "et créez {C:attention}#1#{} {C:attention}Œuf(s){} {C:dark_edition, s:0,9}Négatif{},",
+                    "et créez {C:attention}1{} {C:attention}Œuf{} {C:dark_edition, s:0,9}Négatif{},",
                     "{C:attention}+#2#{} par {C:attention}Boss Blinde{} supplémentaire",
-                    "{C:inactive} (Actuellement : {C:attention}#3# Boss{C:inactive} vaincus)",
+                    "{C:inactive} (Actuellement : {C:attention}#1#{C:attention} Œuf(s) {C:dark_edition, s:0,9}Négatif{C:inactive})",
                 },
             },
             j_drx1_apathy = {
