@@ -106,7 +106,7 @@ Retrigger all played Lucky cards, 1 in 5 chance to retrigger twice instead<br>
 ___
 
 ### Don Juan
-Each scoring Wild card has 1 in 5 chance to upgrade every flush hand<br>
+Each scoring Wild card has 1 in 4 chance to upgrade every flush hand<br>
 ___
 
 ### Herringen
