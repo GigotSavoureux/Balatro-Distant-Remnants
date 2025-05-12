@@ -79,4 +79,68 @@ This Joker gains X0.75 Mult for each hand lost<br>
 ___
 
 ### Kiwi
-After defeating 2 Boss Blinds, sell this card to create 
+After defeating 2 Boss Blinds, sell this card to create 1 Negative egg, +1 per additional Boss Blind<br>
+(Currently 0 Negative Egg)<br>
+___
+
+### Apathy
+Create a random Tag when you skip a Blind<br>
+___
+
+### High on Joker
+X3 Mult if played hand is [poker hand]<br>
+Poker hand changes every hand<br>
+___
+
+### Royal Bat
+1 in 2 chance to create a Death if played hand contains a scoring Jack and King<br>
+(Must have room)<br>
+___
+
+### Lucky 7s
+Played 7s have 1 in 3 chance to permanently gain $2 when scored<br>
+___
+
+### Tobacco Paper
+Retrigger all played Lucky cards, 1 in 5 chance to retrigger twice instead<br>
+___
+
+### Don Juan
+Each scoring Wild card has 1 in 5 chance to upgrade every flush hand<br>
+___
+
+### Herringen
+This Joker gains +1 discard every 2 Neptune cards used<br>
+(Currently +1 discard)<br>
+___
+
+# Rare
+### One More Time!
+Add Foil, Holographic or Polychrome effect to played Enhanced cards, then remove card Enhancement<br>
+___
+
+### Philosophical Stone
+When destroying a Playing card, prevent its Destruction and add a random Seal<br>
+___
+
+### The Worm
+1 in 2 chance to create a random Spectral card per destroyed card<br>
+___
+
+### The Godfather
+X4 Mult if you earned at least $7 during current Blind<br>
+(Currently $0 earned)<br>
+___
+
+### Boredome
+This Joker gains X0.5 Mult per consecutive Blind beaten on first played hand<br>
+(Currently X1 Mult)<br>
+___
+
+### Dauphine
+All Diamond cards are considered Kings<br>
+___
+
+# Legendary
+### Bokida
+Create a Negative Planet card of played poker hand
