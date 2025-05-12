@@ -8,9 +8,8 @@ Distant Remnants explores the game's existing systems and mechanics in novel way
 - 1 Legendary
 
 ## Common Jokers
-
 ### The Menu Please
 This Joker gains twice the amount of the scoring Chips of Destroyed cards
 (Currently +0 chips)
 
-### 
+### Eglantine
