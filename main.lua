@@ -258,8 +258,15 @@ SMODS.Joker {
                         modif = modif + 1
                     end
                     G.GAME.round_resets.hands = G.GAME.round_resets.hands - modif
-                    ease_hands_played(-modif)
-                    card_eval_status_text(card, 'extra', nil, nil, nil, {message = 'Ungong!', colour = G.C.CHIPS})
+                    if G.GAME.current_round.hands_left > modif then
+                        ease_hands_played(-modif)
+                        card_eval_status_text(card, 'extra', nil, nil, nil, {message = 'Ungong!', colour = G.C.CHIPS})
+                    else
+                        if G.GAME.current_round.hands_left > 1 then
+                            ease_hands_played(-G.GAME.current_round.hands_left+1)
+                            card_eval_status_text(card, 'extra', nil, nil, nil, {message = 'Ungong!', colour = G.C.CHIPS})
+                        end
+                    end
                 end
             end
         end
@@ -687,7 +694,7 @@ SMODS.Joker {
             else
                 return {
                     x_mult = card.ability.extra.mult,
-                    message_card = context.other_card,
+                    message_card = context.blueprint_card or card,
                 }
             end
         end        
@@ -1046,7 +1053,7 @@ SMODS.Joker {
         if context.before and G.GAME.current_round.hands_left == 0 then
             ease_dollars(card.ability.extra.money)
             return {
-                message_card = card,
+                message_card = context.blueprint_card or card,
                 message = localize('$') .. card.ability.extra.money,
                 colour = G.C.MONEY
             }
@@ -1417,7 +1424,11 @@ SMODS.Joker {
                     context.other_card.ability.perma_p_dollars = context.other_card.ability.perma_p_dollars or 0
                     context.other_card.ability.perma_p_dollars = context.other_card.ability.perma_p_dollars + card.ability.extra.money
 
-                    card_eval_status_text(context.other_card, 'extra', nil, nil, nil, {message = localize('k_upgrade_ex'), colour = G.C.MONEY})
+                    return {
+                        extra = {message = localize('k_upgrade_ex'), colour = G.C.MONEY},
+                        colour = G.C.MONEY,
+                        message_card = context.other_card
+                    }
                 end
             end
         end
@@ -1498,7 +1509,7 @@ SMODS.Joker {
     enhancement_gate = 'm_wild',
     config = {
         extra = {
-            odds = 5,
+            odds = 4,
             hands = {'Flush', 'Straight Flush', 'Flush House', 'Flush Five'}
     }
     },
@@ -1524,7 +1535,7 @@ SMODS.Joker {
                 end
             end
 
-            while nb > 0 do
+            for i = 1, nb do
                 card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('k_level_up_ex'), colour = G.C.SECONDARY_SET.Planet})
                 update_hand_text({sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3}, {handname='Flushes',chips = '...', mult = '...', level=''})
                 G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.2, func = function()
@@ -1548,7 +1559,6 @@ SMODS.Joker {
                     level_up_hand(card, v, true, 1)
                 end
                 update_hand_text({sound = 'button', volume = 0.7, pitch = 1.1, delay = 0}, {mult = 0, chips = 0, handname = '', level = ''})
-                nb = nb - 1
             end
         end
     end
@@ -1570,7 +1580,7 @@ SMODS.Joker {
     config = {
         extra = {
             d_mod = 1,
-            d_total = 0,
+            d_total = 1,
             n_need = 2,
             n_used = 0
             
@@ -1585,6 +1595,11 @@ SMODS.Joker {
             end
         end
     end,
+    
+    add_to_deck = function(self, card, from_debuff)
+        G.GAME.round_resets.discards = G.GAME.round_resets.discards + card.ability.extra.d_total
+        ease_discard(card.ability.extra.d_total)
+    end,
 
     loc_vars = function(self, info_queue, card)
 
@@ -1598,7 +1613,7 @@ SMODS.Joker {
 
         if context.using_consumeable and context.consumeable.config.center_key == 'c_neptune' and not context.blueprint then
             card.ability.extra.n_used = card.ability.extra.n_used or 0
-            card.ability.extra.d_total = card.ability.extra.d_total or 0
+            card.ability.extra.d_total = card.ability.extra.d_total or 1
 
             card.ability.extra.n_used = card.ability.extra.n_used + 1
 
@@ -1828,7 +1843,7 @@ SMODS.Joker {
 
     calculate = function(self, card, context)
 
-        if context.hand_drawn and G.GAME.current_round.hands_played >= 1 and card.ability.extra.Xmult > 1 then
+        if context.hand_drawn and G.GAME.current_round.hands_played >= 1 and card.ability.extra.Xmult > 1 and not context.blueprint then
             card.ability.extra.Xmult = 1
             return {
                 message = localize('k_reset'),
