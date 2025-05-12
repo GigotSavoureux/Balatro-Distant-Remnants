@@ -10,43 +10,43 @@ Distant Remnants explores the game's existing systems and mechanics in novel way
 # Common Jokers
 ### The Menu Please
 This Joker gains twice the amount of the scoring Chips of Destroyed cards<br>
-(Currently +0 chips)
+(Currently +0 chips)<br>
 
 
 ### Eglantine
 X2<br>
--1 card slot available in shop
+-1 card slot available in shop<br>
 
 
 ### The Great Wall of China
 Gives +1 Hands for every 3 Stone cards in your full deck<br>
-(Currently +0 hands)
+(Currently +0 hands)<br>
 
 
 ### A Bucket and a Spade
 Add +2 Mult to this Joker and lose $1 if played hand contains a Spade card<br>
-(Currently +0 Mult)
+(Currently +0 Mult)<br>
 
 
 ### Off with their heads!
-If played hand contains a scoring Queen of Hearts, destroy every other scoring card
+If played hand contains a scoring Queen of Hearts, destroy every other scoring card<br>
 
 
 ### Safe Password
-Draw 4 more cards if played hand contains a Straight
+Draw 4 more cards if played hand contains a Straight<br>
 
 
 ### Radical Joker
-Earn $10 on the final hand of round
+Earn $10 on the final hand of round<br>
 
 
 ### Hype
 Earn $6 at the end of round<br>
-Set money to $0 when sold
+Set money to $0 when sold<br>
 
 
 # Uncommon
 ### Slipstream
-Leftmost played card becomes a Glass card if played hand contains a Straight
+Leftmost played card becomes a Glass card if played hand contains a Straight<br>
 
 
