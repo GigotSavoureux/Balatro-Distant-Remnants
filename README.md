@@ -55,7 +55,7 @@ ___
 ___
 
 ### Hang Tag
-This Joker gains **+50 Chips** per **tag used this run**<br>
+This Joker gains **+40 Chips** per **tag used this run**<br>
 *(Currently +0 Chips)* <br>
 ___
 
