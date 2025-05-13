@@ -30,7 +30,7 @@ return {
             j_drx1_apathy = {
                 name = 'Apathy',
                 text = {
-                    'Create a {C:green}random{} {C:attention}Tag{}',
+                    'Create a random {C:attention}Tag{}',
                     'when you skip a {C:attention}Blind{}',
                     '{C:inactive,s:0.6} (Visuals are in progress)'
                 },
@@ -195,7 +195,7 @@ return {
             j_drx1_mismatched = {
                 name = 'Mismatched Socks',
                 text = {
-                    "{C:green}#1# in #2# chance{} to create",
+                    "{C:green}#1# in #2#{} chance to create",
                     "a {C:attention}#3#{} if poker",
                     "hand is a {C:attention}Two Pair",
                 },
@@ -212,7 +212,7 @@ return {
             j_drx1_ingsoc = {
                 name = 'Ingsoc',
                 text = {
-                    "{C:green}#1# in #2# chance{} for",
+                    "{C:green}#1# in #2#{} chance for",
                     "each scoring {C:attention}8{} and {C:attention}4",
                     "to retrigger all cards",
                     "{C:attention}held in hand{} abilities",
