@@ -1012,13 +1012,11 @@ SMODS.Joker {
                 trigger = 'before',
                 delay = 0.0,
                 func = (function()
-                    if not context.other_card.seal then
-                        local seals = {}
-                        for k, v in pairs(G.P_SEALS) do
-                            table.insert(seals, k)
-                        end
-                        context.other_card:set_seal(pseudorandom_element(seals, pseudoseed('seal')))
+                    local seals = {}
+                    for k, v in pairs(G.P_SEALS) do
+                        table.insert(seals, k)
                     end
+                    context.other_card:set_seal(pseudorandom_element(seals, pseudoseed('seal')))
                     return true
                 end)}))
             card_eval_status_text(card, 'extra', nil, nil, nil, { message = 'Transmutation!', colour = G.C.MULT })
