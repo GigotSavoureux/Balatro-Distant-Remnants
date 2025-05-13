@@ -566,7 +566,7 @@ SMODS.Joker {
     cost = 5,
     config = {
         extra = {
-            chipsmod = 50
+            chipsmod = 40
         }
     },
 
