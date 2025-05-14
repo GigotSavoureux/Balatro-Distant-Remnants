@@ -718,7 +718,7 @@ SMODS.Joker {
         extra = {
             mult = 0,
             multmod = 3,
-            money = 5,
+            money = 4,
         }
     },
     loc_vars = function(self, info_queue, card)
