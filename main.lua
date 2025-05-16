@@ -400,7 +400,7 @@ SMODS.Joker {
         x = 2,
         y = 3
     },
-    blueprint_compat = false,
+    blueprint_compat = true,
     perishable_compat = true,
     eternal_compat = true,
     rarity = 1,
@@ -420,31 +420,25 @@ SMODS.Joker {
 
     calculate = function(self, card, context)
 
-        if context.cardarea == G.jokers and not context.blueprint then
-            card.ability.extra.flag = card.ability.extra.flag or 0
+        if context.cardarea == G.jokers then
 
-            if context.after and (next(context.poker_hands['Straight']) or next(context.poker_hands['Straight Flush'])) then
-                card.ability.extra.flag = 1
-            end
-
-            if card.ability.extra.flag == 1 and context.hand_drawn then
-                card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('k_safe_ex'), colour = G.C.MULT})
-                if G.GAME.blind.name == 'The Serpent' then
-                    for i=1, card.ability.extra.draw do
-                        draw_card(G.deck,G.hand, i*100/(card.ability.extra.draw), 'up', true)
-                    end
-                else
-                    
-                    local hand_space = e or math.min(#G.deck.cards, G.hand.config.card_limit - #G.hand.cards)
-                    for i=1, hand_space + card.ability.extra.draw do
-                        draw_card(G.deck,G.hand, i*100/(hand_space+card.ability.extra.draw), 'up', true)
-                    end
-                end
-
+            if context.before and not context.blueprint then
                 card.ability.extra.flag = 0
+                if next(context.poker_hands['Straight']) then
+                    card.ability.extra.flag = 1
+                end
             end
 
-            if context.end_of_round and card.ability.extra.flag == 1 then
+            print(card.ability.extra.flag)
+            if card.ability.extra.flag == 1 and context.hand_space then
+                card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('k_safe_ex'), colour = G.C.CHIPS})
+                for i=1, card.ability.extra.draw do
+                    draw_card(G.deck,G.hand, i*100/(card.ability.extra.draw), 'up', true)
+                end
+                --return nil, true
+            end
+
+            if card.ability.extra.flag == 1 and context.end_of_round then
                 card.ability.extra.flag = 0
             end
         end

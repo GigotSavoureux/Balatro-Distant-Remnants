@@ -17,3 +17,21 @@ if next(SMODS.find_card('j_drx1_stamp')) then
 end
 '''
 match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'functions/state_events.lua'
+match_indent = true
+position = 'after'
+pattern = '''
+if G.GAME.blind.name == 'The Serpent' and
+    not G.GAME.blind.disabled and
+    (G.GAME.current_round.hands_played > 0 or
+    G.GAME.current_round.discards_used > 0) then
+        hand_space = math.min(#G.deck.cards, 3)
+end
+'''
+payload = '''
+local flags = SMODS.calculate_context({hand_space = hand_space})
+hand_space = flags.hand_space or hand_space
+'''
