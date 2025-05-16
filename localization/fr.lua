@@ -233,11 +233,10 @@ return {
             j_drx1_one_more = {
                 name = 'One More Time !',
                 text = {
-                    "Ajoute un effet {C:dark_edition}Brillant{},",
-                    "{C:dark_edition}Holographique{} ou {C:dark_edition}Polychrome{}",
-                    "à {C:attention}1{} carte jouée par carte",
-                    "{C:planet}Planète{} en votre possession",
-                    "{C:inactive} (Actuellement : {X:planet,C:white} #1# {C:inactive})",
+                    "Ajoute un effet {C:dark_edition}Brillant{}, {C:dark_edition}Holographique{}, ou",
+                    "{C:dark_edition}Polychrome{} à la (aux) {X:planet,C:white} #1# {} carte(s) {C:attention}sans édition",
+                    "jouées la (les) plus à gauche, augmente de {C:attention}1",
+                    "par carte {C:planet}Planète{} dans la zone {C:attention}Consommable",
                 },
             },
             j_drx1_stamp = {
