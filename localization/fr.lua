@@ -234,9 +234,10 @@ return {
                 name = 'One More Time !',
                 text = {
                     "Ajoute un effet {C:dark_edition}Brillant{},",
-                    "{C:dark_edition}Holographique{} ou {C:dark_edition}Polychrome{} aux",
-                    "{C:attention}cartes améliorées{} jouées, puis",
-                    "supprime {C:attention}l'amélioration de cartes",
+                    "{C:dark_edition}Holographique{} ou {C:dark_edition}Polychrome{}",
+                    "à {C:attention}1{} carte jouée par carte",
+                    "{C:planet}Planète{} en votre possession",
+                    "{C:inactive} (Actuellement : {X:planet,C:white} #1# {C:inactive})",
                 },
             },
             j_drx1_stamp = {

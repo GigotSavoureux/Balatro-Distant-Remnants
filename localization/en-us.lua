@@ -233,8 +233,9 @@ return {
                 text = {
                     "Add {C:dark_edition}Foil{}, {C:dark_edition}Holographic{},",
                     "or {C:dark_edition}Polychrome{} effect to",
-                    "played {C:attention}Enhanced cards{}, then",
-                    "remove card {C:attention}Enhancement",
+                    "{C:attention}1{} played card per {C:planet}Planet{}",
+                    "card in your possession",
+                    "{C:inactive} (Currently {X:planet,C:white} #1# {C:inactive})",
                 },
             },
             j_drx1_stamp = {

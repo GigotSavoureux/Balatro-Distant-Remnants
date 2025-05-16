@@ -839,7 +839,7 @@ SMODS.Joker {
     cost = 7,
     config = {
         extra = {
-            odds = 3
+            edition = 0
         }
     },
 
@@ -847,43 +847,87 @@ SMODS.Joker {
         info_queue[#info_queue+1] = G.P_CENTERS.e_foil
         info_queue[#info_queue+1] = G.P_CENTERS.e_holo
         info_queue[#info_queue+1] = G.P_CENTERS.e_polychrome
+        local flag = 0
+        if G.consumeables then
+            for i=1, #G.consumeables.cards do
+                if G.consumeables.cards[i].ability.set == "Planet" then
+                    flag = flag + 1
+                end
+            end
+        end
         return {
-            vars = {'' .. (G.GAME and G.GAME.probabilities.normal or 1),
-            card.ability.extra.odds}
+            vars = {flag}
         }
     end,
 
     calculate = function(self, card, context)
 
         if context.cardarea == G.jokers and context.before and not context.blueprint then
-            local enhanced = {}
+            local flag = 0
             local daft = 0
-            for k, v in ipairs(context.scoring_hand) do
-                if v.config.center ~= G.P_CENTERS.c_base
-                and not v.edition
-                and not v.debuff
-                and not v.punked then
-                    enhanced[#enhanced+1] = v
-                    daft = daft + 1
-                    v.punked = true
-                    v:set_ability(G.P_CENTERS.c_base, nil, true)
+
+            for i=1, #G.consumeables.cards do
+                if G.consumeables.cards[i].ability.set == "Planet" then
+                    flag = flag + 1
+                end
+            end
+
+            for i = 1, #context.scoring_hand do
+                if not context.scoring_hand[i].edition
+                and not context.scoring_hand[i].debuff
+                and flag > 0 then
+                    daft = 1
+                    flag = flag - 1
+                    local over = false
+                    local edition = poll_edition('aura', nil, true, true)
+                    context.scoring_hand[i]:set_edition(edition, true)
                     G.E_MANAGER:add_event(Event({
                         func = function()
-                            v:juice_up()
-                            local over = false
-                            local edition = poll_edition('aura', nil, true, true)
-                            v:set_edition(edition, true)
-                            v.punked = nil
+                            context.scoring_hand[i]:juice_up()
                             return true
                         end
-                    })) 
+                    }))
                 end
             end
 
             if daft >= 1 then
-                card_eval_status_text(card, 'extra', nil, nil, nil, { message = 'One More Time!', colour = G.C.DARK_EDITION })
+                return{
+                    message = "One More Time!",
+                    colour = G.C.DARK_EDITION,
+                    message_card = card,
+                }
             end
         end
+
+        -- if context.cardarea == G.jokers and context.before and not context.blueprint then
+        --     local enhanced = {}
+        --     local daft = 0
+        --     for k, v in ipairs(context.scoring_hand) do
+        --         if v.config.center ~= G.P_CENTERS.c_base
+        --         and not v.edition
+        --         and not v.debuff
+        --         and not v.punked then
+        --             enhanced[#enhanced+1] = v
+        --             daft = daft + 1
+        --             v.punked = true
+        --             v:set_ability(G.P_CENTERS.c_base, nil, true)
+        --             G.E_MANAGER:add_event(Event({
+        --                 func = function()
+        --                     v:juice_up()
+        --                     local over = false
+        --                     local edition = poll_edition('aura', nil, true, true)
+        --                     v:set_edition(edition, true)
+        --                     v.punked = nil
+        --                     return true
+        --                 end
+        --             })) 
+        --         end
+        --     end
+
+        --     if daft >= 1 then
+        --         card_eval_status_text(card, 'extra', nil, nil, nil, { message = 'One More Time!', colour = G.C.DARK_EDITION })
+        --     end
+        -- end
 
     end
 }
@@ -1911,7 +1955,7 @@ SMODS.Joker {
     end,
     calculate = function(self, card, context)
 
-        if context.joker_main then
+        if context.before then
             local card_type = 'Planet'
             local _planet = 0
 
@@ -1928,6 +1972,12 @@ SMODS.Joker {
             }, true)
             card:add_to_deck()
             G.consumeables:emplace(card)
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    card:juice_up()
+                    return true
+                end
+            })) 
         end
     end
 }
