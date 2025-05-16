@@ -116,7 +116,7 @@ ___
 
 # Rare
 ### One More Time!
-Add **Foil, Holographic or Polychrome** effect to played card per **Planet** card in your possession<br>
+Add **Foil, Holographic or Polychrome** effect to 1 played card per **Planet** card in your possession<br>
 *(Currently 0)* <br>
 ___
 
