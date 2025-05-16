@@ -242,7 +242,7 @@ return {
             j_drx1_stamp = {
                 name = "Pierre Philosophale",
                 text = {
-                    "Quand une {C:attention}carte à jouer{} est {C:attention}détruite{} ,",
+                    "Quand une {C:attention}carte à jouer{} est {C:attention}détruite{},",
                     "{S:1.1,C:red,E:2} annule sa destruction{}",
                     "et ajoute un {C:attention}Sceau{} aléatoire",
                 },
