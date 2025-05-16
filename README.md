@@ -69,7 +69,7 @@ ___
 
 ### Consumerism
 Played **Enhanced cards** give **+0 Mult** when scored<br>
-Increase by **+3** if Blind is selected with **$5 or less**<br>
+Increase by **+3** if Blind is selected with **$4 or less**<br>
 ___
 
 ### Metamorphosis
@@ -116,7 +116,8 @@ ___
 
 # Rare
 ### One More Time!
-Add **Foil, Holographic or Polychrome** effect to played **Enhanced cards**, then ***remove card Enhancement***<br>
+Add **Foil, Holographic or Polychrome** effect to played card per **Planet** card in your possession<br>
+*(Currently 0)* <br>
 ___
 
 ### Philosophical Stone
