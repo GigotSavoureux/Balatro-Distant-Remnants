@@ -43,16 +43,6 @@ function Card:is_face(from_boss)
 	return isfaceref(self, from_boss)
 end
 
--- Descriptions
--- G.localization.descriptions.Other['my_key'] = {
---     name = 'Jackpot',
---     text = {
---         'When this Joker',
---         'triggers {C:attention}3{} times',
---         'in a single {C:attention}hand'
---     }
--- }
-
 --The Menu Please G
 SMODS.Joker {
     key = 'menu',
@@ -429,13 +419,12 @@ SMODS.Joker {
                 end
             end
 
-            print(card.ability.extra.flag)
             if card.ability.extra.flag == 1 and context.hand_space then
                 card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('k_safe_ex'), colour = G.C.CHIPS})
                 for i=1, card.ability.extra.draw do
                     draw_card(G.deck,G.hand, i*100/(card.ability.extra.draw), 'up', true)
                 end
-                --return nil, true
+                card.ability.extra.flag = 0
             end
 
             if card.ability.extra.flag == 1 and context.end_of_round then
@@ -1975,6 +1964,8 @@ SMODS.Joker {
         end
     end
 }
+
+
 
 ---------------------------------------------
 -------------MOD CODE END--------------------
