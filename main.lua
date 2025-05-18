@@ -1886,7 +1886,7 @@ SMODS.Joker {
             if G.GAME.current_round.hands_played == 1 then
                 card.ability.extra.Xmult = card.ability.extra.Xmult + card.ability.extra.increase
                 return {
-                    message = localize('k_upgrade_ex'),
+                    message = "Dolores...",
                     colour = G.C.RED
                 }
             end
@@ -1965,7 +1965,271 @@ SMODS.Joker {
     end
 }
 
+-- Absinthe G
+SMODS.Joker {
+    key = 'absinthe',
+    atlas = 'Jokers',
+    pos = {
+        x = 3,
+        y = 2
+    },
+    blueprint_compat = true,
+    perishable_compat = true,
+    eternal_compat = false,
+    rarity = 2,
+    cost = 5,
+    config = {
+        extra = {
+            current = 1,
+            odds = 8,
+            rate = 1,
+        }
+    },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue+1] = G.P_CENTERS.e_foil
+        info_queue[#info_queue+1] = G.P_CENTERS.e_holo
+        info_queue[#info_queue+1] = G.P_CENTERS.e_polychrome
+        local current = 1
+        local rate = 1
+        if card then
+            current = card.ability.extra.current or 1
+            rate = card.ability.extra.rate
+        end
+        if G.GAME and G.GAME.probabilities.normal then
+			current = current * G.GAME.probabilities.normal
+			rate = rate * G.GAME.probabilities.normal
+		end
+        return {
+            vars = {current, card.ability.extra.odds, rate}
+        }
+    end,
 
+    calculate = function(self, card, context)
+
+        if context.end_of_round and context.main_eval and not context.blueprint then
+            card.ability.extra.current = (card.ability.extra.current or 1) + card.ability.extra.rate
+            return{
+                message = localize("k_upgrade_ex"),
+                colour = G.C.GREEN,
+                message_card = card,
+            }
+        end
+
+        if context.selling_self then
+            local transform = false
+            for i = 1, #G.jokers.cards do
+                if G.jokers.cards[i] ~= card and not G.jokers.cards[i].edition then 
+                    if (pseudorandom('algul') < card.ability.extra.current * G.GAME.probabilities.normal / card.ability.extra.odds) then
+                        local edition = poll_edition('wheel_of_fortune', nil, true, true)
+                        G.jokers.cards[i]:set_edition(edition, true)
+                        transform = true
+                    end
+                end
+            end
+            if transform == true then
+                return{
+                    message = localize("k_drank_ex"),
+                    colour = G.C.GREEN,
+                    message_card = context.blueprint_card or card,
+                }
+            end
+        end
+    end
+}
+
+-- Knock-Off G
+SMODS.Joker {
+    key = 'knockoff',
+    atlas = 'Jokers',
+    pos = {
+        x = 4,
+        y = 2
+    },
+    blueprint_compat = true,
+    perishable_compat = true,
+    eternal_compat = false,
+    rarity = 1,
+    cost = 6,
+    config = {
+        extra = {
+        }
+    },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue+1] = {key = 'perishable', set = 'Other', vars = {G.GAME.perishable_rounds or 1, G.GAME.perishable_rounds}}
+        return {
+        }
+    end,
+
+    calculate = function(self, card, context)
+        if context.selling_self then
+            local jokers = {}
+            for i=1, #G.jokers.cards do 
+                if G.jokers.cards[i] ~= card then
+                    jokers[#jokers+1] = G.jokers.cards[i]
+                end
+            end
+            if #jokers > 0 then 
+                if #G.jokers.cards <= G.jokers.config.card_limit then 
+                    card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('k_duplicated_ex')})
+                    local chosen_joker = jokers[#jokers]
+                    local card = copy_card(chosen_joker, nil, nil, nil, chosen_joker.edition and chosen_joker.edition.negative)
+                    card:set_eternal(false)
+                    SMODS.Stickers["perishable"]:apply(card, true)
+                    card.sell_cost = 0
+                    card:add_to_deck()
+                    G.jokers:emplace(card)
+                else
+                    card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('k_no_room_ex')})
+                end
+            else
+                card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('k_no_other_jokers')})
+            end
+        end
+    end
+}
+
+-- Devotion G
+SMODS.Joker {
+    key = 'devotion',
+    atlas = 'Jokers',
+    pos = {
+        x = 6,
+        y = 2
+    },
+    blueprint_compat = true,
+    perishable_compat = true,
+    eternal_compat = false,
+    rarity = 2,
+    cost = 6,
+    config = {
+        extra = {
+            different = 7,
+            hands = {},
+            aura = 2,
+            devotion = 0,
+        }
+    },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue+1] = G.P_CENTERS.c_aura
+        local hand = 0
+        for k, v in pairs(card.ability.extra.hands or {}) do
+            hand = hand + 1
+        end
+        return {
+            vars = {card.ability.extra.different, hand, card.ability.extra.aura, card.ability.extra.devotion}
+        }
+    end,
+
+    calculate = function(self, card, context)
+
+        if context.before and context.main_eval and not context.blueprint then
+            local hand = 0
+            for k, v in pairs(card.ability.extra.hands or {}) do
+                hand = hand + 1
+            end
+            card.ability.extra.hands[context.scoring_name] = true
+            local new_hand = 0
+            for k, v in pairs(card.ability.extra.hands or {}) do
+                new_hand = new_hand + 1
+            end
+            if hand ~= new_hand then
+                card_eval_status_text(card, 'extra', nil, nil, nil, {message = new_hand..'/7', colour = G.C.DARK_EDITION})
+                if new_hand == 7 then
+                    card.ability.extra.devotion = 1
+                    card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('k_upgrade_ex'), colour = G.C.DARK_EDITION})
+                    local eval = function(card)
+                        return (card.ability.extra.devotion >= 1)
+                    end
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = 0.4,
+                        func = function()
+                            juice_card_until(card, eval, true)
+                            return true
+                        end}))
+                end
+            end
+        end
+
+        if context.selling_self and card.ability.extra.devotion == 1 then
+            if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+                card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = 'Aura', colour = G.C.DARK_EDITION})
+            end
+            for i=1, card.ability.extra.aura do
+                if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+                    G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'before',
+                        func = (function()
+                            local card = create_card(nil, G.consumeables, nil, nil, nil, nil, 'c_aura', 'sup')
+                            card:add_to_deck()
+                            G.consumeables:emplace(card)
+                            G.GAME.consumeable_buffer = 0
+                            return true
+                        end)
+                    }))
+                end
+            end
+        end
+    end
+}
+
+-- Anarchy R
+SMODS.Joker {
+    key = 'anarchy',
+    atlas = 'Jokers',
+    pos = {
+        x = 5,
+        y = 2
+    },
+    blueprint_compat = false,
+    perishable_compat = true,
+    eternal_compat = true,
+    rarity = 2,
+    cost = 5,
+    config = {
+        extra = {
+        }
+    },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue+1] = G.P_CENTERS.e_polychrome
+        info_queue[#info_queue+1] = G.P_CENTERS.m_wild
+        return {
+        }
+    end,
+
+    calculate = function(self, card, context)
+
+        if context.before and not context.blueprint and G.GAME.current_round.hands_left == 0 then
+            local anar = 0
+            for i=1, #context.full_hand do
+                local card_is_scoring = false
+                for j=1, #context.scoring_hand do
+                    if context.full_hand[i] == context.scoring_hand[j] then
+                        card_is_scoring = true
+                    end
+                end
+                if card_is_scoring == false and not context.full_hand[i].debuff then
+                    anar = 1
+                    context.full_hand[i]:flip()
+                    context.full_hand[i]:set_ability(G.P_CENTERS.m_wild, nil, true)
+                    if not context.full_hand[i].edition then
+                        local edition = {polychrome = true}
+                        context.full_hand[i]:set_edition(edition, true)
+                    end
+                    context.full_hand[i]:flip()
+                end
+            end
+            if anar == 1 then
+                return{
+                    message = "No Gods, No Masters",
+                    colour = G.C.MULT,
+                    message_card = card
+                }
+            end
+        end
+    end
+}
 
 ---------------------------------------------
 -------------MOD CODE END--------------------

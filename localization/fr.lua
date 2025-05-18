@@ -113,7 +113,7 @@ return {
                 name = 'Ennui Morbide',
                 text = {
                     "{X:mult,C:white} x#1# {} au Multi. pour",
-                    "chaque {C:attention}Blinde{} battue d'affilée",
+                    "chaque {C:attention}Blinde consécutive{} battue",
                     "avec la {C:attention}première main",
                     "{C:inactive} (Actuellement : Multi. {X:mult,C:white} x#2# {C:inactive} )",
                 },
@@ -138,7 +138,7 @@ return {
                 text = {
                     "Ce Joker octroie le {C:attention}double{}",
                     "du montant de {C:attention}Jetons",
-                    "des {C:attention}cartes Détruites",
+                    "des {C:attention}cartes détruites",
                     "{C:inactive} (Actuellement : {C:chips}+#1#{C:inactive} Jetons)",
                 },
             },
@@ -263,6 +263,43 @@ return {
                     "lorsqu'elles marquent des points",
                     "Augmente de {C:red}+#2#{} si la {C:attention}Blinde{} est",
                     "commencée avec {C:money}#3# ${} ou moins",
+                },
+            },
+            j_drx1_absinthe = {
+                name = "Absinthe",
+                text = {
+                    "Vendez cette carte pour",
+                    "{C:green}#1# chance(s) sur #2#{} d'ajouter un",
+                    "effet {C:dark_edition}Brillant{}, {C:dark_edition}Holographique{}, ou",
+                    "{C:dark_edition}Polychrome{} à chaque {C:attention}Joker{} possédé",
+                    "{C:inactive} (Les chances augmentent de {C:green}+#3#",
+                    "{C:inactive} après avoir battu une {C:attention}Blinde{C:inactive})",
+                },
+            },
+            j_drx1_knockoff = {
+                name = "Contrefaçon",
+                text = {
+                    "Vendez cette carte pour",
+                    "{C:attention}Dupliquer{} le Joker le plus",
+                    "à droite et y ajouter {C:attention}Périssable",
+                },
+            },
+            j_drx1_devotion = {
+                name = "Dévotion",
+                text = {
+                    "Après avoir joué {C:attention}#1# mains",
+                    "de poker différentes, vendez",
+                    "cette carte pour créer {C:attention}#3#{C:spectral} Auras",
+                    "{C:inactive} (Selon la place disponible, {C:attention}#2#{C:inactive}/#1#)",
+                },
+            },
+            j_drx1_anarchy = {
+                name = "Anarchie",
+                text = {
+                    "Quand vous jouez la {C:attention}main finale{},",
+                    "toutes les cartes jouées qui ne",
+                    "{C:attention}marquent pas{} deviennent des",
+                    "cartes {C:attention}Sauvages{C:dark_edition} Polychromes",
                 },
             },
         },

@@ -264,6 +264,42 @@ return {
                     "selected with {C:money}$#3#{} or less",
                 },
             },
+            j_drx1_absinthe = {
+                name = "Absinthe",
+                text = {
+                    "Sell this card for",
+                    "{C:green}#1# in #2#{} chance to add {C:dark_edition}Foil{},",
+                    "{C:dark_edition}Holographic{}, or {C:dark_edition}Polychrome",
+                    "effect to each owned {C:attention}Joker",
+                    "{C:inactive} (Odds increase by {C:green}+#3#{C:inactive} after",
+                    "{C:inactive} defeating a {C:attention}Blind{C:inactive})",
+                },
+            },
+            j_drx1_knockoff = {
+                name = "Knock-Off",
+                text = {
+                    "Sell this card to",
+                    "{C:attention}Duplicate{} rightmost Joker",
+                    "and add {C:attention}Perishable{} to it",
+                },
+            },
+            j_drx1_devotion = {
+                name = "Devotion",
+                text = {
+                    "After playing {C:attention}#1#{} different",
+                    "{C:attention}poker hands{}, sell this",
+                    "card to create {C:attention}#3#{C:spectral} Auras",
+                    "{C:inactive} (Must have room, {C:attention}#2#{C:inactive}/#1#)",
+                },
+            },
+            j_drx1_anarchy = {
+                name = "Anarchy",
+                text = {
+                    "On {C:attention}final hand{}, all played",
+                    "{C:attention}non-scoring{} cards become",
+                    "{C:dark_edition}Polychrome{C:attention} Wild{} cards",
+                },
+            },
         },
     },
 }
