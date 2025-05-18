@@ -260,8 +260,8 @@ return {
                 text = {
                     "Played {C:attention}Enhanced cards",
                     "give {C:red}+#1#{} when scored",
-                    "Increase by {C:red}+#2#{} if {C:attention}Blind{} is",
-                    "selected with {C:money}$#3#{} or less",
+                    "{C:inactive} (Increase by {C:red}+#2#{C:inactive} if {C:attention}Blind{C:inactive} is",
+                    "{C:inactive} selected with {C:money}$#3#{C:inactive} or less)",
                 },
             },
             j_drx1_absinthe = {
