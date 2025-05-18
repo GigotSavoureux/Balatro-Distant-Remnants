@@ -2,8 +2,8 @@
 Distant Remnants explores the game's existing systems and mechanics in novel ways to create new and strange strategies and dynamics.
 
 # +34 Jokers
-- 8 Common
-- 19 Uncommon
+- 9 Common
+- 18 Uncommon
 - 6 Rare
 - 1 Legendary
 
@@ -43,6 +43,10 @@ ___
 ### Hype
 **Earn $6** at the end of round<br>
 ***Set money to $0 when sold***<br>
+___
+
+### Knock-off
+Sell this card to **Duplicate** rightmost Joker and add **Perishable** to it<br>
 ___
 
 # Uncommon
@@ -117,10 +121,6 @@ ___
 ### Absinthe
 Sell this card for **1 in 8** chance to add **Foil, Holographic or Polychrome** effect to each owned **Joker**<br>
 *(Odds increase by +1 after defeating a Blind)* <br>
-___
-
-### Knock-off
-Sell this card to **Duplicate** rightmost Joker and add **Perishable** to it<br>
 ___
 
 ### Devotion
