@@ -2,8 +2,8 @@
 Distant Remnants explores the game's existing systems and mechanics in novel ways to create new and strange strategies and dynamics.
 
 # +34 Jokers
-- 9 Common
-- 18 Uncommon
+- 8 Common
+- 19 Uncommon
 - 6 Rare
 - 1 Legendary
 
@@ -45,10 +45,6 @@ ___
 ***Set money to $0 when sold***<br>
 ___
 
-### Knock-off
-Sell this card to **Duplicate** rightmost Joker and add **Perishable** to it<br>
-___
-
 # Uncommon
 ### Slipstream
 Leftmost played card becomes a **Glass card** if played hand contains a **Straight**<br>
@@ -73,7 +69,7 @@ ___
 
 ### Consumerism
 Played **Enhanced cards** give **+0 Mult** when scored<br>
-Increase by **+3** if Blind is selected with **$4 or less**<br>
+*(Increase by +2 if Blind is selected with $4 or less)* <br>
 ___
 
 ### Metamorphosis
@@ -121,6 +117,10 @@ ___
 ### Absinthe
 Sell this card for **1 in 8** chance to add **Foil, Holographic or Polychrome** effect to each owned **Joker**<br>
 *(Odds increase by +1 after defeating a Blind)* <br>
+___
+
+### Knock-off
+Sell this card to **Duplicate** rightmost Joker and add **Perishable** to it<br>
 ___
 
 ### Devotion
