@@ -1035,6 +1035,7 @@ SMODS.Joker {
 
     calculate = function(self, card, context)
         if context.drx1_cardtryingtobedestroyed and not context.blueprint then
+            if not context.other_card.seal then
             G.E_MANAGER:add_event(Event({
                 trigger = 'before',
                 delay = 0.0,
@@ -1046,20 +1047,27 @@ SMODS.Joker {
                     context.other_card:set_seal(pseudorandom_element(seals, pseudoseed('seal')))
                     return true
                 end)}))
+            end
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    context.other_card:juice_up()
+                    return true
+                end
+            }))
             card_eval_status_text(card, 'extra', nil, nil, nil, { message = 'Transmutation!', colour = G.C.MULT })
 
 
-            if next(SMODS.find_card('j_drx1_the_worm')) then
-                print("worm")
-            end
+            -- if next(SMODS.find_card('j_drx1_the_worm')) then
+            --     print("worm")
+            -- end
 
-            if next(SMODS.find_card('j_drx1_menu')) then
-                print("menu")
-            end
+            -- if next(SMODS.find_card('j_drx1_menu')) then
+            --     print("menu")
+            -- end
 
-            if next(SMODS.find_card('j_caino')) then
-                print("caino")
-            end
+            -- if next(SMODS.find_card('j_caino')) then
+            --     print("caino")
+            -- end
 
         end
     end

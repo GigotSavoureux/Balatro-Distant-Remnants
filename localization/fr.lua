@@ -96,7 +96,7 @@ return {
                 text = {
                     "{C:green}#1# chance(s) sur #2#{} de",
                     "créer une carte {C:spectral}Spectrale{}",
-                    "pour chaque {C:attention}carte{} détruite",
+                    "pour chaque carte {C:attention}détruite",
                     "{C:inactive} (Selon la place disponible)",
                 },
             },
@@ -138,7 +138,7 @@ return {
                 text = {
                     "Ce Joker octroie le {C:attention}double{}",
                     "du montant de {C:attention}Jetons",
-                    "des {C:attention}cartes détruites",
+                    "des cartes {C:attention}détruites",
                     "{C:inactive} (Actuellement : {C:chips}+#1#{C:inactive} Jetons)",
                 },
             },
@@ -233,10 +233,11 @@ return {
             j_drx1_one_more = {
                 name = 'One More Time !',
                 text = {
-                    "Ajoute un effet {C:dark_edition}Brillant{}, {C:dark_edition}Holographique{}, ou",
-                    "{C:dark_edition}Polychrome{} à la (aux) {X:planet,C:white} #1# {} carte(s) {C:attention}sans édition",
-                    "jouées la (les) plus à gauche, augmente de {C:attention}1",
-                    "par carte {C:planet}Planète{} dans la zone {C:attention}Consommable",
+                    "Ajoute un effet {C:dark_edition}Brillant{}, {C:dark_edition}Holographique{},",
+                    "ou {C:dark_edition}Polychrome{} à {X:planet,C:white} #1# {} carte(s) {C:attention}sans",
+                    "{C:attention}édition{} jouée(s) le plus à gauche",
+                    "{C:inactive} (Augmente de {X:planet,C:white} +1 {C:inactive} par carte {C:planet}Planète",
+                    "{C:inactive} dans la zone {C:attention}Consommable{C:inactive})",
                 },
             },
             j_drx1_stamp = {
@@ -244,7 +245,7 @@ return {
                 text = {
                     "Quand une {C:attention}carte à jouer{} est {C:attention}détruite{},",
                     "{S:1.1,C:red,E:2} annule sa destruction{}",
-                    "et ajoute un {C:attention}Sceau{} aléatoire",
+                    "et ajoutez-y un {C:attention}Sceau{} aléatoire",
                 },
             },
             j_drx1_hydra = {
@@ -288,7 +289,7 @@ return {
                 name = "Dévotion",
                 text = {
                     "Après avoir joué {C:attention}#1# mains",
-                    "de poker différentes, vendez",
+                    "{C:attention}de poker{} différentes, vendez",
                     "cette carte pour créer {C:attention}#3#{C:spectral} Auras",
                     "{C:inactive} (Selon la place disponible, {C:attention}#2#{C:inactive}/#1#)",
                 },

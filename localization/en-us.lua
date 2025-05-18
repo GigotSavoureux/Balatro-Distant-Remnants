@@ -66,7 +66,7 @@ return {
                 name = 'Tobacco Paper',
                 text = {
                     'Retrigger all',
-                    'played {C:attention}Lucky Cards,',
+                    'played {C:attention}Lucky Cards{},',
                     '{C:green}#1# in #2#{} chance to',
                     'retrigger {C:attention}twice{} instead',
                 },
@@ -93,7 +93,7 @@ return {
                 text = {
                     '{C:green}#1# in #2#{} chance to create',
                     'a random {C:spectral}Spectral{} card',
-                    'per destroyed {C:attention}card{}',
+                    'per {C:attention}destroyed{} card',
                     '{C:inactive} (Must have room)',
                 },
             },
@@ -111,7 +111,7 @@ return {
                 text = {
                     'This Joker gains {X:mult,C:white} X#1# {} Mult',
                     'per {C:attention}consecutive Blind{} beaten',
-                    'on first played {C:attention}hand{}',
+                    'on {C:attention}first played{} hand',
                     '{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)',
                 },
             },
@@ -126,7 +126,7 @@ return {
             j_drx1_bokida = {
                 name = 'Bokida',
                 text = {
-                    'Create a {C:dark_edition,s:0.9}Negative{}',
+                    'Create a {C:dark_edition, s:0,9}Negative',
                     '{C:planet}Planet{} card of',
                     'played {C:attention}poker hand',
                 },
@@ -136,7 +136,7 @@ return {
                 text = {
                     "This Joker gains {C:attention}twice{} the",
                     "amount of the scoring {C:attention}Chips",
-                    "of {C:attention}Destroyed cards",
+                    "of {C:attention}Destroyed{} cards",
                     "{C:inactive} (Currently {C:chips}+#1#{C:inactive} Chips)",
                 },
             },
@@ -234,9 +234,9 @@ return {
                     "Add {C:dark_edition}Foil{}, {C:dark_edition}Holographic{},",
                     "or {C:dark_edition}Polychrome{} effect to",
                     "the {X:planet,C:white} #1# {} leftmost {C:attention}base edition",
-                    "played cards when scored,",
-                    "increase by {C:attention}1{} per {C:planet}Planet",
-                    "card in {C:attention}consumable{} area",
+                    "played cards when scored",
+                    "{C:inactive} (Increase by {X:planet,C:white} +1 {C:inactive} per {C:planet}Planet",
+                    "{C:inactive} card in {C:attention}consumable{C:inactive} area)",
                 },
             },
             j_drx1_stamp = {
