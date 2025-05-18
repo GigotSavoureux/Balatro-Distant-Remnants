@@ -700,7 +700,7 @@ SMODS.Joker {
     config = {
         extra = {
             mult = 0,
-            multmod = 3,
+            multmod = 2,
             money = 4,
         }
     },
@@ -1047,6 +1047,20 @@ SMODS.Joker {
                     return true
                 end)}))
             card_eval_status_text(card, 'extra', nil, nil, nil, { message = 'Transmutation!', colour = G.C.MULT })
+
+
+            if next(SMODS.find_card('j_drx1_the_worm')) then
+                print("worm")
+            end
+
+            if next(SMODS.find_card('j_drx1_menu')) then
+                print("menu")
+            end
+
+            if next(SMODS.find_card('j_caino')) then
+                print("caino")
+            end
+
         end
     end
 }
@@ -2049,7 +2063,7 @@ SMODS.Joker {
     perishable_compat = true,
     eternal_compat = false,
     rarity = 1,
-    cost = 6,
+    cost = 8,
     config = {
         extra = {
         }
