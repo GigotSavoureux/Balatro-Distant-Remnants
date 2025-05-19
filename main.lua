@@ -13,6 +13,13 @@ SMODS.Atlas {
     py = 95
 }
 
+SMODS.Atlas {
+    key = 'modicon',
+    path = 'Icon.png',
+    px = 32,
+    py = 32,
+}
+
 -- Talisman crash
 to_big = to_big or function(x) return x end
 
@@ -2063,22 +2070,28 @@ SMODS.Joker {
         end
 
         if context.selling_self then
-            local transform = false
             for i = 1, #G.jokers.cards do
-                if G.jokers.cards[i] ~= card and not G.jokers.cards[i].edition then 
-                    if (pseudorandom('algul') < card.ability.extra.current * G.GAME.probabilities.normal / card.ability.extra.odds) then
-                        local edition = poll_edition('wheel_of_fortune', nil, true, true)
-                        G.jokers.cards[i]:set_edition(edition, true)
-                        transform = true
-                    end
+                if G.jokers.cards[i] ~= card and not G.jokers.cards[i].edition then
+                    local target = G.jokers.cards[i]
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            if (pseudorandom('algul') < card.ability.extra.current * G.GAME.probabilities.normal / card.ability.extra.odds) then
+                                G.E_MANAGER:add_event(Event({
+                                    trigger = 'before',
+                                    func = function()
+                                        local edition = poll_edition('wheel_of_fortune', nil, true, true)
+                                        target:set_edition(edition, true)
+                                        target:juice_up()
+                                    return true
+                                end
+                                }))
+                            else
+                                card_eval_status_text(target, 'extra', nil, nil, nil, {message = localize('k_nope_ex'), colour = G.C.GREEN})
+                            end
+                            return true
+                        end
+                    }))
                 end
-            end
-            if transform == true then
-                return{
-                    message = localize("k_drank_ex"),
-                    colour = G.C.GREEN,
-                    message_card = context.blueprint_card or card,
-                }
             end
         end
     end
