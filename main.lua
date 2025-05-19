@@ -13,6 +13,9 @@ SMODS.Atlas {
     py = 95
 }
 
+-- Talisman crash
+to_big = to_big or function(x) return x end
+
 -- Get ID
 local getidref = Card.get_id
 function Card:get_id()
@@ -712,7 +715,7 @@ SMODS.Joker {
     calculate = function(self, card, context)
 
         if context.setting_blind and not context.blueprint then
-            if G.GAME.dollars <= card.ability.extra.money then
+            if to_big(G.GAME.dollars) <= to_big(card.ability.extra.money) then
                 card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.multmod
                 return {
                     message = 'Buy buy buy!',
