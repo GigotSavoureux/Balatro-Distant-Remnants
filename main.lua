@@ -2086,6 +2086,7 @@ SMODS.Joker {
                                     return true
                                 end
                                 }))
+                                delay(0.9)
                             else
                                 card_eval_status_text(target, 'extra', nil, nil, nil, {message = localize('k_nope_ex'), colour = G.C.GREEN})
                             end
@@ -2148,7 +2149,6 @@ SMODS.Joker {
         end
     end
 }
-
 -- Devotion G
 SMODS.Joker {
     key = 'devotion',
@@ -2172,10 +2172,12 @@ SMODS.Joker {
     },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue+1] = G.P_CENTERS.c_aura
+        
         local hand = 0
         for k, v in pairs(card.ability.extra.hands or {}) do
             hand = hand + 1
         end
+
         return {
             vars = {card.ability.extra.different, hand, card.ability.extra.aura, card.ability.extra.devotion}
         }
