@@ -1051,6 +1051,7 @@ SMODS.Joker {
                 delay = 0.0,
                 func = (function()
                     local seals = {}
+                    play_sound('tarot1')
                     for k, v in pairs(G.P_SEALS) do
                         table.insert(seals, k)
                     end
@@ -2222,6 +2223,7 @@ SMODS.Joker {
                         trigger = 'before',
                         func = (function()
                             local card = create_card(nil, G.consumeables, nil, nil, nil, nil, 'c_aura', 'sup')
+                            play_sound('timpani')
                             card:add_to_deck()
                             G.consumeables:emplace(card)
                             G.GAME.consumeable_buffer = 0
