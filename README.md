@@ -150,7 +150,7 @@ ___
 *(Currently $0 earned)* <br>
 ___
 
-### Boredome
+### Boredom
 This Joker gains **X0.5 Mult** per **consecutive Blind** beaten on **first played hand**<br>
 *(Currently X1 Mult)* <br>
 ___
