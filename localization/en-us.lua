@@ -129,7 +129,6 @@ return {
                     'Create a {C:dark_edition}Negative',
                     '{C:planet}Planet{} card of',
                     'played {C:attention}poker hand',
-                    '{C:inactive,s:0.8} (When you have a ball...)',
                 },
             },
             j_drx1_menu = {
