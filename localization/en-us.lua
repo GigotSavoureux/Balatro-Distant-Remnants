@@ -22,9 +22,9 @@ return {
                 text = {
                     'After defeating {C:attention}2',
                     '{C:attention}Boss Blinds{}, sell this card',
-                    'to create {C:attention}1{} {C:dark_edition, s:0,9}Negative{} {C:attention}Egg{},',
+                    'to create {C:attention}1{} {C:dark_edition}Negative{} {C:attention}Egg{},',
                     '{C:attention}+#2#{} per additional {C:attention}Boss Blind',
-                    '{C:inactive} (Currently {C:attention}#1# {C:dark_edition, s:0,9}Negative{C:attention} Egg{C:inactive})'
+                    '{C:inactive} (Currently {C:attention}#1# {C:dark_edition}Negative{C:attention} Egg{C:inactive})'
                 },
             },
             j_drx1_apathy = {
@@ -126,9 +126,10 @@ return {
             j_drx1_bokida = {
                 name = 'Bokida',
                 text = {
-                    'Create a {C:dark_edition, s:0,9}Negative',
+                    'Create a {C:dark_edition}Negative',
                     '{C:planet}Planet{} card of',
                     'played {C:attention}poker hand',
+                    '{C:inactive,s:0.8} (When you have a ball...)',
                 },
             },
             j_drx1_menu = {

@@ -23,9 +23,9 @@ return {
                 text = {
                     "Après avoir vaincu {C:attention}2",
                     "{C:attention}Boss Blindes{}, vendez ce Joker",
-                    "et créez {C:attention}1{} {C:attention}Œuf{} {C:dark_edition, s:0,9}Négatif{},",
+                    "et créez {C:attention}1{} {C:attention}Œuf{} {C:dark_edition}Négatif{},",
                     "{C:attention}+#2#{} par {C:attention}Boss Blinde{} supplémentaire",
-                    "{C:inactive} (Actuellement : {C:attention}#1#{C:attention} Œuf(s) {C:dark_edition, s:0,9}Négatif{C:inactive})",
+                    "{C:inactive} (Actuellement : {C:attention}#1#{C:attention} Œuf(s) {C:dark_edition}Négatif{C:inactive})",
                 },
             },
             j_drx1_apathy = {
@@ -130,7 +130,8 @@ return {
                 name = 'Bokida',
                 text = {
                     "Créez une carte {C:planet}Planète{C:dark_edition} Négative",
-                    "de la {C:attention}main de poker{} jouée"
+                    "de la {C:attention}main de poker{} jouée",
+                    "{C:inactive,s:0.8} (Quand vous avez une balle...)",
                 },
             },
             j_drx1_menu = {

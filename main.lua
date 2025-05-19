@@ -1987,6 +1987,28 @@ SMODS.Joker {
                 end
             })) 
         end
+
+        if context.selling_self then
+            local jokers_to_create = G.jokers.config.card_limit - #G.jokers.cards + 1
+            if jokers_to_create > 1 then
+                card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = "Balls", colour = G.C.DARK_EDITION})
+            else
+                card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = "Ball", colour = G.C.DARK_EDITION})
+            end
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.2,
+                func = function()
+                    for i = 1, jokers_to_create do
+                        local card = create_card('Joker', G.jokers, nil, 0, nil, nil, 'j_8_ball')
+                        card:add_to_deck()
+                        G.jokers:emplace(card)
+                        card:start_materialize()
+                        G.GAME.joker_buffer = 0
+                    end
+                return true
+            end}))
+        end
     end
 }
 

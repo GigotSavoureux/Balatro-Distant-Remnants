@@ -161,4 +161,5 @@ ___
 
 # Legendary
 ### Bokida
-Create a **Negative Planet** card of played **poker hand**
+Create a **Negative Planet** card of played **poker hand**<br>
+*(When you have a ball...)*
