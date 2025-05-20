@@ -869,7 +869,7 @@ SMODS.Joker {
                 if not context.scoring_hand[i].edition
                 and not context.scoring_hand[i].debuff
                 and flag > 0 then
-                    daft = 1
+                    daft = daft + 1
                     flag = flag - 1
                     local over = false
                     local edition = poll_edition('aura', nil, true, true)
@@ -1771,12 +1771,12 @@ SMODS.Joker {
 
             for i = 1, destruction do
                 if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit and
-                    (pseudorandom('goon') < G.GAME.probabilities.normal / card.ability.extra.odds) then
+                (pseudorandom('goon') < G.GAME.probabilities.normal / card.ability.extra.odds) then
+                    bouboule = 1
                     G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
-                    card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = 'Consumed!', colour = G.C.SECONDARY_SET.Spectral})
+                    --card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = 'Consumed!', colour = G.C.SECONDARY_SET.Spectral})
                     G.E_MANAGER:add_event(Event({
-                        trigger = 'after',
-                        delay = 0.2,
+                        trigger = 'before',
                         func = function()
                             SMODS.add_card({
                                 set = "Spectral"
@@ -1786,6 +1786,14 @@ SMODS.Joker {
                         end
                     }))
                 end
+            end
+
+            if bouboule == 1 then
+                return{
+                    message = "Devoured!",
+                    colour = G.C.SECONDARY_SET.Spectral,
+                    message_card = context.blueprint_card or card,
+                }
             end
         end
     end
@@ -2275,13 +2283,19 @@ SMODS.Joker {
                 end
                 if card_is_scoring == false and not context.full_hand[i].debuff then
                     anar = 1
-                    context.full_hand[i]:flip()
-                    context.full_hand[i]:set_ability(G.P_CENTERS.m_wild, nil, true)
-                    if not context.full_hand[i].edition then
-                        local edition = {polychrome = true}
-                        context.full_hand[i]:set_edition(edition, true)
-                    end
-                    context.full_hand[i]:flip()
+                    local anarcard = context.full_hand[i]
+                    anarcard:set_ability(G.P_CENTERS.m_wild, nil, true)
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            anarcard:flip()
+                            if not anarcard.edition then
+                                local edition = {polychrome = true}
+                                anarcard:set_edition(edition, true)
+                            end
+                            anarcard:flip()
+                            return true
+                        end
+                    }))
                 end
             end
             if anar == 1 then
