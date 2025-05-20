@@ -429,15 +429,19 @@ SMODS.Joker {
                 end
             end
 
+            if context.pre_discard then
+                card.ability.extra.flag = 0
+            end
+
             if card.ability.extra.flag == 1 and context.hand_space then
                 card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('k_safe_ex'), colour = G.C.CHIPS})
                 for i=1, card.ability.extra.draw do
                     draw_card(G.deck,G.hand, i*100/(card.ability.extra.draw), 'up', true)
                 end
-                card.ability.extra.flag = 0
+                --card.ability.extra.flag = 0
             end
 
-            if card.ability.extra.flag == 1 and context.end_of_round then
+            if context.end_of_round then
                 card.ability.extra.flag = 0
             end
         end
@@ -858,6 +862,7 @@ SMODS.Joker {
         if context.cardarea == G.jokers and context.before and not context.blueprint then
             local flag = 0
             local daft = 0
+            local bestedition = 0
 
             for i=1, #G.consumeables.cards do
                 if G.consumeables.cards[i].ability.set == "Planet" then
@@ -873,7 +878,14 @@ SMODS.Joker {
                     flag = flag - 1
                     local over = false
                     local edition = poll_edition('aura', nil, true, true)
-                    context.scoring_hand[i]:set_edition(edition, true)
+                    context.scoring_hand[i]:set_edition(edition, true, true, true)
+                    if context.scoring_hand[i].edition.foil and bestedition < 1 then
+                        bestedition = 1
+                    elseif context.scoring_hand[i].edition.holo and bestedition < 2 then
+                        bestedition = 2
+                    elseif context.scoring_hand[i].edition.polychrome  and bestedition < 3 then
+                        bestedition = 3
+                    end
                     G.E_MANAGER:add_event(Event({
                         func = function()
                             context.scoring_hand[i]:juice_up()
@@ -884,6 +896,18 @@ SMODS.Joker {
             end
 
             if daft >= 1 then
+                G.E_MANAGER:add_event(Event({
+                        func = function()
+                            if bestedition == 3 then
+                                play_sound('polychrome1', 1.2, 0.7)
+                            elseif bestedition == 2 then
+                                play_sound('holo1', 1.2*1.58, 0.4)
+                            elseif bestedition == 1 then
+                                play_sound('foil1', 1.2, 0.4)
+                            end
+                            return true
+                        end
+                    }))
                 return{
                     message = "One More Time!",
                     colour = G.C.DARK_EDITION,
@@ -1954,7 +1978,7 @@ SMODS.Joker {
     },
 }
 
--- Levy / Bokida G
+-- Levy / Bokida G (planet card apparition a bit whacky but better)
 SMODS.Joker {
     key = 'bokida',
     atlas = 'Jokers',
@@ -1992,12 +2016,14 @@ SMODS.Joker {
             end
             local card = create_card(card_type, G.consumeables, nil, nil, nil, nil, _planet, 'blus1', card.edition and card.edition.negative)
             card:set_edition({
-                negative = true
-            }, true)
+                    negative = true
+                    }, true)
             card:add_to_deck()
+            --card.states.visible = false
             G.consumeables:emplace(card)
             G.E_MANAGER:add_event(Event({
                 func = function()
+                    --card.states.visible = true
                     card:juice_up()
                     return true
                 end
@@ -2273,7 +2299,7 @@ SMODS.Joker {
     calculate = function(self, card, context)
 
         if context.before and not context.blueprint and G.GAME.current_round.hands_left == 0 then
-            local anar = 0
+            local anar = false
             for i=1, #context.full_hand do
                 local card_is_scoring = false
                 for j=1, #context.scoring_hand do
@@ -2282,7 +2308,7 @@ SMODS.Joker {
                     end
                 end
                 if card_is_scoring == false and not context.full_hand[i].debuff then
-                    anar = 1
+                    anar = true
                     local anarcard = context.full_hand[i]
                     anarcard:set_ability(G.P_CENTERS.m_wild, nil, true)
                     G.E_MANAGER:add_event(Event({
@@ -2290,7 +2316,7 @@ SMODS.Joker {
                             anarcard:flip()
                             if not anarcard.edition then
                                 local edition = {polychrome = true}
-                                anarcard:set_edition(edition, true)
+                                anarcard:set_edition(edition, true, true)
                             end
                             anarcard:flip()
                             return true
@@ -2298,7 +2324,14 @@ SMODS.Joker {
                     }))
                 end
             end
-            if anar == 1 then
+            if anar == true then
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        play_sound('polychrome1', 1.2, 0.7)
+                        return
+                        true
+                    end
+                }))
                 return{
                     message = "No Gods, No Masters",
                     colour = G.C.MULT,
