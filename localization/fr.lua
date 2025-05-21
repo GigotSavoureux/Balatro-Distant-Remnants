@@ -47,13 +47,12 @@ return {
                 },
             },
             j_drx1_royal_bat = {
-                name = 'Chauve-Souris',
+                name = 'Chauve-Souris Royale',
                 text = {
-                    '{C:green}#1# chance(s) sur #2#{} de',
-                    'créer {B:1,V:2}La Mort{} quand',
-                    'votre main contient',
-                    'un {C:attention}Valet{} et un {C:attention}Roi{}',
-                    '{C:inactive} (Selon la place disponible)'
+                    'Si la {C:attention}première main{} de la manche est',
+                    'une simple carte {C:attention}Figure{}, détruisez-la',
+                    'et créez {B:1,V:2}La Mort{} ou {B:1,V:2}La Maison Dieu{}',
+                    '{C:inactive} (Selon la place disponible)',
                 },
             },
             j_drx1_lucky_7s = {

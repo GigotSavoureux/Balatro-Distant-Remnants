@@ -1409,21 +1409,21 @@ SMODS.Joker {
         x = 3,
         y = 1
     },
-    blueprint_compat = true,
+    blueprint_compat = false,
     perishable_compat = true,
     eternal_compat = true,
     rarity = 2,
     cost = 7,
     config = {
         extra = {
-            odds = 2
         }
     },
 
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue+1] = G.P_CENTERS.c_death
+        info_queue[#info_queue+1] = G.P_CENTERS.c_tower
         return {
-            vars = {'' .. (G.GAME and G.GAME.probabilities.normal or 1), card.ability.extra.odds,
+            vars = {
                 colours = {
                     G.C.SECONDARY_SET.Tarot,
                     {1, 1, 1, 1}
@@ -1435,37 +1435,45 @@ SMODS.Joker {
 
     calculate = function(self, card, context)
 
-        if context.joker_main then
-            local King = false
-            local Jack = false
-
-            for i = 1, #context.scoring_hand do
-                if context.scoring_hand[i]:get_id() == 13 then
-                    King = true
+        if context.destroying_card
+        and not context.blueprint
+        and #context.full_hand == 1
+        and context.full_hand[1]:is_face()
+        and G.GAME.current_round.hands_played == 0 then
+            if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+                G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+                local function random_poll()
+                    return math.random(0, 1)
                 end
-                if context.scoring_hand[i]:get_id() == 11 then
-                    Jack = true
-                end
-            end
-
-            if King == true and Jack == true then
-                if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit and
-                    (pseudorandom('andruwu') < G.GAME.probabilities.normal / card.ability.extra.odds) then
-                        G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
-                        card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = 'Death', colour = G.C.SECONDARY_SET.Tarot})
-                        G.E_MANAGER:add_event(Event({
-                        trigger = 'after',
-                        delay = 0.1,
-                        func = (function()
-                            local card = create_card(nil, G.consumeables, nil, nil, nil, nil, 'c_death', 'sup')
-                            card:add_to_deck()
-                            G.consumeables:emplace(card)
-                            G.GAME.consumeable_buffer = 0
-                            return true
-                        end)
+                if random_poll() == 0 then
+                    card_eval_status_text(card, 'extra', nil, nil, nil, {message = 'Death', colour = G.C.SECONDARY_SET.Tarot})
+                    G.E_MANAGER:add_event(Event({
+                    trigger = 'after',
+                    delay = 0.1,
+                    func = function()
+                        local card = create_card(nil, G.consumeables, nil, nil, nil, nil, 'c_death', 'sup')
+                        card:add_to_deck()
+                        G.consumeables:emplace(card)
+                        G.GAME.consumeable_buffer = 0
+                        return true
+                    end
+                    }))
+                else
+                    card_eval_status_text(card, 'extra', nil, nil, nil, {message = 'Tower', colour = G.C.SECONDARY_SET.Tarot})
+                    G.E_MANAGER:add_event(Event({
+                    trigger = 'after',
+                    delay = 0.1,
+                    func = function()
+                        local card = create_card(nil, G.consumeables, nil, nil, nil, nil, 'c_tower', 'sup')
+                        card:add_to_deck()
+                        G.consumeables:emplace(card)
+                        G.GAME.consumeable_buffer = 0
+                        return true
+                    end
                     }))
                 end
             end
+            return true
         end
     end
 }

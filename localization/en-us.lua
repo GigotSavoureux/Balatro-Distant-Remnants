@@ -46,10 +46,10 @@ return {
             j_drx1_royal_bat = {
                 name = 'Royal Bat',
                 text = {
-                    '{C:green}#1# in #2#{} chance to',
-                    'create a {B:1,V:2}Death{} when',
-                    'hand played contains a',
-                    'scoring {C:attention}Jack{} and {C:attention}King{}',
+                    'If {C:attention}first hand{} of round',
+                    'is a single {C:attention}face{} card,',
+                    'destroy it and create',
+                    'a {B:1,V:2}Death{} or a {B:1,V:2}Tower{}',
                     '{C:inactive} (Must have room)',
                 },
             },
