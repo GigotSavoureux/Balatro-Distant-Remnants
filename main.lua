@@ -632,7 +632,7 @@ SMODS.Joker {
         end
         
         if context.repetition and context.cardarea == G.hand then
-            if (next(context.card_effects[1]) or #context.card_effects > 1) then
+            if (next(context.card_effects[1]) or #context.card_effects > 1) and card.ability.extra.ef > 0 then
                 return {
                     message = localize('k_again_ex'),
                     repetitions = card.ability.extra.ef,
@@ -641,10 +641,9 @@ SMODS.Joker {
             end
         end
 
-        if context.hand_drawn then
+        if context.hand_drawn or context.end_of_round then
             card.ability.extra.ef = 0
         end
-        
     end
 }
 
