@@ -75,7 +75,7 @@ ___
 
 ### Metamorphosis
 When **Blind is selected**, ***set hands to 1***<br>
-This Joker gains **X0.75 Mult** for each **hand lost**<br>
+This Joker gains **X1.1 Mult** for each **hand lost**<br>
 *(Currently X1 Mult)* <br>
 ___
 
@@ -94,7 +94,7 @@ Poker hand changes every hand<br>
 ___
 
 ### Royal Bat
-**1 in 2 chance** to create a **Death** if played hand contains a scoring **Jack and King**<br>
+If **first hand** of round is a single **face** card, destroy it and create a **Death** or a **Tower**<br>
 *(Must have room)* <br>
 ___
 
@@ -135,7 +135,8 @@ ___
 
 # Rare
 ### One More Time!
-Add **Foil**, **Holographic**, or **Polychrome** effect to **0** leftmost **base edition** played card when scored, increase by **1** per **Planet** card in **consumables area**<br>
+Add **Foil**, **Holographic**, or **Polychrome** effect to **0** leftmost **base edition** played card when scored<br>
+*(Increase by +1 per Planet card in consumables area)*<br>
 ___
 
 ### Philosophical Stone
@@ -163,4 +164,3 @@ ___
 # Legendary
 ### Bokida
 Create a **Negative Planet** card of played **poker hand**<br>
-*(When you have a ball...)*
