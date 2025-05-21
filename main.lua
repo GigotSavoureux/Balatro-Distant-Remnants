@@ -86,29 +86,11 @@ SMODS.Joker {
             for k, v in ipairs(context.removed) do
                 if not v.debuff then
                     destroyed[#destroyed+1] = v
-                    local lostchip = 0
-                    local idref = v:get_id()
-
-                    if v.ability.name == 'Stone Card' then
-                        lostchip = lostchip + 50
-                    else
-                     
-                        if idref == 11 or idref == 12 or idref == 13 then
-                            lostchip = lostchip + 10
-                        elseif idref == 14 then
-                            lostchip = lostchip + 11
-                        else
-                            lostchip = lostchip + idref
-                        end
-                        if v.ability.name == 'Bonus' then
-                            lostchip = lostchip + 30
-                        end
-                    end
+                    local lostchip = v:get_chip_bonus()
 
                     if v.edition and v.edition.foil then
                         lostchip = lostchip + 50
                     end
-                    lostchip = lostchip + v.ability.perma_bonus
 
                     totalchip = totalchip + (lostchip*2)
                 end
