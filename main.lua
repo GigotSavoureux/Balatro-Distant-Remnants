@@ -763,7 +763,7 @@ SMODS.Joker {
     config = {
         extra = {
             hands = 1,
-            xmultmod = 0.75,
+            xmultmod = 1.1,
             xmult = 1
         }
     },
@@ -1310,7 +1310,6 @@ SMODS.Joker {
 
             local _tag = Tag(_tag_name, nil, G.GAME.blind)
             add_tag(_tag)
-            
             G.E_MANAGER:add_event(Event({
                 trigger = 'after',
                 delay = 0,
