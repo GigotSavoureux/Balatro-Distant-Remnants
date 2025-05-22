@@ -125,12 +125,17 @@ Sell this card to **Duplicate** rightmost Joker and add **Perishable** to it<br>
 ___
 
 ### Devotion
-After playing **7** different **poker hands**, sell this card to create **2 Auras**<br>
-*(Must have room, 0/7)* <br>
+After playing **7** different **poker hands**, sell this card to create **2 Negative Auras**<br>
+*(0/7)* <br>
 ___
 
 ### Anarchy
 On **final hand**, all played **non-scoring** cards become **Polychrome Wild** cards<br>
+___
+
+### Decomposition
+If played hand contains **4** or more **Club** cards, create a **Tarot** card and **decrease** rank of played cards by **1**<br>
+*(Minimum rank 2, must have room)*<br>
 ___
 
 # Rare

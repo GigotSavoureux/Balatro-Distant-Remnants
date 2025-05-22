@@ -303,6 +303,16 @@ return {
                     "cartes {C:attention}Sauvages{C:dark_edition} Polychromes",
                 },
             },
+            j_drx1_decomposition = {
+                name = "Décomposition",
+                text = {
+                    "Si la main jouée contient",
+                    "{C:attention}#1#{} cartes {C:clubs}Trèfle{} ou plus, créez",
+                    "une carte {C:tarot}Tarot{} et {C:attention}diminuez{} la",
+                    "valeur des cartes jouées de {C:attention}1",
+                    "{C:inactive} (Valeur minimum : {C:attention}2{C:inactive}, selon la place disponible)",
+                },
+            },
         },
     },
 }

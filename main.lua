@@ -2189,7 +2189,7 @@ SMODS.Joker {
         extra = {
             different = 7,
             hands = {},
-            aura = 3,
+            aura = 2,
             devotion = 0,
         }
     },
@@ -2359,6 +2359,81 @@ SMODS.Joker {
                     message_card = card
                 }
             end
+        end
+    end
+}
+
+-- Decomposition G
+SMODS.Joker {
+    key = 'decomposition',
+    atlas = 'Jokers',
+    pos = {
+        x = 2,
+        y = 5
+    },
+    blueprint_compat = true,
+    perishable_compat = true,
+    eternal_compat = true,
+    rarity = 2,
+    cost = 6,
+    config = {
+        extra = {
+            clubs = 4,
+        }
+    },
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {card.ability.extra.clubs}
+        }
+    end,
+
+    calculate = function(self, card, context)
+
+        if context.after then
+            local club = 0
+            for i = 1, #context.scoring_hand do
+                if context.scoring_hand[i]:is_suit("Clubs") then
+                    club = club + 1
+                end
+            end
+
+            if club < 4 then
+                return
+            end
+
+            for i = 1, #context.scoring_hand do
+                G.E_MANAGER:add_event(Event({
+                    trigger = "after",
+                    delay = 0.2,
+                    func = function()
+                        local card = context.scoring_hand[i]
+                        -- HERE LAST ARG TO CHANGE RANK DECREASE
+                        if card:get_id() > 2 then
+                            assert(SMODS.modify_rank(card, -1))
+                            card:juice_up()
+                            play_sound("card1")
+                        end
+                    return true
+                end}))
+            end
+            if G.consumeables.config.card_limit > #G.consumeables.cards + G.GAME.consumeable_buffer then
+                G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'after',
+                    delay = 0.4,
+                    func = function()
+                        local card = create_card('Tarot', G.consumeables, nil, nil, nil, nil, nil, 'car')
+                        card:add_to_deck()
+                        G.consumeables:emplace(card)
+                        G.GAME.consumeable_buffer = 0
+                    return true
+                end}))
+            end
+            return{
+                message = 'Value Down!',
+                colour = G.C.SUITS.Clubs,
+                message_card = context.blueprint_card or card,
+            }
         end
     end
 }

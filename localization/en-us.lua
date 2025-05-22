@@ -300,6 +300,16 @@ return {
                     "{C:dark_edition}Polychrome{C:attention} Wild{} cards",
                 },
             },
+            j_drx1_decomposition = {
+                name = "Decomposition",
+                text = {
+                    "If played hand contains",
+                    "{C:attention}#1#{} or more {C:clubs}Club{} cards, create a",
+                    "{C:tarot}Tarot{} card and {C:attention}decrease{} rank of",
+                    "played cards by {C:attention}1{} when scored",
+                    "{C:inactive} (Minimum rank {C:attention}2{C:inactive}, must have room)",
+                },
+            },
         },
     },
 }
