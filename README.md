@@ -70,7 +70,7 @@ ___
 
 ### Consumerism
 Played **Enhanced cards** give **+0 Mult** when scored<br>
-*(Increase by +2 if Blind is selected with $4 or less)* <br>
+*(Increase by +3 if Blind is selected with $4 or less)* <br>
 ___
 
 ### Metamorphosis

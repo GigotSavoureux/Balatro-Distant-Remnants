@@ -722,7 +722,7 @@ SMODS.Joker {
         and context.other_card.config.center ~= G.P_CENTERS.c_base then
             return{
                 mult = card.ability.extra.mult,
-                message_card = context.blueprint_card or card,
+                message_card = context.other_card,
             }
         end
     end
@@ -2006,8 +2006,8 @@ SMODS.Joker {
             card:set_edition({
                     negative = true
                     }, true)
-            card:add_to_deck()
             --card.states.visible = false
+            card:add_to_deck()
             G.consumeables:emplace(card)
             G.E_MANAGER:add_event(Event({
                 func = function()
@@ -2189,7 +2189,7 @@ SMODS.Joker {
         extra = {
             different = 7,
             hands = {},
-            aura = 2,
+            aura = 3,
             devotion = 0,
         }
     },
@@ -2238,32 +2238,58 @@ SMODS.Joker {
         end
 
         if context.selling_self and card.ability.extra.devotion == 1 then
-            if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
-                card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = 'Aura', colour = G.C.DARK_EDITION})
-                G.E_MANAGER:add_event(Event({
-                    trigger = 'before',
-                    func = function()
-                        play_sound('timpani')
-                        return true
-                    end
-                }))
-            end
+            card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = 'Aura', colour = G.C.DARK_EDITION})
             for i=1, card.ability.extra.aura do
-                if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
-                    G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+                local card = create_card(nil, G.consumeables, nil, nil, nil, nil, 'c_aura', 'sup')
+                card:add_to_deck()
+                G.consumeables:emplace(card)
+                card.states.visible = false
                     G.E_MANAGER:add_event(Event({
                         trigger = 'before',
-                        func = (function()
-                            local card = create_card(nil, G.consumeables, nil, nil, nil, nil, 'c_aura', 'sup')
-                            card:add_to_deck()
-                            G.consumeables:emplace(card)
-                            G.GAME.consumeable_buffer = 0
+                        func = function()
+                            card:set_edition({negative = true}, true, true)
+                            card.states.visible = true
+                            card:juice_up()
                             return true
-                        end)
+                        end
                     }))
-                end
             end
+            G.E_MANAGER:add_event(Event({
+                trigger = 'before',
+                func = function()
+                    play_sound('negative', 1.5, 0.4)
+                    return true
+                end
+            }))
         end
+
+        -- if context.selling_self and card.ability.extra.devotion == 1 then
+        --     if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+        --         card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = 'Aura', colour = G.C.DARK_EDITION})
+        --         G.E_MANAGER:add_event(Event({
+        --             trigger = 'before',
+        --             func = function()
+        --                 play_sound('timpani')
+        --                 return true
+        --             end
+        --         }))
+        --     end
+        --     for i=1, card.ability.extra.aura do
+        --         if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+        --             G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+        --             G.E_MANAGER:add_event(Event({
+        --                 trigger = 'before',
+        --                 func = (function()
+        --                     local card = create_card(nil, G.consumeables, nil, nil, nil, nil, 'c_aura', 'sup')
+        --                     card:add_to_deck()
+        --                     G.consumeables:emplace(card)
+        --                     G.GAME.consumeable_buffer = 0
+        --                     return true
+        --                 end)
+        --             }))
+        --         end
+        --     end
+        --  end
     end
 }
 

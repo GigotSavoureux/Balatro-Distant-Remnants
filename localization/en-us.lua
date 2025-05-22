@@ -287,9 +287,9 @@ return {
                 name = "Devotion",
                 text = {
                     "After playing {C:attention}#1#{} different",
-                    "{C:attention}poker hands{}, sell this",
-                    "card to create {C:attention}#3#{C:spectral} Auras",
-                    "{C:inactive} (Must have room, {C:attention}#2#{C:inactive}/#1#)",
+                    "{C:attention}poker hands{}, sell this card",
+                    "to create {C:attention}#3#{C:dark_edition} Negative{C:spectral} Auras",
+                    "{C:inactive} (Currently {C:attention}#2#{C:inactive}/#1#)",
                 },
             },
             j_drx1_anarchy = {

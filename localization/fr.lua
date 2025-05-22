@@ -288,10 +288,10 @@ return {
             j_drx1_devotion = {
                 name = "Dévotion",
                 text = {
-                    "Après avoir joué {C:attention}#1# mains",
-                    "{C:attention}de poker{} différentes, vendez",
-                    "cette carte pour créer {C:attention}#3#{C:spectral} Auras",
-                    "{C:inactive} (Selon la place disponible, {C:attention}#2#{C:inactive}/#1#)",
+                    "Après avoir joué {C:attention}#1# mains de",
+                    "{C:attention}poker{} différentes, vendez cette",
+                    "carte pour créer {C:attention}#3#{C:spectral} Auras {C:dark_edition}Négatifs",
+                    "{C:inactive} (Actuellement : {C:attention}#2#{C:inactive}/#1#)",
                 },
             },
             j_drx1_anarchy = {
