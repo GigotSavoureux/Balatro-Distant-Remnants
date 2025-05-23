@@ -744,7 +744,7 @@ SMODS.Joker {
     config = {
         extra = {
             hands = 1,
-            xmultmod = 1,
+            xmultmod = 1.25,
             xmult = 1
         }
     },
