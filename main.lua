@@ -810,7 +810,7 @@ SMODS.Joker {
         x = 6,
         y = 3
     },
-    blueprint_compat = false,
+    blueprint_compat = true,
     perishable_compat = true,
     eternal_compat = true,
     rarity = 3,
@@ -840,7 +840,7 @@ SMODS.Joker {
 
     calculate = function(self, card, context)
 
-        if context.cardarea == G.jokers and context.before and not context.blueprint then
+        if context.cardarea == G.jokers and context.before then
             local flag = 0
             local daft = 0
             local bestedition = 0
@@ -892,41 +892,10 @@ SMODS.Joker {
                 return{
                     message = "One More Time!",
                     colour = G.C.DARK_EDITION,
-                    message_card = card,
+                    message_card = context.blueprint_card or card,
                 }
             end
         end
-
-        -- if context.cardarea == G.jokers and context.before and not context.blueprint then
-        --     local enhanced = {}
-        --     local daft = 0
-        --     for k, v in ipairs(context.scoring_hand) do
-        --         if v.config.center ~= G.P_CENTERS.c_base
-        --         and not v.edition
-        --         and not v.debuff
-        --         and not v.punked then
-        --             enhanced[#enhanced+1] = v
-        --             daft = daft + 1
-        --             v.punked = true
-        --             v:set_ability(G.P_CENTERS.c_base, nil, true)
-        --             G.E_MANAGER:add_event(Event({
-        --                 func = function()
-        --                     v:juice_up()
-        --                     local over = false
-        --                     local edition = poll_edition('aura', nil, true, true)
-        --                     v:set_edition(edition, true)
-        --                     v.punked = nil
-        --                     return true
-        --                 end
-        --             })) 
-        --         end
-        --     end
-
-        --     if daft >= 1 then
-        --         card_eval_status_text(card, 'extra', nil, nil, nil, { message = 'One More Time!', colour = G.C.DARK_EDITION })
-        --     end
-        -- end
-
     end
 }
 
@@ -1015,16 +984,7 @@ SMODS.DrawStep({
     end
 })
 
--- --BUG WARNING
--- G.localization.descriptions.Other['my_key'] = {
---     name = 'CRITICAL BUG',
---     text = {
---         "{S:1.1,C:red,E:2}Don't play debuffed glass",
---         "{S:1.1,C:red,E:2}cards with a Seal already on"
---     }
--- }
-
---Philosopher Stone G NEED TO FIND HOW TO STOP SEAL ADDING IF ALREADY SEAL CONTEXT OTHER CARD NIL??
+--Philosopher Stone G
 SMODS.Joker {
     key = 'stamp',
     atlas = 'Jokers',
@@ -1071,20 +1031,6 @@ SMODS.Joker {
                 end
             }))
             card_eval_status_text(card, 'extra', nil, nil, nil, { message = 'Transmutation!', colour = G.C.MULT })
-
-
-            -- if next(SMODS.find_card('j_drx1_the_worm')) then
-            --     print("worm")
-            -- end
-
-            -- if next(SMODS.find_card('j_drx1_menu')) then
-            --     print("menu")
-            -- end
-
-            -- if next(SMODS.find_card('j_caino')) then
-            --     print("caino")
-            -- end
-
         end
     end
 }
