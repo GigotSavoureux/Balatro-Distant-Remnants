@@ -24,7 +24,7 @@ return {
                     '{C:attention}Boss Blinds{}, sell this card',
                     'to create {C:attention}1{} {C:dark_edition}Negative{} {C:attention}Egg{},',
                     '{C:attention}+#2#{} per additional {C:attention}Boss Blind',
-                    '{C:inactive} (Currently {C:attention}#1# {C:dark_edition}Negative{C:attention} Egg{C:inactive})'
+                    '{C:inactive} (Currently {C:attention}#1# {C:dark_edition}Negative{C:attention} Egg{C:inactive})',
                 },
             },
             j_drx1_apathy = {
@@ -32,7 +32,6 @@ return {
                 text = {
                     'Create a random {C:attention}Tag{}',
                     'when you skip a {C:attention}Blind{}',
-                    '{C:inactive,s:0.6} (Visuals are in progress)'
                 },
             },
             j_drx1_high_on_joker = {

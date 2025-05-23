@@ -34,7 +34,6 @@ return {
                     'Créez un {C:attention}Badge{}',
                     '{C:green}aléatoire{} quand vous',
                     'passez une {C:attention}Blinde{}',
-                    '{C:inactive,s:0.6} (Visuels en travaux)',
                 },
             },
             j_drx1_high_on_joker = {
