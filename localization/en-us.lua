@@ -221,10 +221,10 @@ return {
             j_drx1_metamorphosis = {
                 name = 'Metamorphosis',
                 text = {
-                    "When {C:attention}Blind{} is selected,",
-                    "set {C:attention}hands{} to {C:blue}#1#",
-                    "This Joker gains {X:red,C:white} X#2# ",
-                    "per {C:attention}lost hand",
+                    "When {C:attention}Blind{} is",
+                    "selected, set {C:attention}hands{} to {C:blue}#1#",
+                    "This Joker gains {X:red,C:white} X#2# {} this",
+                    "round per {C:attention}lost hand",
                     "{C:inactive} (Currently {X:red,C:white} X#3# {C:inactive})",
                 },
             },

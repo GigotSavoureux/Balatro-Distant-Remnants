@@ -222,10 +222,10 @@ return {
             j_drx1_metamorphosis = {
                 name = 'Métamorphose',
                 text = {
-                    "Lorsqu'une {C:attention}blinde{} est sélectionnée,",
+                    "Lorsqu'une {C:attention}Blinde{} est sélectionnée,",
                     "fixez votre nombre de {C:attention}mains{} à {C:blue}#1#",
-                    "Ce Joker octroie Multi. {X:red,C:white}x#2#",
-                    "pour chaque {C:attention}main retirée",
+                    "Ce Joker octroie Multi. {X:red,C:white}x#2#{} pendant",
+                    "ce round pour chaque {C:attention}main retirée",
                     "{C:inactive} (Actuellement : Multi. {X:red,C:white}x#3#{C:inactive})",
                 },
             },
