@@ -46,6 +46,11 @@ ___
 ***Set money to $0 when sold***<br>
 ___
 
+### High on Joker
+This Joker gains **+15** Mult per **Blind** skipped, resets after defeating **Boss Blind**<br>
+*(Currently +0 Mult)*<br>
+___
+
 # Uncommon
 ### Slipstream
 Leftmost played card becomes a **Glass card** if played hand contains a **Straight**<br>
@@ -86,11 +91,6 @@ ___
 
 ### Apathy
 Create a **random Tag** when you **skip a Blind**<br>
-___
-
-### High on Joker
-This Joker gains **+15** Mult per **Blind** skipped, resets after defeating **Boss Blind**<br>
-*(Currently +0 Mult)*<br>
 ___
 
 ### Royal Bat
