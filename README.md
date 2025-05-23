@@ -3,8 +3,8 @@ Distant Remnants explores the game's existing systems and mechanics in novel way
 Uses lovely and this version of [Steamodded](https://github.com/Steamodded/smods/releases/tag/1.0.0-beta-0509c)
 
 # +35 Jokers
-- 8 Common
-- 20 Uncommon
+- 9 Common
+- 19 Uncommon
 - 6 Rare
 - 1 Legendary
 
@@ -89,8 +89,8 @@ Create a **random Tag** when you **skip a Blind**<br>
 ___
 
 ### High on Joker
-**X3 Mult** if played hand is **[poker hand]** <br>
-Poker hand changes every hand<br>
+This Joker gains **+15** Mult per **Blind** skipped, resets after defeating **Boss Blind**<br>
+*(Currently +0 Mult)*<br>
 ___
 
 ### Royal Bat

@@ -38,9 +38,10 @@ return {
             j_drx1_high_on_joker = {
                 name = 'High on Joker',
                 text = {
-                    '{X:mult,C:white} X#1# {} Mult if played {C:attention}poker',
-                    '{C:attention}hand{} is a {C:attention}#2#',
-                    'Poker hand changes every hand',
+                    "This Joker gains {C:red}+#2#{} Mult",
+                    "per {C:attention}Blind{} skipped, resets",
+                    "when {C:attention}Boss Blind{} is defeated",
+                    "{C:inactive} (Currently {C:red}+#1#{C:inactive} Mult)",
                 },
             },
             j_drx1_royal_bat = {

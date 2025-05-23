@@ -1169,6 +1169,61 @@ SMODS.Joker {
     end
 }
 
+-- Mathis / High on Joker G
+SMODS.Joker {
+    key = 'high_on_joker',
+    atlas = 'Jokers',
+    pos = {
+        x = 1,
+        y = 1
+    },
+    blueprint_compat = true,
+    perishable_compat = true,
+    eternal_compat = true,
+    rarity = 1,
+    cost = 5,
+    config = {
+        extra = {
+            mult = 0,
+            multmod = 15,
+        }
+    },
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {card.ability.extra.mult, card.ability.extra.multmod}
+        }
+    end,
+
+    calculate = function(self, card, context)
+
+        if not context.blueprint then
+            if context.skip_blind then
+                card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.multmod
+                return {
+                    message = 'Yes yes',
+                    colour = G.C.RED,
+                    message_card = card,
+                }
+            end
+
+            if context.end_of_round and G.GAME.blind.boss and card.ability.extra.mult > 0 then
+                card.ability.extra.mult = 0
+                return {
+                    message = 'Mais naaaan',
+                    colour = G.C.RED,
+                }
+            end
+        end
+
+        if context.joker_main and card.ability.extra.mult > 0 then
+            return {
+                mult = card.ability.extra.mult
+            }
+        end
+    end
+}
+
 -- Leo / Kiwi R
 SMODS.Joker {
     key = 'kiwi',
@@ -1299,86 +1354,6 @@ SMODS.Joker {
                     play_sound('holo1', 1.2 + math.random() * 0.1, 0.4)
                 return true
             end}))
-        end
-    end
-}
-
--- Mathis / High on Joker G
-SMODS.Joker {
-    key = 'high_on_joker',
-    atlas = 'Jokers',
-    pos = {
-        x = 1,
-        y = 1
-    },
-    blueprint_compat = true,
-    perishable_compat = true,
-    eternal_compat = true,
-    rarity = 2,
-    cost = 6,
-    config = {
-        extra = {
-            x_mod = 3,
-            to_do_poker_hand = 'High Card'
-        }
-    },
-
-    loc_vars = function(self, info_queue, card)
-        return {
-            vars = {card.ability.extra.x_mod, localize(card.ability.to_do_poker_hand, 'poker_hands')}
-        }
-    end,
-
-    set_ability = function(self, card, initial, delay_sprites)
-        local _poker_hands = {}
-
-        for k, v in pairs(G.GAME.hands) do
-            if v.visible then
-                _poker_hands[#_poker_hands + 1] = k
-            end
-        end
-
-        local old_hand = card.ability.to_do_poker_hand
-        card.ability.to_do_poker_hand = nil
-
-        while not card.ability.to_do_poker_hand do
-            card.ability.to_do_poker_hand = pseudorandom_element(_poker_hands, pseudoseed('high_on_joker'))
-            if card.ability.to_do_poker_hand == old_hand then
-                card.ability.to_do_poker_hand = nil
-            end
-        end
-    end,
-
-    calculate = function(self, card, context)
-
-        if context.joker_main and context.scoring_name == card.ability.to_do_poker_hand then
-            return {
-                xmult = card.ability.extra.x_mod
-            }
-        end
-
-        if context.after and not (context.individual or context.repetition or context.blueprint) then
-            local _poker_hands = {}
-            for k, v in pairs(G.GAME.hands) do
-                if v.visible then
-                    _poker_hands[#_poker_hands + 1] = k
-                end
-            end
-
-            local old_hand = card.ability.to_do_poker_hand
-            card.ability.to_do_poker_hand = nil
-
-            while not card.ability.to_do_poker_hand do
-                card.ability.to_do_poker_hand = pseudorandom_element(_poker_hands, pseudoseed('high_on_joker'))
-                if card.ability.to_do_poker_hand == old_hand then
-                    card.ability.to_do_poker_hand = nil
-                end
-            end
-
-            return {
-                message = card.ability.to_do_poker_hand
-            }
-
         end
     end
 }

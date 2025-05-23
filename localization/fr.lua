@@ -22,9 +22,9 @@ return {
                 name = 'Kiwi',
                 text = {
                     "Après avoir vaincu {C:attention}2",
-                    "{C:attention}Boss Blindes{}, vendez ce Joker",
+                    "{C:attention}Blindes Boss{}, vendez ce Joker",
                     "et créez {C:attention}1{} {C:attention}Œuf{} {C:dark_edition}Négatif{},",
-                    "{C:attention}+#2#{} par {C:attention}Boss Blinde{} supplémentaire",
+                    "{C:attention}+#2#{} par {C:attention}Blinde Boss{} supplémentaire",
                     "{C:inactive} (Actuellement : {C:attention}#1#{C:attention} Œuf(s) {C:dark_edition}Négatif{C:inactive})",
                 },
             },
@@ -40,10 +40,10 @@ return {
             j_drx1_high_on_joker = {
                 name = 'Fais Tourner',
                 text = {
-                    'Multi. {X:mult,C:white} x#1# {} si la {C:attention}main de',
-                    '{C:attention}poker{} est de type {C:attention}#2#',
-                    'La main de poker change',
-                    'à chaque main',
+                    "Ce Joker octroie {C:red}+#2#{} Multi.",
+                    "par {C:attention}Blinde{} passée, se réinitialise",
+                    "lorsque la {C:attention}Blinde Boss{} est vaincue",
+                    "{C:inactive} (Actuellement : {C:red}+#1#{C:inactive} Multi.)",
                 },
             },
             j_drx1_royal_bat = {
