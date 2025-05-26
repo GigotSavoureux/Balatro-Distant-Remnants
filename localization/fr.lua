@@ -151,12 +151,13 @@ return {
                 },
             },
             j_drx1_great_wall = {
-                name = 'La Grande Muraille',
+                name = 'Grande Muraille',
                 text = {
-                    "Gagnez {C:blue}+1{} Main toute",
-                    "les {C:blue}#1#{C:attention} cartes Pierre{}",
+                    "Lorsque la {C:attention}Blinde{} est choisie,",
+                    "gagnez {C:blue}+1{} Main toutes",
+                    "les {C:blue}#1#{} cartes {C:attention}Pierres{}",
                     "dans votre {C:attention}jeu complet",
-                    "{C:inactive} (Actuellement : {C:blue}+#2#{C:inactive} Mains)",
+                    "{C:inactive} (Actuellement : {C:blue}+#2#{C:inactive} Main(s))",
                 },
             },
             j_drx1_bucket_spade = {

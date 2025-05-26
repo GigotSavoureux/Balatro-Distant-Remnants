@@ -170,7 +170,7 @@ SMODS.Joker {
         x = 0,
         y = 3
     },
-    blueprint_compat = false,
+    blueprint_compat = true,
     perishable_compat = true,
     eternal_compat = true,
     rarity = 1,
@@ -179,24 +179,8 @@ SMODS.Joker {
     config = {
         extra = {
             stones = 3,
-            phands = 0
         }
     },
-
-    remove_from_deck = function(self, card, from_debuff)
-        if card.ability.extra.phands >= 1 then
-            G.GAME.round_resets.hands = G.GAME.round_resets.hands - card.ability.extra.phands
-            if G.GAME.current_round.hands_left > card.ability.extra.phands then
-                ease_hands_played(-card.ability.extra.phands)
-                card_eval_status_text(card, 'extra', nil, nil, nil, {message = 'Ungong!', colour = G.C.CHIPS})
-            else
-                if G.GAME.current_round.hands_left > 1 then
-                    ease_hands_played(-G.GAME.current_round.hands_left+1)
-                    card_eval_status_text(card, 'extra', nil, nil, nil, {message = 'Ungong!', colour = G.C.CHIPS})
-                end
-            end
-        end
-    end,
 
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue+1] = G.P_CENTERS.m_stone
@@ -211,48 +195,18 @@ SMODS.Joker {
 
     calculate = function(self, card, context)
 
-        if not context.blueprint then
-
-            if context.cardarea == G.jokers then
-                local stone_tally = 0
-                card.ability.extra.phands = card.ability.extra.phands or 0
-                for k, v in pairs(G.playing_cards or {}) do
-                    if SMODS.has_enhancement(v, 'm_stone') then stone_tally = stone_tally + 1 end
-                end
-
-                if math.floor(stone_tally/card.ability.extra.stones) > card.ability.extra.phands then
-                    local modif = 0
-                    local repet = math.floor(stone_tally/card.ability.extra.stones) - card.ability.extra.phands
-                    for i = 1, repet do
-                        card.ability.extra.phands = card.ability.extra.phands + 1
-                        modif = modif + 1
-                    end
-                    G.GAME.round_resets.hands = G.GAME.round_resets.hands + modif
-                    ease_hands_played(modif)
-                    card_eval_status_text(card, 'extra', nil, nil, nil, {message = 'Gong!', colour = G.C.CHIPS})
-                end
-
-                if math.floor(stone_tally/card.ability.extra.stones) < card.ability.extra.phands then
-                    local modif = 0
-                    local repet = card.ability.extra.phands - math.floor(stone_tally/card.ability.extra.stones)
-                    for i = 1, repet do
-                        card.ability.extra.phands = card.ability.extra.phands - 1
-                        modif = modif + 1
-                    end
-                    G.GAME.round_resets.hands = G.GAME.round_resets.hands - modif
-                    if G.GAME.current_round.hands_left > modif then
-                        ease_hands_played(-modif)
-                        card_eval_status_text(card, 'extra', nil, nil, nil, {message = 'Ungong!', colour = G.C.CHIPS})
-                    else
-                        if G.GAME.current_round.hands_left > 1 then
-                            ease_hands_played(-G.GAME.current_round.hands_left+1)
-                            card_eval_status_text(card, 'extra', nil, nil, nil, {message = 'Ungong!', colour = G.C.CHIPS})
-                        end
-                    end
-                end
+        if context.setting_blind then
+            local stone_tally = 0
+            for k, v in pairs(G.playing_cards or {}) do
+                if SMODS.has_enhancement(v, 'm_stone') then stone_tally = stone_tally + 1 end
+            end
+            if stone_tally >= card.ability.extra.stones then
+                G.E_MANAGER:add_event(Event({func = function()
+                    ease_hands_played(math.floor(stone_tally/card.ability.extra.stones))
+                    card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = "Gong!", colour = G.C.BLUE})
+                return true end }))
             end
         end
-
     end
 }
 
@@ -1521,14 +1475,15 @@ SMODS.Joker {
         if context.before then
         local nb = 0
         -- UGLY check for rockfall
-        local rock = false
-            if next(SMODS.find_card('j_drx1_rockfall')) then
-                rock = true
-            end
+        -- local rock = false
+        --     if next(SMODS.find_card('j_drx1_rockfall')) then
+        --         rock = true
+        --     end
 
             for i = 1, #context.scoring_hand do
                 if (SMODS.has_enhancement(context.scoring_hand[i], 'm_wild')
-                or (rock == true and SMODS.has_enhancement(context.scoring_hand[i], 'm_stone'))) 
+                -- or (rock == true and SMODS.has_enhancement(context.scoring_hand[i], 'm_stone'))
+                ) 
                 and (pseudorandom('don') < G.GAME.probabilities.normal / card.ability.extra.odds) then
                     nb = nb + 1
                 end
@@ -2367,19 +2322,26 @@ SMODS.Joker {
     end
 }
 
--- Get Suit
-local getsuitref = Card.is_suit
-function Card:is_suit(suit, bypass_debuff, flush_calc)
-    local suit = getsuitref(self, suit, bypass_debuff, flush_calc)
+-- -- Get Suit
+-- local getsuitref = Card.is_suit
+-- function Card:is_suit(suit, bypass_debuff, flush_calc)
+--     local suit = getsuitref(self, suit, bypass_debuff, flush_calc)
 
-    if next(SMODS.find_card('j_drx1_rockfall'))
-    and SMODS.has_enhancement(self, 'm_stone')
-    and not self.debuff
-    then
-        return true
-    end
+--     if next(SMODS.find_card('j_drx1_rockfall'))
+--     and SMODS.has_enhancement(self, 'm_stone')
+--     and not self.debuff
+--     then
+--         return true
+--     end
 
-    return suit
+--     return suit
+-- end
+
+-- Quantum Enhancement ACTIVATION
+SMODS.current_mod.optional_features = function()
+    return {
+        quantum_enhancements = true,
+    }
 end
 
 -- Rockfall Area R
@@ -2405,6 +2367,15 @@ SMODS.Joker {
         info_queue[#info_queue+1] = G.P_CENTERS.m_wild
         return {
         }
+    end,
+
+    calculate = function(self, card, context)
+        
+        if context.check_enhancement and context.other_card.config.center.key == "m_stone" then
+            return {
+                ['m_wild'] = true
+            }
+        end
     end,
 }
 

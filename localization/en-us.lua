@@ -149,12 +149,13 @@ return {
                 },
             },
             j_drx1_great_wall = {
-                name = 'The Great Wall of China',
+                name = 'Great Wall of China',
                 text = {
-                    "Gives {C:blue}+1{} Hands for",
-                    "every {C:blue}#1#{C:attention} Stone Cards{}",
-                    "in your {C:attention}full deck",
-                    "{C:inactive} (Currently {C:blue}+#2#{C:inactive} hand)",
+                    "When {C:attention}Blind{} is selected,",
+                    "gain {C:blue}+1{} Hand for",
+                    "every {C:blue}#1#{C:attention} Stone{} cards in",
+                    "your {C:attention}full deck",
+                    "{C:inactive} (Currently {C:blue}+#2#{C:inactive} Hands)",
                 },
             },
             j_drx1_bucket_spade = {
@@ -221,8 +222,8 @@ return {
             j_drx1_metamorphosis = {
                 name = 'Metamorphosis',
                 text = {
-                    "When {C:attention}Blind{} is",
-                    "selected, set {C:attention}hands{} to {C:blue}#1#",
+                    "When {C:attention}Blind{} is selected,",
+                    "set {C:attention}hands{} to {C:blue}#1#",
                     "This Joker gains {X:red,C:white} X#2# {} this",
                     "round per {C:attention}lost hand",
                     "{C:inactive} (Currently {X:red,C:white} X#3# {C:inactive})",

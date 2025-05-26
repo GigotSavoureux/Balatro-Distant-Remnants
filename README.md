@@ -20,8 +20,8 @@ ___
 ___
 
 ### The Great Wall of China
-Gives **+1 Hands** for every **3 Stone cards** in your **full deck**<br>
-*(Currently +0 hands)* <br>
+When **Blind** is selected, gain **+1** Hand for every **3 Stone** cards in your **full deck**<br>
+*(Currently +0 hands)*<br>
 ___
 
 ### A Bucket and a Spade
