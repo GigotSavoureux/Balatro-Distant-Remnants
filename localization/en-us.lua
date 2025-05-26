@@ -154,7 +154,7 @@ return {
                     "Gives {C:blue}+1{} Hands for",
                     "every {C:blue}#1#{C:attention} Stone Cards{}",
                     "in your {C:attention}full deck",
-                    "{C:inactive} (Currently {C:blue}#2#{C:inactive} hand)",
+                    "{C:inactive} (Currently {C:blue}+#2#{C:inactive} hand)",
                 },
             },
             j_drx1_bucket_spade = {
@@ -308,6 +308,20 @@ return {
                     "{C:tarot}Tarot{} card and {C:attention}decrease{} rank of",
                     "played cards by {C:attention}1{} when scored",
                     "{C:inactive} (Minimum rank {C:attention}2{C:inactive}, must have room)",
+                },
+            },
+            j_drx1_art_of_war = {
+                name = "Art of War",
+                text = {
+                    "{C:attention}Non-scoring{} played",
+                    "cards are drawn {C:attention}first",
+                },
+            },
+            j_drx1_rockfall = {
+                name = "Rockfall Area",
+                text = {
+                    "{C:attention}Stone cards{} are",
+                    "also {C:attention}Wild cards",
                 },
             },
         },

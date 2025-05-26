@@ -1520,8 +1520,16 @@ SMODS.Joker {
 
         if context.before then
         local nb = 0
+        -- UGLY check for rockfall
+        local rock = false
+            if next(SMODS.find_card('j_drx1_rockfall')) then
+                rock = true
+            end
+
             for i = 1, #context.scoring_hand do
-                if context.scoring_hand[i].ability and context.scoring_hand[i].ability.name == 'Wild Card' and (pseudorandom('don') < G.GAME.probabilities.normal / card.ability.extra.odds) then
+                if (SMODS.has_enhancement(context.scoring_hand[i], 'm_wild')
+                or (rock == true and SMODS.has_enhancement(context.scoring_hand[i], 'm_stone'))) 
+                and (pseudorandom('don') < G.GAME.probabilities.normal / card.ability.extra.odds) then
                     nb = nb + 1
                 end
             end
@@ -2355,6 +2363,156 @@ SMODS.Joker {
                 colour = G.C.SUITS.Clubs,
                 message_card = context.blueprint_card or card,
             }
+        end
+    end
+}
+
+-- Get Suit
+local getsuitref = Card.is_suit
+function Card:is_suit(suit, bypass_debuff, flush_calc)
+    local suit = getsuitref(self, suit, bypass_debuff, flush_calc)
+
+    if next(SMODS.find_card('j_drx1_rockfall'))
+    and SMODS.has_enhancement(self, 'm_stone')
+    and not self.debuff
+    then
+        return true
+    end
+
+    return suit
+end
+
+-- Rockfall Area R
+SMODS.Joker {
+    key = 'rockfall',
+    atlas = 'Jokers',
+    pos = {
+        x = 4,
+        y = 5
+    },
+    blueprint_compat = false,
+    perishable_compat = true,
+    eternal_compat = true,
+    enhancement_gate = 'm_stone',
+    rarity = 2,
+    cost = 6,
+    config = {
+        extra = {
+        }
+    },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue+1] = G.P_CENTERS.m_stone
+        info_queue[#info_queue+1] = G.P_CENTERS.m_wild
+        return {
+        }
+    end,
+}
+
+-- Shuffle hook
+local oldshuffle = CardArea.shuffle
+function CardArea:shuffle(_seed)
+    local g = oldshuffle(self, _seed)
+
+    if self == G.deck then
+        local artofwar = nil
+
+
+        for _, j in ipairs(G.jokers.cards or {}) do
+            if j.config and j.config.center and j.config.center.key == "j_drx1_art_of_war" then
+                artofwar = j
+                break
+            end
+        end
+        
+        if artofwar 
+        and artofwar.ability 
+        and artofwar.ability.extra 
+        and artofwar.ability.extra.art_to_draw then
+            local prioritys = {}
+            local otherones = {}
+
+            for k, v in pairs(self.cards) do
+                local is_priority = false
+
+                for _, w in ipairs(artofwar.ability.extra.art_to_draw) do
+                    if v == w then
+                        is_priority = true
+                        break
+                    end
+                end
+
+                if is_priority then
+                    table.insert(prioritys, v)
+                else
+                    table.insert(otherones, v)
+                end
+            end
+            
+            for _, card in ipairs(prioritys) do
+                table.insert(otherones, card)
+            end
+
+            self.cards = otherones
+            self:set_ranks()
+        end
+    end
+    return g
+end
+
+-- Art of War R
+SMODS.Joker {
+    key = 'art_of_war',
+    atlas = 'Jokers',
+    pos = {
+        x = 3,
+        y = 5
+    },
+    blueprint_compat = false,
+    perishable_compat = true,
+    eternal_compat = true,
+    rarity = 2,
+    cost = 3,
+    config = {
+        extra = {
+            art_to_draw = {}
+        }
+    },
+    loc_vars = function(self, info_queue, card)
+        return {
+        }
+    end,
+
+    calculate = function(self, card, context)
+
+        if not context.blueprint then
+            if context.after then
+                card.ability.extra.art_to_draw = card.ability.extra.art_to_draw or {}
+
+                for i = #context.full_hand, 1, -1 do
+                    local card_is_scoring = false
+
+                    for j = #context.scoring_hand, 1, -1 do
+                        if context.full_hand[i] == context.scoring_hand[j] then
+                            card_is_scoring = true
+                        end
+                    end
+
+                    if card_is_scoring == false and not context.full_hand[i].debuff then
+                        local anarcard = context.full_hand[i]
+                        table.insert(card.ability.extra.art_to_draw, 1, anarcard)
+                    end
+                end
+            end
+
+            if context.hand_drawn then
+                for i = 1, #context.hand_drawn do
+                    for j = 1, #card.ability.extra.art_to_draw do
+                        if card.ability.extra.art_to_draw[j] == context.hand_drawn[i] then
+                            table.remove(card.ability.extra.art_to_draw, j)
+                        end
+                    end
+                end
+            end
         end
     end
 }

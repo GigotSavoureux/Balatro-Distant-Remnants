@@ -156,7 +156,7 @@ return {
                     "Gagnez {C:blue}+1{} Main toute",
                     "les {C:blue}#1#{C:attention} cartes Pierre{}",
                     "dans votre {C:attention}jeu complet",
-                    "{C:inactive} (Actuellement : {C:blue}#2#{C:inactive} Mains)",
+                    "{C:inactive} (Actuellement : {C:blue}+#2#{C:inactive} Mains)",
                 },
             },
             j_drx1_bucket_spade = {
@@ -310,6 +310,21 @@ return {
                     "une carte {C:tarot}Tarot{} et {C:attention}diminuez{} la",
                     "valeur des cartes jouées de {C:attention}1",
                     "{C:inactive} (Valeur minimum : {C:attention}2{C:inactive}, selon la place disponible)",
+                },
+            },
+            j_drx1_art_of_war = {
+                name = "L'Art de la Guerre",
+                text = {
+                    "Les cartes jouées qui",
+                    "ne {C:attention} marquent pas{} sont",
+                    "piochées en {C:attention}premier",
+                },
+            },
+            j_drx1_rockfall = {
+                name = "Risque d'Eboulement",
+                text = {
+                    "Les {C:attention}Cartes Pierres{} sont",
+                    "aussi des {C:attention}Cartes Sauvages",
                 },
             },
         },
