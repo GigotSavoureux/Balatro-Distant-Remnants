@@ -1209,12 +1209,6 @@ SMODS.Joker {
 -- Roman / Apathy G
 SMODS.Joker {
     key = 'apathy',
-    loc_txt = {
-        name = 'Apathy',
-        text = {'Create a {C:green}random{} {C:attention}Tag{}',
-        'when you skip a {C:attention}Blind{}',
-        '{C:inactive,s:0.6} (Visuals are in progress)'}
-    },
     atlas = 'Jokers',
     pos = {
         x = 3,
@@ -1886,17 +1880,17 @@ SMODS.Joker {
                     _planet = v.key
                 end
             end
-            local card = create_card(card_type, G.consumeables, nil, nil, nil, nil, _planet, 'blus1', card.edition and card.edition.negative)
-            card:set_edition({
-                    negative = true
-                    }, true)
-            --card.states.visible = false
+            local card = create_card(card_type, G.consumeables, nil, nil, nil, nil, _planet, 'blus1')
+            card.states.visible = false
             card:add_to_deck()
             G.consumeables:emplace(card)
             G.E_MANAGER:add_event(Event({
                 func = function()
-                    --card.states.visible = true
-                    card:juice_up()
+                    card:start_materialize()
+                    card:set_edition({
+                    negative = true
+                    }, true)
+                    --card:juice_up()
                     return true
                 end
             })) 
@@ -2132,8 +2126,8 @@ SMODS.Joker {
                         trigger = 'before',
                         func = function()
                             card:set_edition({negative = true}, true, true)
-                            card.states.visible = true
-                            card:juice_up()
+                            card:start_materialize()
+                            --card:juice_up()
                             return true
                         end
                     }))
