@@ -2,7 +2,7 @@
 Distant Remnants explores the game's existing systems and mechanics in novel ways to create new and strange strategies and dynamics.
 Uses lovely and this version of [Steamodded](https://github.com/Steamodded/smods/releases/tag/1.0.0-beta-0509c)
 
-# +35 Jokers
+# +37 Jokers
 - 9 Common
 - 21 Uncommon
 - 6 Rare
@@ -80,7 +80,7 @@ ___
 
 ### Metamorphosis
 When **Blind is selected**, ***set hands to 1***<br>
-This Joker gains **X1.1 Mult** for each **hand lost**<br>
+This Joker gains **X1.25 Mult** this round for each **hand lost**<br>
 *(Currently X1 Mult)* <br>
 ___
 
