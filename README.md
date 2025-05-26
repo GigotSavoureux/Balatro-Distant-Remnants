@@ -10,6 +10,7 @@ Uses lovely and this version of [Steamodded](https://github.com/Steamodded/smods
 
 # Common Jokers
 ### The Menu Please
+![image](https://github.com/user-attachments/assets/492dceb1-05f5-44ce-9a37-80b67020ffb9)
 This Joker gains **twice** the amount of the scoring **Chips** of **Destroyed cards**<br>
 *(Currently +0 chips)* <br>
 ___
