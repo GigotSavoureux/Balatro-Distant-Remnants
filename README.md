@@ -4,7 +4,7 @@ Uses lovely and this version of [Steamodded](https://github.com/Steamodded/smods
 
 # +35 Jokers
 - 9 Common
-- 19 Uncommon
+- 21 Uncommon
 - 6 Rare
 - 1 Legendary
 
@@ -136,6 +136,14 @@ ___
 ### Decomposition
 If played hand contains **4** or more **Club** cards, create a **Tarot** card and **decrease** rank of played cards by **1**<br>
 *(Minimum rank 2, must have room)*<br>
+___
+
+### Rockfall Are
+**Stone cards** are also **Wild cards**<br>
+___
+
+### Art of War
+**Non-scoring** played cards are drawn **first**<br>
 ___
 
 # Rare
