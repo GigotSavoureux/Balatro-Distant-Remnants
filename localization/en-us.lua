@@ -82,10 +82,10 @@ return {
             j_drx1_herringen = {
                 name = 'Herringen',
                 text = {
-                    'This Joker gains',
-                    '{C:red}+#1#{} discard every',
-                    '{C:attention}#3#{} {C:planet,E:2}Neptune{} cards used',
-                    '{C:inactive} (Currently {C:red}+#2#{}{C:inactive} discards,{} {C:attention}#4#{}{C:inactive}/{}{C:planet}#3#{}{C:inactive})',
+                    "This Joker gains",
+                    "{C:red}+#2#{} discard for every",
+                    "{C:attention}#1#{C:planet} Straight Flush{C:attention} levels",
+                    "{C:inactive} (Currently {C:red}+#3#{C:inactive} discards)",
                 },
             },
             j_drx1_the_worm = {

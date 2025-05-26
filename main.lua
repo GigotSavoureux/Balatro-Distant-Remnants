@@ -1512,6 +1512,14 @@ SMODS.Joker {
     end
 }
 
+-- Get level up
+local lvl_ref = level_up_hand
+function level_up_hand(card, hand, instant, amount)
+    lvl_ref(card, hand, instant, amount)
+
+    SMODS.calculate_context({lvl_up = hand})
+end
+
 -- Thomas / Herringen G
 SMODS.Joker {
     key = 'herringen',
@@ -1527,98 +1535,68 @@ SMODS.Joker {
     cost = 5,
     config = {
         extra = {
-            d_mod = 1,
-            d_total = 1,
-            n_need = 2,
-            n_used = 0
-            
+            lvl = 3,
+            discardmod = 1,
+            flag = 0,
     }
     },
 
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {card.ability.extra.lvl,
+            card.ability.extra.discardmod,
+            math.floor(to_big(G.GAME.hands["Straight Flush"].level)/card.ability.extra.lvl),
+            card.ability.extra.flag}
+        }
+    end,
+
     remove_from_deck = function(self, card, from_debuff)
-        if card.ability.extra.d_total >= 1 then
-            G.GAME.round_resets.discards = G.GAME.round_resets.discards - card.ability.extra.d_total
+        if math.floor(to_big(G.GAME.hands["Straight Flush"].level)/card.ability.extra.lvl) > 0 then
+            G.GAME.round_resets.discards = G.GAME.round_resets.discards - math.floor(to_big(G.GAME.hands["Straight Flush"].level)/card.ability.extra.lvl)
             if G.GAME.current_round.discards_left > 0 then
-                ease_discard(-card.ability.extra.d_total)
+                if G.GAME.current_round.discards_left > math.floor(to_big(G.GAME.hands["Straight Flush"].level)/card.ability.extra.lvl) then
+                    ease_discard(-math.floor(to_big(G.GAME.hands["Straight Flush"].level)/card.ability.extra.lvl))
+                else
+                    ease_discard(-G.GAME.current_round.discards_left)
+                end
             end
         end
     end,
     
     add_to_deck = function(self, card, from_debuff)
-        G.GAME.round_resets.discards = G.GAME.round_resets.discards + card.ability.extra.d_total
-        ease_discard(card.ability.extra.d_total)
-    end,
-
-    loc_vars = function(self, info_queue, card)
-
-        info_queue[#info_queue+1] = G.P_CENTERS.c_neptune
-        return {
-            vars = {card.ability.extra.d_mod, card.ability.extra.d_total, card.ability.extra.n_need, card.ability.extra.n_used}
-        }
-    end,
+        card.ability.extra.flag = math.floor(to_big(G.GAME.hands["Straight Flush"].level)/card.ability.extra.lvl)
+        print(card.ability.extra.flag)
+        if math.floor(to_big(G.GAME.hands["Straight Flush"].level)/card.ability.extra.lvl) > 0 then
+            G.GAME.round_resets.discards = G.GAME.round_resets.discards + math.floor(to_big(G.GAME.hands["Straight Flush"].level)/card.ability.extra.lvl)
+            ease_discard(math.floor(to_big(G.GAME.hands["Straight Flush"].level)/card.ability.extra.lvl))
+        end
+    end,    
 
     calculate = function(self, card, context)
 
-        if context.using_consumeable and context.consumeable.config.center_key == 'c_neptune' and not context.blueprint then
-            card.ability.extra.n_used = card.ability.extra.n_used or 0
-            card.ability.extra.d_total = card.ability.extra.d_total or 1
-
-            card.ability.extra.n_used = card.ability.extra.n_used + 1
-
-            if card.ability.extra.n_used >= card.ability.extra.n_need then
-                card.ability.extra.n_used = 0
-                card.ability.extra.d_total = card.ability.extra.d_total + card.ability.extra.d_mod
-
-                G.GAME.round_resets.discards = G.GAME.round_resets.discards + card.ability.extra.d_mod
-            	ease_discard(card.ability.extra.d_mod)
-                card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = 'Evade!', colour = G.C.SECONDARY_SET.Planet})
+        if not context.blueprint then
+            if context.lvl_up == "Straight Flush" then
+                if card.ability.extra.flag < math.floor(to_big(G.GAME.hands["Straight Flush"].level)/card.ability.extra.lvl) then
+                    G.GAME.round_resets.discards = G.GAME.round_resets.discards + (math.floor(to_big(G.GAME.hands["Straight Flush"].level)/card.ability.extra.lvl) - card.ability.extra.flag)
+                    ease_discard(math.floor(to_big(G.GAME.hands["Straight Flush"].level)/card.ability.extra.lvl) - card.ability.extra.flag)
+                    card.ability.extra.flag = math.floor(to_big(G.GAME.hands["Straight Flush"].level)/card.ability.extra.lvl)
+                    card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = 'Evade!', colour = G.C.SECONDARY_SET.Planet})
+                elseif card.ability.extra.flag > math.floor(to_big(G.GAME.hands["Straight Flush"].level)/card.ability.extra.lvl) then
+                    G.GAME.round_resets.discards = G.GAME.round_resets.discards - (card.ability.extra.flag - math.floor(to_big(G.GAME.hands["Straight Flush"].level)/card.ability.extra.lvl))
+                    if G.GAME.current_round.discards_left > 0 then
+                        if G.GAME.current_round.discards_left > math.floor(to_big(G.GAME.hands["Straight Flush"].level)/card.ability.extra.lvl) then
+                            ease_discard(-(card.ability.extra.flag - math.floor(to_big(G.GAME.hands["Straight Flush"].level)/card.ability.extra.lvl)))
+                        else
+                            ease_discard(-G.GAME.current_round.discards_left)
+                        end
+                    end
+                    card.ability.extra.flag = math.floor(to_big(G.GAME.hands["Straight Flush"].level)/card.ability.extra.lvl)
+                    card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = 'Destroyed!', colour = G.C.SECONDARY_SET.Planet})
+                end
             end
-        end        
+        end
     end
 }
-
--- -- Thomas / Herringen G
--- SMODS.Joker {
---     key = 'herringen',
---     atlas = 'Jokers',
---     pos = {
---         x = 6,
---         y = 1
---     },
---     blueprint_compat = false,
---     perishable_compat = true,
---     eternal_compat = true,
---     rarity = 2,
---     cost = 5,
---     config = {
---         extra = {
---             discard = 1,
---             threshold = 2,
---     }
---     },
-
---     remove_from_deck = function(self, card, from_debuff)
-        
---     end,
-
---     loc_vars = function(self, info_queue, card)
-
---         info_queue[#info_queue+1] = G.P_CENTERS.c_neptune
---         return {
---             vars = {
---                 card.ability.extra.discard, card.ability.extra.threshold
---             }
---         }
---     end,
-
---     calculate = function(self, card, context)
-
---         if context.cardarea == G.jokers and not context.blueprint then
-
---         end
-            
---     end
--- }
 
 -- Eliaz / The Worm G
 SMODS.Joker {

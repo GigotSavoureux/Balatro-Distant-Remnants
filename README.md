@@ -111,8 +111,8 @@ Each scoring **Wild card has 1 in 4 chance** to upgrade every **flush hand**<br>
 ___
 
 ### Herringen
-This Joker gains **+1 discard** every **2 Neptune** cards used<br>
-*(Currently +1 discard)* <br>
+This Joker gains **+1 discard** for every **3 Straight Flush** levels<br>
+*(Currently +0 discard)* <br>
 ___
 
 ### Absinthe

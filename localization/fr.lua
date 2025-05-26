@@ -84,9 +84,10 @@ return {
             j_drx1_herringen = {
                 name = 'Herringen',
                 text = {
-                    "{C:red}+#1#{} défausse toutes les",
-                    "{C:attention}#3#{} cartes {C:planet,E:2}Neptune{} utilisées",
-                    "{C:inactive} (Actuellement : {C:red}+#2#{}{C:inactive} défausse(s),{} {C:attention}#4#{}{C:inactive}/{}{C:planet}#3#{}{C:inactive})"
+                    "Ce Joker octroie",
+                    "{C:red}+#2#{} défausse tous les",
+                    "{C:attention}#1#{} niveaux de {C:planet}Quinte Flush{}",
+                    "{C:inactive} (Actuellement : {C:red}+#3#{C:inactive} défausse(s))",
                 },
             },
             j_drx1_the_worm = {
