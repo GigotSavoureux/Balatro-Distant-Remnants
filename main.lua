@@ -1565,7 +1565,6 @@ SMODS.Joker {
     
     add_to_deck = function(self, card, from_debuff)
         card.ability.extra.flag = math.floor(to_big(G.GAME.hands["Straight Flush"].level)/card.ability.extra.lvl)
-        print(card.ability.extra.flag)
         if math.floor(to_big(G.GAME.hands["Straight Flush"].level)/card.ability.extra.lvl) > 0 then
             G.GAME.round_resets.discards = G.GAME.round_resets.discards + math.floor(to_big(G.GAME.hands["Straight Flush"].level)/card.ability.extra.lvl)
             ease_discard(math.floor(to_big(G.GAME.hands["Straight Flush"].level)/card.ability.extra.lvl))
