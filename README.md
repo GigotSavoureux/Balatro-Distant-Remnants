@@ -172,7 +172,7 @@ ___
 ___
 
 ### Art of War
-![image](https://github.com/user-attachments/assets/4ef505eb-bb79-4928-9eeb-f989ecfdd80a)<br>
+![image](https://github.com/user-attachments/assets/4cda4368-3d57-4896-b31f-e028e373105a)<br>
 **Non-scoring** played cards are drawn **first**<br>
 ___
 
