@@ -2489,7 +2489,6 @@ SMODS.Joker {
         local _collector = nil
         for _, j in ipairs(G.jokers.cards or {}) do
             if j.config.center.key == "j_drx1_collector" and j.ability.extra.defaults["Common"] ~= 0 and not j.debuff then
-                print("already owned")
                 _collector = j
                 break
             end
@@ -2499,11 +2498,9 @@ SMODS.Joker {
         for rarity_key, v in pairs(SMODS.Rarities) do
             if rarity_key ~= "Uncommon" then
                 if _collector then
-                    print("so same value")
                     card.ability.extra.defaults[rarity_key] = _collector.ability.extra.defaults[rarity_key]
                     G.GAME[rarity_key:lower().."_mod"] = 0 
                 else
-                    print("first owned")
                     card.ability.extra.defaults[rarity_key] = G.GAME[rarity_key:lower().."_mod"]
                     G.GAME[rarity_key:lower().."_mod"] = 0 
                 end
@@ -2515,14 +2512,12 @@ SMODS.Joker {
         local _collector = nil
         for _, j in ipairs(G.jokers.cards or {}) do
             if j.config.center.key == "j_drx1_collector" and j~=self and not j.debuff then
-                print("other cards")
                 _collector = j
                 break
             end
         end
 
         if not _collector and card.ability.extra.defaults then
-            print("last one")
             for rarity_key, v in pairs(SMODS.Rarities) do
                 if rarity_key ~= "Uncommon" then
                     G.GAME[rarity_key:lower().."_mod"] = card.ability.extra.defaults[rarity_key]
