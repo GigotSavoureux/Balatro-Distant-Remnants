@@ -319,8 +319,14 @@ SMODS.Joker {
             and context.destroying_card.off_with_his_head == true
             then
                 if card.ability.extra.Queen == 1 then
+                    card.ability.extra.Queen = 0
                     card_eval_status_text(card, 'extra', nil, nil, nil, {message = "Off with their heads!", colour = G.C.SUITS.Hearts})
-                card.ability.extra.Queen = 0
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            play_sound("slice1", 1.1, 0.7)
+                            return true
+                        end
+                    }))
                 end
                 return { remove = true }
             end
