@@ -2,10 +2,10 @@
 Distant Remnants explores the game's existing systems and mechanics in novel ways to create new and strange strategies and dynamics.
 Uses lovely and this version of [Steamodded](https://github.com/Steamodded/smods/releases/tag/1.0.0-beta-0509c)
 
-# +38 Jokers
+# +39 Jokers
 - 9 Common
 - 21 Uncommon
-- 7 Rare
+- 8 Rare
 - 1 Legendary
 
 # Common Jokers
@@ -172,13 +172,8 @@ ___
 ___
 
 ### Art of War
-<<<<<<< Updated upstream
 ![image](https://github.com/user-attachments/assets/4cda4368-3d57-4896-b31f-e028e373105a)<br>
-**Non-scoring** played cards are drawn **first**<br>
-=======
-![image](https://github.com/user-attachments/assets/4ef505eb-bb79-4928-9eeb-f989ecfdd80a)<br>
 **Non-scoring** played cards are drawn **first**, **1 in 3** chance to add a permanent copy to deck and draw it to **hand**<br>
->>>>>>> Stashed changes
 ___
 
 # Rare
