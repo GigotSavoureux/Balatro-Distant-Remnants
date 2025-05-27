@@ -210,6 +210,10 @@ ___
 All **Diamond** cards are considered **Kings**<br>
 ___
 
+### Collector Booster
+All Jokers in **Shop** and **Booster** are **Uncommon**<br>
+___
+
 # Legendary
 ### Bokida
 ![image](https://github.com/user-attachments/assets/a1baa977-79d5-4a59-ba1b-8418ac020759)<br>

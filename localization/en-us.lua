@@ -325,6 +325,14 @@ return {
                     "also {C:attention}Wild cards",
                 },
             },
+            j_drx1_collector = {
+                name = "Collector Booster",
+                text = {
+                    "All Jokers in",
+                    "{C:attention}Shop{} and {C:attention}Boosters",
+                    "are {C:uncommon}Uncommon",
+                },
+            },
         },
     },
 }

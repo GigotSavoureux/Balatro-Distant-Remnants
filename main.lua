@@ -2360,16 +2360,13 @@ function CardArea:shuffle(_seed)
 
 
         for _, j in ipairs(G.jokers.cards or {}) do
-            if j.config and j.config.center and j.config.center.key == "j_drx1_art_of_war" then
+            if j.config.center.key == "j_drx1_art_of_war" then
                 artofwar = j
                 break
             end
         end
         
-        if artofwar 
-        and artofwar.ability 
-        and artofwar.ability.extra 
-        and artofwar.ability.extra.art_to_draw then
+        if artofwar and artofwar.ability.extra.art_to_draw then
             local prioritys = {}
             local otherones = {}
 
@@ -2457,6 +2454,82 @@ SMODS.Joker {
             end
         end
     end
+}
+
+-- Collector Booster G
+SMODS.Joker {
+    key = 'collector',
+    atlas = 'Jokers',
+    pos = {
+        x = 5,
+        y = 5
+    },
+    draw = function(self, card, layer)
+        if card.config.center.discovered or card.bypass_discovery_center then
+            card.children.center:draw_shader('voucher', nil, card.ARGS.send_to_shader)
+        end
+    end,
+    blueprint_compat = false,
+    perishable_compat = true,
+    eternal_compat = true,
+    rarity = 3,
+    cost = 7,
+    config = {
+        extra = {
+        }
+    },
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {card.ability.extra.defaults}
+        }
+    end,
+
+    add_to_deck = function(self, card, from_debuff)
+        local _collector = nil
+        for _, j in ipairs(G.jokers.cards or {}) do
+            if j.config.center.key == "j_drx1_collector" and j.ability.extra.defaults["Common"] ~= 0 and not j.debuff then
+                print("already owned")
+                _collector = j
+                break
+            end
+        end
+
+        card.ability.extra.defaults = card.ability.extra.defaults or {}
+        for rarity_key, v in pairs(SMODS.Rarities) do
+            if rarity_key ~= "Uncommon" then
+                if _collector then
+                    print("so same value")
+                    card.ability.extra.defaults[rarity_key] = _collector.ability.extra.defaults[rarity_key]
+                    G.GAME[rarity_key:lower().."_mod"] = 0 
+                else
+                    print("first owned")
+                    card.ability.extra.defaults[rarity_key] = G.GAME[rarity_key:lower().."_mod"]
+                    G.GAME[rarity_key:lower().."_mod"] = 0 
+                end
+            end
+        end
+    end,
+
+    remove_from_deck = function(self, card, from_debuff)
+        local _collector = nil
+        for _, j in ipairs(G.jokers.cards or {}) do
+            if j.config.center.key == "j_drx1_collector" and j~=self and not j.debuff then
+                print("other cards")
+                _collector = j
+                break
+            end
+        end
+
+        if not _collector and card.ability.extra.defaults then
+            print("last one")
+            for rarity_key, v in pairs(SMODS.Rarities) do
+                if rarity_key ~= "Uncommon" then
+                    G.GAME[rarity_key:lower().."_mod"] = card.ability.extra.defaults[rarity_key]
+                end
+            end
+        end
+    end,
 }
 
 ---------------------------------------------

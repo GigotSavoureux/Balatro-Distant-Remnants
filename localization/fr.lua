@@ -329,6 +329,14 @@ return {
                     "aussi des {C:attention}Cartes Sauvages",
                 },
             },
+            j_drx1_collector = {
+                name = "Booster Collector",
+                text = {
+                    "Tous les Jokers en",
+                    "{C:attention}Magasin{} et {C:attention}Boosters",
+                    "sont {C:uncommon}peu communs",
+                },
+            },
         },
     },
 }
