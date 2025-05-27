@@ -2,10 +2,10 @@
 Distant Remnants explores the game's existing systems and mechanics in novel ways to create new and strange strategies and dynamics.
 Uses lovely and this version of [Steamodded](https://github.com/Steamodded/smods/releases/tag/1.0.0-beta-0509c)
 
-# +37 Jokers
+# +38 Jokers
 - 9 Common
 - 21 Uncommon
-- 6 Rare
+- 7 Rare
 - 1 Legendary
 
 # Common Jokers
@@ -211,6 +211,7 @@ All **Diamond** cards are considered **Kings**<br>
 ___
 
 ### Collector Booster
+![image](https://github.com/user-attachments/assets/8eb685a8-d652-4b3d-8a37-4e985c882ec2)<br>
 All Jokers in **Shop** and **Booster** are **Uncommon**<br>
 ___
 
