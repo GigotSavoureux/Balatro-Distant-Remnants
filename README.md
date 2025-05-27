@@ -183,7 +183,7 @@ Add **Foil**, **Holographic**, or **Polychrome** effect to **0** leftmost **base
 *(Increase by +1 per Planet card in consumables area)*<br>
 ___
 
-### Philosophical Stone
+### Philosopher Stone
 ![image](https://github.com/user-attachments/assets/2d33acec-e921-406b-abfa-6b550d2c17bf)<br>
 When **destroying** a Playing card, ***prevent its Destruction*** and add a random **Seal**<br>
 ___
