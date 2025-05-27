@@ -151,7 +151,7 @@ ___
 
 ### Devotion
 ![image](https://github.com/user-attachments/assets/9f0341c0-4cfd-46e3-a6f8-fb271c115b69)<br>
-After playing **7** different **poker hands**, sell this card to create **2 Negative Mediums**<br>
+After playing **7** different **poker hands**, sell this card to create **2 Negative Wraiths**<br>
 *(0/7)* <br>
 ___
 

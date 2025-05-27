@@ -2048,7 +2048,7 @@ SMODS.Joker {
     },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue+1] = {key = 'e_negative_consumable', set = 'Edition', config = {extra = 1}}
-        info_queue[#info_queue+1] = G.P_CENTERS.c_medium
+        info_queue[#info_queue+1] = G.P_CENTERS.c_wraith
         
         local hand = 0
         for k, v in pairs(card.ability.extra.hands or {}) do
@@ -2092,9 +2092,9 @@ SMODS.Joker {
         end
 
         if context.selling_self and card.ability.extra.devotion == 1 then
-            card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = 'Medium', colour = G.C.DARK_EDITION})
+            card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = 'Wraith', colour = G.C.DARK_EDITION})
             for i=1, card.ability.extra.aura do
-                local card = create_card(nil, G.consumeables, nil, nil, nil, nil, 'c_medium', 'sup')
+                local card = create_card(nil, G.consumeables, nil, nil, nil, nil, 'c_wraith', 'sup')
                 card:add_to_deck()
                 G.consumeables:emplace(card)
                 card.states.visible = false
