@@ -172,8 +172,13 @@ ___
 ___
 
 ### Art of War
+<<<<<<< Updated upstream
 ![image](https://github.com/user-attachments/assets/4cda4368-3d57-4896-b31f-e028e373105a)<br>
 **Non-scoring** played cards are drawn **first**<br>
+=======
+![image](https://github.com/user-attachments/assets/4ef505eb-bb79-4928-9eeb-f989ecfdd80a)<br>
+**Non-scoring** played cards are drawn **first**, **1 in 3** chance to add a permanent copy to deck and draw it to **hand**<br>
+>>>>>>> Stashed changes
 ___
 
 # Rare
@@ -213,6 +218,11 @@ ___
 ### Collector Booster
 ![image](https://github.com/user-attachments/assets/8eb685a8-d652-4b3d-8a37-4e985c882ec2)<br>
 All Jokers in **Shop** and **Booster** are **Uncommon**<br>
+___
+
+### Dawn
+On **first hand** of round, every played **card** permanently gains **+15** Chips for each remaining **discard** when scored<br>
+*(Currenly +0 Chips)*<br>
 ___
 
 # Legendary

@@ -317,9 +317,11 @@ return {
             j_drx1_art_of_war = {
                 name = "L'Art de la Guerre",
                 text = {
-                    "Les cartes jouées qui",
-                    "ne {C:attention} marquent pas{} sont",
-                    "piochées en {C:attention}premier",
+                    "Les cartes jouées qui ne",
+                    "{C:attention}marquent pas{} sont piochées en {C:attention}premier{},",
+                    "{C:green}#1# chance(s) in #2#{} d'en ajouter",
+                    "une copie permanente au jeu",
+                    "et de la placer dans la {C:attention}main",
                 },
             },
             j_drx1_rockfall = {
@@ -335,6 +337,16 @@ return {
                     "Tous les Jokers en",
                     "{C:attention}Magasin{} et {C:attention}Boosters",
                     "sont {C:uncommon}peu communs",
+                },
+            },
+            j_drx1_dawn = {
+                name = "Dawn",
+                text = {
+                    "Lors de la {C:attention}première main{} de la manche,",
+                    "chaque {C:attention}carte{} jouée gagne de façon",
+                    "permanente {C:chips}+#1#{} Jetons pour chaque",
+                    "{C:attention}défausse{} restante en marquant des points",
+                    "{C:inactive} (Actuellement : {C:chips}+#2#{C:inactive} Jetons)",
                 },
             },
         },

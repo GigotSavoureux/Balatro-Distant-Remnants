@@ -315,7 +315,10 @@ return {
                 name = "Art of War",
                 text = {
                     "{C:attention}Non-scoring{} played",
-                    "cards are drawn {C:attention}first",
+                    "cards are drawn {C:attention}first{},",
+                    "{C:green}#1# in #2#{} chance to add a",
+                    "permanent copy to deck",
+                    "and draw it to {C:attention}hand",
                 },
             },
             j_drx1_rockfall = {
@@ -331,6 +334,16 @@ return {
                     "All Jokers in",
                     "{C:attention}Shop{} and {C:attention}Boosters",
                     "are {C:uncommon}Uncommon",
+                },
+            },
+            j_drx1_dawn = {
+                name = "Dawn",
+                text = {
+                    "On {C:attention}first hand{} of round,",
+                    "every played {C:attention}card{} permanently",
+                    "gains {C:chips}+#1#{} Chips for each",
+                    "remaining {C:attention}discard{} when scored",
+                    "{C:inactive} (Currently {C:chips}+#2#{C:inactive} Chips)",
                 },
             },
         },

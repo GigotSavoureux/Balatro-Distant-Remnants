@@ -1371,8 +1371,6 @@ SMODS.Joker {
                 end
             end
         end
-
-        
     end
 }
 
@@ -2410,27 +2408,30 @@ SMODS.Joker {
     perishable_compat = true,
     eternal_compat = true,
     rarity = 2,
-    cost = 3,
+    cost = 7,
     config = {
         extra = {
-            art_to_draw = {}
+            art_to_draw = {},
+            odds = 3,
         }
     },
     loc_vars = function(self, info_queue, card)
         return {
+            vars = {'' .. (G.GAME and G.GAME.probabilities.normal or 1), card.ability.extra.odds}
         }
     end,
 
     calculate = function(self, card, context)
 
         if not context.blueprint then
-            if context.after then
+            if context.before then
+                local copy = {}
                 card.ability.extra.art_to_draw = card.ability.extra.art_to_draw or {}
 
-                for i = #context.full_hand, 1, -1 do
+                for i = 1, #context.full_hand do
                     local card_is_scoring = false
 
-                    for j = #context.scoring_hand, 1, -1 do
+                    for j = 1, #context.scoring_hand do
                         if context.full_hand[i] == context.scoring_hand[j] then
                             card_is_scoring = true
                         end
@@ -2439,7 +2440,34 @@ SMODS.Joker {
                     if card_is_scoring == false and not context.full_hand[i].debuff then
                         local anarcard = context.full_hand[i]
                         table.insert(card.ability.extra.art_to_draw, 1, anarcard)
+
+                        if (pseudorandom('suntzu') < G.GAME.probabilities.normal / card.ability.extra.odds) then
+                            G.playing_card = (G.playing_card and G.playing_card + 1) or 1
+                            local _card = copy_card(anarcard, nil, nil, G.playing_card)
+                            _card:add_to_deck()
+                            G.deck.config.card_limit = G.deck.config.card_limit + 1
+                            table.insert(G.playing_cards, _card)
+                            G.hand:emplace(_card)
+                            _card.states.visible = nil
+                            copy[#copy+1] = _card
+                            G.E_MANAGER:add_event(Event({
+                                func = function()
+                                    anarcard:juice_up()
+                                    _card:start_materialize()
+                                    return true
+                                end
+                            })) 
+                            --delay(0.1)
+                        end
                     end
+                end
+                playing_card_joker_effects(copy)
+                if #copy > 0 then
+                    return{
+                        message = localize("k_copied_ex"),
+                        colour = G.C.MULT,
+                        message_card = card,
+                    }
                 end
             end
 
@@ -2525,6 +2553,46 @@ SMODS.Joker {
             end
         end
     end,
+}
+
+-- Dawn R
+SMODS.Joker {
+    key = 'dawn',
+    atlas = 'Jokers',
+    pos = {
+        x = 6,
+        y = 5
+    },
+    blueprint_compat = true,
+    perishable_compat = true,
+    eternal_compat = true,
+    rarity = 3,
+    cost = 9,
+    config = {
+        extra = {
+            chipsmod = 15,
+        }
+    },
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {card.ability.extra.chipsmod,
+            G.GAME.current_round.discards_left*card.ability.extra.chipsmod}
+        }
+    end,
+
+    calculate = function(self, card, context)
+
+        if context.individual and context.cardarea == G.play and G.GAME.current_round.hands_played == 0 then
+            context.other_card.ability.perma_bonus = context.other_card.ability.perma_bonus or 0
+            context.other_card.ability.perma_bonus = context.other_card.ability.perma_bonus + G.GAME.current_round.discards_left*card.ability.extra.chipsmod
+            return {
+                extra = {message = localize('k_upgrade_ex'), colour = G.C.CHIPS},
+                message_card = context.other_card
+            }
+        end
+        
+    end
 }
 
 ---------------------------------------------
