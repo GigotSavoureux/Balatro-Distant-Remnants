@@ -289,7 +289,7 @@ return {
                 text = {
                     "After playing {C:attention}#1#{} different",
                     "{C:attention}poker hands{}, sell this card",
-                    "to create {C:attention}#3#{C:dark_edition} Negative{C:spectral} Auras",
+                    "to create {C:attention}#3#{C:dark_edition} Negative{C:spectral} Mediums",
                     "{C:inactive} (Currently {C:attention}#2#{C:inactive}/#1#)",
                 },
             },
