@@ -2436,7 +2436,7 @@ SMODS.Joker {
                                     return true
                                 end
                             })) 
-                            --delay(0.1)
+                            delay(0.1)
                         end
                     end
                 end
@@ -2549,7 +2549,7 @@ SMODS.Joker {
     cost = 9,
     config = {
         extra = {
-            chipsmod = 15,
+            chipsmod = 20,
         }
     },
 
@@ -2562,7 +2562,7 @@ SMODS.Joker {
 
     calculate = function(self, card, context)
 
-        if context.individual and context.cardarea == G.play and G.GAME.current_round.hands_played == 0 then
+        if context.individual and context.cardarea == G.play and G.GAME.current_round.hands_played == 0 and G.GAME.current_round.discards_left > 0 then
             context.other_card.ability.perma_bonus = context.other_card.ability.perma_bonus or 0
             context.other_card.ability.perma_bonus = context.other_card.ability.perma_bonus + G.GAME.current_round.discards_left*card.ability.extra.chipsmod
             return {

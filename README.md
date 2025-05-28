@@ -217,7 +217,7 @@ ___
 
 ### Dawn
 ![image](https://github.com/user-attachments/assets/5121578a-0f0a-43a8-b451-572b5f98d9a2)<br>
-On **first hand** of round, every played **card** permanently gains **+15** Chips for each remaining **discard** when scored<br>
+On **first hand** of round, every played **card** permanently gains **+20** Chips for each remaining **discard** when scored<br>
 *(Currenly +0 Chips)*<br>
 ___
 
