@@ -628,11 +628,12 @@ SMODS.Joker {
                 return {
                     message = localize('k_debuffed'),
                     colour = G.C.RED,
+                    message_card = context.other_card,
                 }
             else
                 return {
                     x_mult = card.ability.extra.mult,
-                    message_card = context.blueprint_card or card,
+                    message_card = context.other_card,
                 }
             end
         end        
