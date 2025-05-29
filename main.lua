@@ -98,7 +98,7 @@ SMODS.Joker {
 
             if totalchip > 0 then
                 card.ability.extra.chips = card.ability.extra.chips + totalchip
-                card_eval_status_text(card, 'extra', nil, nil, nil, { message = localize('k_upgrade_ex'), colour = G.C.CHIPS})
+                card_eval_status_text(card, 'extra', nil, nil, nil, { message = localize{type='variable',key='a_chips',vars={totalchip}}, colour = G.C.CHIPS})
             end
         end
 
