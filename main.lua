@@ -719,28 +719,22 @@ SMODS.Joker {
     calculate = function(self, card, context)
 
         if context.setting_blind and not context.blueprint then
-            return {
+            G.E_MANAGER:add_event(Event({
                 func = function()
                     G.E_MANAGER:add_event(Event({
-                        trigger = 'after',
-                        delay = 0.1,
                         func = function()
-                            card_eval_status_text(card, 'extra', nil, nil, nil, { message = 'Ungeziefer!' })
-                            G.E_MANAGER:add_event(Event({
-                                trigger = 'after',
-                                delay = 0.1,
-                                func = function()
-                                    local lost = G.GAME.current_round.hands_left - 1
-                                    ease_hands_played(-lost)
-                                    card.ability.extra.xmult = card.ability.extra.xmult + (card.ability.extra.xmultmod * lost)
-                                    return true
-                                end
-                            }))
+                            local lost = G.GAME.current_round.hands_left - 1
+                            card.ability.extra.xmult = card.ability.extra.xmult + (card.ability.extra.xmultmod * lost)
+                            if lost > 0 then
+                                ease_hands_played(-lost, true)
+                                card_eval_status_text(card, 'extra', nil, nil, nil, { message = 'Ungeziefer!' })
+                            end
                             return true
                         end
                     }))
+                    return true
                 end
-            }
+            }))
         end
 
         if context.joker_main then
