@@ -176,6 +176,10 @@ ___
 **Non-scoring** played cards are drawn **first**, **1 in 3** chance to add a permanent copy to deck and draw it to **hand**<br>
 ___
 
+### Foundry
+Earn **$15** upon destroying a **Gold** or **Steel** card<br>
+___
+
 # Rare
 ### One More Time!
 ![image](https://github.com/user-attachments/assets/1dde43ec-c077-4b9c-8862-be3be8dbd14d)<br>

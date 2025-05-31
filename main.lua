@@ -1453,7 +1453,6 @@ SMODS.Joker {
     },
 
     loc_vars = function(self, info_queue, card)
-
         info_queue[#info_queue+1] = G.P_CENTERS.m_wild
         return {
             vars = {'' .. (G.GAME and G.GAME.probabilities.normal or 1),
@@ -2453,6 +2452,54 @@ SMODS.Joker {
                         end
                     end
                 end
+            end
+        end
+    end
+}
+
+-- Foundry G
+SMODS.Joker {
+    key = 'foundry',
+    atlas = 'Jokers',
+    pos = {
+        x = 0,
+        y = 6
+    },
+    blueprint_compat = true,
+    perishable_compat = true,
+    eternal_compat = true,
+    rarity = 2,
+    cost = 6,
+    config = {
+        extra = {
+            money = 15,
+        }
+    },
+
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue+1] = G.P_CENTERS.m_gold
+        info_queue[#info_queue+1] = G.P_CENTERS.m_steel
+        return {
+            vars = {card.ability.extra.money}
+        }
+    end,
+    calculate = function(self, card, context)
+
+        if context.remove_playing_cards then
+            local destroyed = 0
+            for i = 1, #context.removed do
+                if SMODS.has_enhancement(context.removed[i], 'm_gold') or SMODS.has_enhancement(context.removed[i], 'm_steel') then
+                    destroyed = destroyed + 1
+                end
+            end
+            ease_dollars(destroyed*card.ability.extra.money)
+
+            if destroyed > 0 then
+                return {
+                    message = localize('$')..(destroyed*card.ability.extra.money),
+                    colour = G.C.MONEY,
+                    message_card = context.blueprint_card or card
+                }
             end
         end
     end

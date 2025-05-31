@@ -349,6 +349,14 @@ return {
                     "{C:inactive} (Actuellement : {C:chips}+#2#{C:inactive} Jetons)",
                 },
             },
+            j_drx1_foundry = {
+                name = "Fonderie",
+                text = {
+                    "Gagnez {C:money}#1# ${} en",
+                    "détruisant une",
+                    "carte {C:attention}Or{} ou {C:attention}Acier",
+                },
+            },
         },
     },
 }
