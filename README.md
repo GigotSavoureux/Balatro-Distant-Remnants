@@ -226,11 +226,6 @@ On **first hand** of round, every played **card** permanently gains **+20** Chip
 *(Currenly +0 Chips)*<br>
 ___
 
-### Foundry
-![image](https://github.com/user-attachments/assets/c166ec3e-439d-4f0b-9b51-e717ba8e0feb)<br>
-Earn **$15** upon destroying a **Gold** or **Steel** card<br>
-___
-
 # Legendary
 ### Bokida
 ![image](https://github.com/user-attachments/assets/a1baa977-79d5-4a59-ba1b-8418ac020759)<br>
