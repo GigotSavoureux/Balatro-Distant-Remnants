@@ -260,7 +260,7 @@ return {
                 name = "Consumerism",
                 text = {
                     "Played {C:attention}Enhanced cards",
-                    "give {C:red}+#1#{} when scored",
+                    "give {C:red}+#1#{} Mult when scored",
                     "{C:inactive} (Increase by {C:red}+#2#{C:inactive} if {C:attention}Blind{C:inactive} is",
                     "{C:inactive} selected with {C:money}$#3#{C:inactive} or less)",
                 },
