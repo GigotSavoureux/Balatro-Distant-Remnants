@@ -1413,14 +1413,15 @@ SMODS.Joker {
 
             if (roll < G.GAME.probabilities.normal / card.ability.extra.high) then
                 reps = 2
-            else
-                reps = 1
             end
-            return{
-                message = localize('k_again_ex'),
-                repetitions = reps,
-                card = context.blueprint_card or card
-            }
+
+            if reps == 2 then
+                return{
+                    message = localize('k_again_ex'),
+                    repetitions = reps,
+                    card = context.blueprint_card or card
+                }
+            end
         end
 
 

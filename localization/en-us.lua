@@ -65,10 +65,10 @@ return {
             j_drx1_tobacco_paper = {
                 name = 'Tobacco Paper',
                 text = {
-                    'Retrigger all',
-                    'played {C:attention}Lucky Cards{},',
-                    '{C:green}#1# in #2#{} chance to',
-                    'retrigger {C:attention}twice{} instead',
+                    '{C:green}#1# in #2#{} chance',
+                    'to retrigger played',
+                    '{C:attention}Lucky Cards{} twice',
+                    'when scored',
                 },
             },
             j_drx1_don_juan = {

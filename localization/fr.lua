@@ -66,10 +66,9 @@ return {
             j_drx1_tobacco_paper = {
                 name = 'OCB',
                 text = {
-                    "Déclenche à nouveau toutes",
-                    "les cartes {C:attention}Chance{} jouées,",
-                    "{C:green}#1# chance(s) sur #2#{} de les",
-                    "déclencher encore une fois",
+                    '{C:green}#1# chance(s) sur #2#{} de déclencher',
+                    ' à nouveau deux fois les cartes {C:attention}Chance',
+                    "jouées lorsqu'elles marquent des points",
                 },
             },
             j_drx1_don_juan = {
@@ -319,7 +318,7 @@ return {
                 text = {
                     "Les cartes jouées qui ne",
                     "{C:attention}marquent pas{} sont piochées en {C:attention}premier{},",
-                    "{C:green}#1# chance(s) in #2#{} d'en ajouter",
+                    "{C:green}#1# chance(s) sur #2#{} d'en ajouter",
                     "une copie permanente au jeu",
                     "et de la placer dans la {C:attention}main",
                 },
