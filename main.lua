@@ -705,7 +705,7 @@ SMODS.Joker {
     config = {
         extra = {
             hands = 1,
-            xmultmod = 1.25,
+            xmultmod = 1.5,
             xmult = 1
         }
     },
@@ -1287,45 +1287,52 @@ SMODS.Joker {
 
     calculate = function(self, card, context)
 
-        if context.destroying_card
-        and not context.blueprint
-        and #context.full_hand == 1
-        and context.full_hand[1]:is_face()
-        and G.GAME.current_round.hands_played == 0 then
-            if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
-                G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
-                local function random_poll()
-                    return math.random(0, 1)
-                end
-                if random_poll() == 0 then
-                    card_eval_status_text(card, 'extra', nil, nil, nil, {message = 'Death', colour = G.C.SECONDARY_SET.Tarot})
-                    G.E_MANAGER:add_event(Event({
-                    trigger = 'after',
-                    delay = 0.1,
-                    func = function()
-                        local card = create_card(nil, G.consumeables, nil, nil, nil, nil, 'c_death', 'sup')
-                        card:add_to_deck()
-                        G.consumeables:emplace(card)
-                        G.GAME.consumeable_buffer = 0
-                        return true
-                    end
-                    }))
-                else
-                    card_eval_status_text(card, 'extra', nil, nil, nil, {message = 'Tower', colour = G.C.SECONDARY_SET.Tarot})
-                    G.E_MANAGER:add_event(Event({
-                    trigger = 'after',
-                    delay = 0.1,
-                    func = function()
-                        local card = create_card(nil, G.consumeables, nil, nil, nil, nil, 'c_tower', 'sup')
-                        card:add_to_deck()
-                        G.consumeables:emplace(card)
-                        G.GAME.consumeable_buffer = 0
-                        return true
-                    end
-                    }))
-                end
+        if not context.blueprint then
+
+            if context.first_hand_drawn then
+                local eval = function() return G.GAME.current_round.hands_played == 0 end
+                juice_card_until(card, eval, true)
             end
-            return true
+            
+            if context.destroying_card
+            and #context.full_hand == 1
+            and context.full_hand[1]:is_face()
+            and G.GAME.current_round.hands_played == 0 then
+                if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+                    G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+                    local function random_poll()
+                        return math.random(0, 1)
+                    end
+                    if random_poll() == 0 then
+                        card_eval_status_text(card, 'extra', nil, nil, nil, {message = 'Death', colour = G.C.SECONDARY_SET.Tarot})
+                        G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = 0.1,
+                        func = function()
+                            local card = create_card(nil, G.consumeables, nil, nil, nil, nil, 'c_death', 'sup')
+                            card:add_to_deck()
+                            G.consumeables:emplace(card)
+                            G.GAME.consumeable_buffer = 0
+                            return true
+                        end
+                        }))
+                    else
+                        card_eval_status_text(card, 'extra', nil, nil, nil, {message = 'Tower', colour = G.C.SECONDARY_SET.Tarot})
+                        G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = 0.1,
+                        func = function()
+                            local card = create_card(nil, G.consumeables, nil, nil, nil, nil, 'c_tower', 'sup')
+                            card:add_to_deck()
+                            G.consumeables:emplace(card)
+                            G.GAME.consumeable_buffer = 0
+                            return true
+                        end
+                        }))
+                    end
+                end
+                return true
+            end
         end
     end
 }
@@ -2473,7 +2480,7 @@ SMODS.Joker {
     cost = 6,
     config = {
         extra = {
-            money = 15,
+            money = 20,
         }
     },
 

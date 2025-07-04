@@ -96,7 +96,7 @@ ___
 ### Metamorphosis
 ![image](https://github.com/user-attachments/assets/001c7a0a-4e2e-476e-8ecb-a9c2c9a969ff)<br>
 When **Blind is selected**, ***set hands to 1***<br>
-This Joker gains **X1.25 Mult** this round for each **hand lost**<br>
+This Joker gains **X1.5 Mult** this round for each **hand lost**<br>
 *(Currently X1 Mult)* <br>
 ___
 
@@ -178,7 +178,7 @@ ___
 
 ### Foundry
 ![image](https://github.com/user-attachments/assets/ffc8fdf5-7cff-4080-bf18-5c900390bddc)<br>
-Earn **$15** upon destroying a **Gold** or **Steel** card<br>
+Earn **$20** upon destroying a **Gold** or **Steel** card<br>
 ___
 
 ### Heads or Tails
