@@ -182,7 +182,7 @@ Earn **$15** upon destroying a **Gold** or **Steel** card<br>
 ___
 
 ### Heads or Tails
-![image](https://github.com/user-attachments/assets/ffc8fdf5-7cff-4080-bf18-5c900390bddc)<br>
+![image](https://github.com/user-attachments/assets/c9944071-1280-43b4-999d-f0f27f39c498)<br>
 Sell this card for **1 in 2 chance** to permanently **double** prices in shop<br>
 Otherwise, **halve** them<br>
 ___
