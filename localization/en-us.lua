@@ -354,6 +354,15 @@ return {
                     "{C:attention}Gold{} or {C:attention}Steel{} card",
                 },
             },
+            j_drx1_grogoroth = {
+                name = "Heads or Tails",
+                text = {
+                    "Sell this card for",
+                    "{C:green}#1# in #2#{} chance to permanently",
+                    "{C:attention}double{} prices in shop",
+                    "Otherwise, {C:attention}halve{} them",
+                },
+            },
         },
     },
 }

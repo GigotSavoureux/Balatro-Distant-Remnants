@@ -53,64 +53,6 @@ function Card:is_face(from_boss)
 	return isfaceref(self, from_boss)
 end
 
---The Menu Please G
-SMODS.Joker {
-    key = 'menu',
-    atlas = 'Jokers',
-    pos = {
-        x = 0,
-        y = 4
-    },
-    blueprint_compat = true,
-    perishable_compat = false,
-    eternal_compat = true,
-    rarity = 1,
-    cost = 4,
-    config = {
-        extra = {
-            chips = 0,
-        }
-    },
-
-    loc_vars = function(self, info_queue, card)
-        return {
-            vars = {card.ability.extra.chips}
-        }
-    end,
-
-    calculate = function(self, card, context)
-
-        if context.remove_playing_cards and not context.blueprint then
-            local totalchip = 0
-            local destroyed = {}
-            for k, v in ipairs(context.removed) do
-                if not v.debuff then
-                    destroyed[#destroyed+1] = v
-                    local lostchip = v:get_chip_bonus()
-
-                    if v.edition and v.edition.foil then
-                        lostchip = lostchip + 50
-                    end
-
-                    totalchip = totalchip + (lostchip*2)
-                end
-            end
-
-            if totalchip > 0 then
-                card.ability.extra.chips = card.ability.extra.chips + totalchip
-                card_eval_status_text(card, 'extra', nil, nil, nil, { message = localize{type='variable',key='a_chips',vars={totalchip}}, colour = G.C.CHIPS})
-            end
-        end
-
-        if context.joker_main then
-            return{
-                chips = card.ability.extra.chips
-            }
-        end
-
-    end
-}
-
 --Eglantine G
 SMODS.Joker {
     key = 'eglantine',
@@ -429,6 +371,64 @@ SMODS.Joker {
                 end
             }))
         end
+    end
+}
+
+--The Menu Please G
+SMODS.Joker {
+    key = 'menu',
+    atlas = 'Jokers',
+    pos = {
+        x = 0,
+        y = 4
+    },
+    blueprint_compat = true,
+    perishable_compat = false,
+    eternal_compat = true,
+    rarity = 2,
+    cost = 4,
+    config = {
+        extra = {
+            chips = 0,
+        }
+    },
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {card.ability.extra.chips}
+        }
+    end,
+
+    calculate = function(self, card, context)
+
+        if context.remove_playing_cards and not context.blueprint then
+            local totalchip = 0
+            local destroyed = {}
+            for k, v in ipairs(context.removed) do
+                if not v.debuff then
+                    destroyed[#destroyed+1] = v
+                    local lostchip = v:get_chip_bonus()
+
+                    if v.edition and v.edition.foil then
+                        lostchip = lostchip + 50
+                    end
+
+                    totalchip = totalchip + (lostchip*2)
+                end
+            end
+
+            if totalchip > 0 then
+                card.ability.extra.chips = card.ability.extra.chips + totalchip
+                card_eval_status_text(card, 'extra', nil, nil, nil, { message = localize{type='variable',key='a_chips',vars={totalchip}}, colour = G.C.CHIPS})
+            end
+        end
+
+        if context.joker_main then
+            return{
+                chips = card.ability.extra.chips
+            }
+        end
+
     end
 }
 
@@ -2503,6 +2503,85 @@ SMODS.Joker {
                 }
             end
         end
+    end
+}
+
+--- Alll mer
+SMODS.Sound({
+    key = "alllmer",
+    path = "alllmer.ogg",
+})
+
+--- Coinflip
+SMODS.Sound({
+    key = "coinflip",
+    path = "coinflip.ogg",
+})
+
+SMODS.Sound({
+    key = "coinflip2",
+    path = "coinflip2.ogg",
+})
+
+--- Gods
+SMODS.Sound({
+    key = "gods",
+    path = "gods.ogg",
+})
+
+-- Heads or Tails G
+SMODS.Joker {
+    key = 'grogoroth',
+    atlas = 'Jokers',
+    pos = {
+        x = 1,
+        y = 6
+    },
+    blueprint_compat = true,
+    perishable_compat = true,
+    eternal_compat = false,
+    rarity = 2,
+    cost = 4,
+    config = {
+        extra = {
+            odds = 2,
+        }
+    },
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {'' .. (G.GAME and G.GAME.probabilities.normal or 1),
+            card.ability.extra.odds}
+        }
+    end,
+    calculate = function(self, card, context)
+        
+        if context.selling_self then
+            play_sound("drx1_coinflip", 1, 0.6)
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.3,
+                func = function()
+                    play_sound("drx1_coinflip2", 1, 0.6)
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = 2.2,
+                        func = function()
+                            if (pseudorandom('fear') < G.GAME.probabilities.normal / card.ability.extra.odds) then
+                                G.GAME.grogoroth = G.GAME.grogoroth * 2
+                                card_eval_status_text(card, 'extra', nil, nil, nil, {message = 'Fail!', colour = G.C.DARK_EDITION})
+                                play_sound("drx1_gods", 1, 0.5)
+                            else
+                                G.GAME.grogoroth = G.GAME.grogoroth * 0.5
+                                card_eval_status_text(card, 'extra', nil, nil, nil, {message = 'Success!', colour = G.C.DARK_EDITION})
+                                play_sound("drx1_alllmer", 1, 0.4)
+                            end
+                            for k, v in pairs(G.I.CARD) do
+                                if v.set_cost then v:set_cost() end
+                            end
+                    return true end }))
+            return true end }))
+        end
+        
     end
 }
 

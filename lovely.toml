@@ -35,3 +35,27 @@ payload = '''
 local flags = SMODS.calculate_context({hand_space = hand_space})
 hand_space = flags.hand_space or hand_space
 '''
+
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+match_indent = true
+position = 'after'
+pattern = '''
+win_ante = 8,
+'''
+payload = '''
+grogoroth = 1,
+'''
+
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+match_indent = true
+position = 'at'
+pattern = '''
+self.cost = math.max(1, math.floor((self.base_cost + self.extra_cost + 0.5)*(100-G.GAME.discount_percent)/100))
+'''
+payload = '''
+self.cost = math.max(1, math.floor((self.base_cost + self.extra_cost + 0.5)*(100-G.GAME.discount_percent)*G.GAME.grogoroth/100))
+'''

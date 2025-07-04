@@ -9,12 +9,6 @@ Uses lovely and this version of [Steamodded](https://github.com/Steamodded/smods
 - 1 Legendary
 
 # Common Jokers
-### The Menu Please
-![image](https://github.com/user-attachments/assets/492dceb1-05f5-44ce-9a37-80b67020ffb9)<br>
-This Joker gains **twice** the amount of the scoring **Chips** of **Destroyed cards**<br>
-*(Currently +0 chips)* <br>
-___
-
 ### Eglantine
 ![image](https://github.com/user-attachments/assets/f6cf8943-d576-4851-be5b-60d45f8004cb)<br>
 **X2**<br>
@@ -64,6 +58,12 @@ ___
 ### Slipstream
 ![image](https://github.com/user-attachments/assets/6bbd54e2-7cf9-400d-b071-6ebde823dd67)<br>
 Leftmost played card becomes a **Glass card** if played hand contains a **Straight**<br>
+___
+
+### The Menu Please
+![image](https://github.com/user-attachments/assets/492dceb1-05f5-44ce-9a37-80b67020ffb9)<br>
+This Joker gains **twice** the amount of the scoring **Chips** of **Destroyed cards**<br>
+*(Currently +0 chips)* <br>
 ___
 
 ### Mismatched Socks
@@ -124,7 +124,7 @@ ___
 
 ### Tobacco Paper
 ![image](https://github.com/user-attachments/assets/1b0f5f4e-b2e3-41a4-8cd9-09c64c7f7f89)<br>
-Retrigger all played **Lucky cards**, **1 in 5 chance** to retrigger **twice** instead<br>
+**1 in 5 chance** to retrigger played **Lucky Cards** twice when scored<br>
 ___
 
 ### Don Juan
@@ -179,6 +179,12 @@ ___
 ### Foundry
 ![image](https://github.com/user-attachments/assets/ffc8fdf5-7cff-4080-bf18-5c900390bddc)<br>
 Earn **$15** upon destroying a **Gold** or **Steel** card<br>
+___
+
+### Heads or Tails
+![image](https://github.com/user-attachments/assets/ffc8fdf5-7cff-4080-bf18-5c900390bddc)<br>
+Sell this card for **1 in 2 chance** to permanently **double** prices in shop<br>
+Otherwise, **halve** them<br>
 ___
 
 # Rare

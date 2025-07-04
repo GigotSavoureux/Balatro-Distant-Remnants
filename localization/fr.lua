@@ -356,6 +356,15 @@ return {
                     "carte {C:attention}Or{} ou {C:attention}Acier",
                 },
             },
+            j_drx1_grogoroth = {
+                name = "Pile ou Face",
+                text = {
+                    "Vendez ce Joker pour {C:green}#1# chance(s) sur #2#{}",
+                    "de {C:attention}doubler tous les prix du magasin",
+                    "de manière permanente",
+                    "Sinon, réduisez les de {C:attention}50%{}",
+                },
+            },
         },
     },
 }
