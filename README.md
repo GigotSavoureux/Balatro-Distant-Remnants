@@ -2,7 +2,7 @@
 Distant Remnants explores the game's existing systems and mechanics in novel ways to create new and strange strategies and dynamics.
 Uses lovely and this version of [Steamodded](https://github.com/Steamodded/smods/releases/tag/1.0.0-beta-0509c)
 
-# +40 Jokers
+# +41 Jokers
 - 8 Common
 - 24 Uncommon
 - 8 Rare
