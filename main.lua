@@ -2569,11 +2569,11 @@ SMODS.Joker {
                             if (pseudorandom('fear') < G.GAME.probabilities.normal / card.ability.extra.odds) then
                                 G.GAME.grogoroth = G.GAME.grogoroth * 2
                                 card_eval_status_text(card, 'extra', nil, nil, nil, {message = 'Fail!', colour = G.C.DARK_EDITION})
-                                play_sound("drx1_gods", 1, 0.5)
+                                play_sound("drx1_gods", 1, 0.65)
                             else
                                 G.GAME.grogoroth = G.GAME.grogoroth * 0.5
                                 card_eval_status_text(card, 'extra', nil, nil, nil, {message = 'Success!', colour = G.C.DARK_EDITION})
-                                play_sound("drx1_alllmer", 1, 0.4)
+                                play_sound("drx1_alllmer", 1, 0.25)
                             end
                             for k, v in pairs(G.I.CARD) do
                                 if v.set_cost then v:set_cost() end
