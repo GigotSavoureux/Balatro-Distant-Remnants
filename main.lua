@@ -2500,9 +2500,9 @@ SMODS.Joker {
                     destroyed = destroyed + 1
                 end
             end
-            ease_dollars(destroyed*card.ability.extra.money)
 
             if destroyed > 0 then
+                ease_dollars(destroyed*card.ability.extra.money)
                 return {
                     message = localize('$')..(destroyed*card.ability.extra.money),
                     colour = G.C.MONEY,
