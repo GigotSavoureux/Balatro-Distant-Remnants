@@ -242,5 +242,5 @@ ___
 
 # Legendary
 ### Bokida
-![image](https://github.com/user-attachments/assets/a1baa977-79d5-4a59-ba1b-8418ac020759)<br>
+![image](https://github.com/user-attachments/assets/a8eafd03-4679-4b49-95aa-dc19e354b937)<br>
 Create a **Negative Planet** card of played **poker hand**<br>
