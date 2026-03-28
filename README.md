@@ -233,7 +233,7 @@ On **first hand** of round, every played **card** permanently gains **+20** Chip
 ___
 
 ### Ábramar
-![image](https://github.com/user-attachments/assets/a8eafd03-4679-4b49-95aa-dc19e354b937)<br>
+![image](https://github.com/user-attachments/assets/1d38faa3-a8ec-43fa-a352-40f4fce7b67c)<br>
 **+18** handsize, reduces by **1** when a **Tarot** card is used.<br>
 **You cannot draw anymore.** <br>
 **Destroy** a random Joker when sold.<br>
