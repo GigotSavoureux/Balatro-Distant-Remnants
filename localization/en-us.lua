@@ -363,6 +363,15 @@ return {
                     "Otherwise, {C:attention}halve{} them",
                 },
             },
+            j_drx1_abramar = {
+                name = "Ábramar",
+                text = {
+                    "{C:attention}+#1#{} handsize, reduces by {C:attention}#2#{}",
+                    "when a {C:tarot}Tarot{} card is used.",
+                    "{S:1.1,C:red,E:2}You cannot draw anymore.{}",
+                    "{C:attention}Destroy{} a random Joker when sold",
+                },
+            },
         },
     },
 }

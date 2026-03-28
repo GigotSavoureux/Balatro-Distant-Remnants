@@ -2703,5 +2703,116 @@ SMODS.Joker {
     end
 }
 
+--Abramar
+SMODS.Joker {
+    key = 'abramar',
+    atlas = 'Jokers',
+    pos = {
+        x = 2,
+        y = 6
+    },
+    soul_pos = {
+        x = 3,
+        y = 6
+    },
+    blueprint_compat = false,
+    perishable_compat = true,
+    eternal_compat = true,
+    rarity = 3,
+    cost = 7,
+    config = {
+        extra = {
+            draw = 18,
+            less = 1,
+            flag = 0,
+        }
+    },
+
+    in_pool = function(self, args)
+        return args and (args.source == 'sho' or args.source == 'buf')
+    end,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {card.ability.extra.draw, card.ability.extra.less, card.ability.extra.flag}
+        }
+    end,
+
+    calculate = function(self, card, context)
+
+        --Destroy joker on sell
+        if not context.blueprint then
+            if context.selling_self then
+                local destructable_jokers = {}
+                for i = 1, #G.jokers.cards do
+                    if G.jokers.cards[i] ~= card and not G.jokers.cards[i].ability.eternal and not G.jokers.cards[i].getting_sliced then destructable_jokers[#destructable_jokers+1] = G.jokers.cards[i] end
+                end
+                
+                local joker_to_destroy = #destructable_jokers > 0 and pseudorandom_element(destructable_jokers, pseudoseed('abramar')) or nil
+
+                if joker_to_destroy then 
+                    joker_to_destroy.getting_sliced = true
+                    G.E_MANAGER:add_event(Event({func = function()
+                        card:juice_up(0.8, 0.8)
+                        joker_to_destroy:start_dissolve({G.C.SECONDARY_SET.Tarot}, nil, 1.6)
+                    return true end }))
+                end
+            end
+
+            -- Reduce hansize value on Tarot use (doesnt disappear at zero) (changesize -less?)
+
+            if context.using_consumeable and context.consumeable.ability.set == 'Tarot' and card.ability.extra.draw - card.ability.extra.less >= 0 then
+                G.hand:change_size(-card.ability.extra.less)
+                card.ability.extra.draw = card.ability.extra.draw - card.ability.extra.less
+                card_eval_status_text(card, 'extra', nil, nil, nil, { message = 'Fortuna', colour = G.C.SECONDARY_SET.Tarot })
+            end
+
+            -- Setting handsize (OLD)
+
+            -- if context.setting_blind then
+            --     G.hand:change_size(card.ability.extra.draw)
+            --     G.GAME.round_resets.temp_handsize = (G.GAME.round_resets.temp_handsize or 0) + card.ability.extra.draw
+            -- end
+
+            -- Inability to draw after first hand
+
+            if context.first_hand_drawn then
+                card.ability.extra.flag = 1
+            end
+
+            if context.drawing_cards and card.ability.extra.flag == 1 then
+                return {cards_to_draw = 0}
+            end
+
+            if context.end_of_round then
+                card.ability.extra.flag = 0
+            end
+
+            --Add lose when no cards in hand, keep it if eternal, delete if not
+            if context.hand_drawn and #G.hand.cards == 0 then
+                G.STATE = G.STATES.GAME_OVER; G.STATE_COMPLETE = false
+            end
+
+        end
+
+    end,
+
+    -- Handsize changes
+
+    add_to_deck = function(self,card,from_debuff)
+        if card.config.center.key == "j_drx1_abramar" then
+            print("abramar added")
+            G.hand:change_size(card.ability.extra.draw)
+        end
+    end,
+
+    remove_from_deck = function(self, card, from_debuff)
+        if card.config.center.key == "j_drx1_abramar" then
+            print("abramar deleted")
+            G.hand:change_size(-card.ability.extra.draw)
+        end
+    end,
+}
+
 ---------------------------------------------
 -------------MOD CODE END--------------------

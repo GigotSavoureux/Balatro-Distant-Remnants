@@ -365,6 +365,16 @@ return {
                     "Sinon, réduisez les de {C:attention}50%{}",
                 },
             },
+            j_drx1_abramar = {
+                name = "Ábramar",
+                text = {
+                    "{C:attention}+#1#{} à la taille de la main, réduit de",
+                    "{C:attention}#2#{} quand une carte {C:tarot}Tarot{} est utilisée.",
+                    "{S:1.1,C:red,E:2}Vous ne pouvez plus piocher.{}",
+                    "{C:attention}Détruisez{} un Joker aléatoire",
+                    "lorsque cette carte est vendue.",
+                },
+            },
         },
     },
 }
