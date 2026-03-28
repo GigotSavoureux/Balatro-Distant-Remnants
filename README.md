@@ -234,9 +234,9 @@ ___
 
 ### Ábramar
 ![image](https://github.com/user-attachments/assets/a8eafd03-4679-4b49-95aa-dc19e354b937)<br>
-**+18** handsize, reduces by **1** when a **Tarot** card is used.
-**You cannot draw anymore.**
-**Destroy** a random Joker when sold.
+**+18** handsize, reduces by **1** when a **Tarot** card is used.<br>
+**You cannot draw anymore.** <br>
+**Destroy** a random Joker when sold.<br>
 ___
 
 
