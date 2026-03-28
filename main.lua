@@ -2801,15 +2801,15 @@ SMODS.Joker {
 
     add_to_deck = function(self,card,from_debuff)
         if card.config.center.key == "j_drx1_abramar" then
-            print("abramar added")
             G.hand:change_size(card.ability.extra.draw)
         end
     end,
 
     remove_from_deck = function(self, card, from_debuff)
         if card.config.center.key == "j_drx1_abramar" then
-            print("abramar deleted")
-            G.hand:change_size(-card.ability.extra.draw)
+            if card.ability.extra.draw >= 0 then
+                G.hand:change_size(-card.ability.extra.draw)
+            end
         end
     end,
 }
