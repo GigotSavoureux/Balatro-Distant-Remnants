@@ -2,10 +2,10 @@
 Distant Remnants explores the game's existing systems and mechanics in novel ways to create new and strange strategies and dynamics.
 Uses [Lovely](https://github.com/ethangreen-dev/lovely-injector/releases/tag/v0.9.0) and [Steamodded](https://github.com/Steamodded/smods/releases/tag/1.0.0-beta-1503a)
 
-# +41 Jokers
+# +42 Jokers
 - 8 Common
 - 24 Uncommon
-- 8 Rare
+- 9 Rare
 - 1 Legendary
 
 # Common Jokers
@@ -231,6 +231,14 @@ ___
 On **first hand** of round, every played **card** permanently gains **+20** Chips for each remaining **discard** when scored<br>
 *(Currenly +0 Chips)*<br>
 ___
+
+### Ábramar
+![image](https://github.com/user-attachments/assets/27436cf6-319d-4cfb-9d3f-a972748eb1ae)<br>
+**+18** handsize, reduces by **1** when a **Tarot** card is used.
+**You cannot draw anymore.**
+**Destroy** a random Joker when sold.
+___
+
 
 # Legendary
 ### Bokida
