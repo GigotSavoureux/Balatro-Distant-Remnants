@@ -2165,18 +2165,13 @@ SMODS.Joker {
                 if card_is_scoring == false and not context.full_hand[i].debuff then
                     anar = true
                     local anarcard = context.full_hand[i]
+                    anarcard:flip()
                     anarcard:set_ability(G.P_CENTERS.m_wild, nil, true)
-                    G.E_MANAGER:add_event(Event({
-                        func = function()
-                            anarcard:flip()
-                            if not anarcard.edition then
-                                local edition = {polychrome = true}
-                                anarcard:set_edition(edition, true, true)
-                            end
-                            anarcard:flip()
-                            return true
-                        end
-                    }))
+                    if not anarcard.edition then
+                        local edition = {polychrome = true}
+                        anarcard:set_edition(edition, true, true)
+                    end
+                    anarcard:flip()
                 end
             end
             if anar == true then
