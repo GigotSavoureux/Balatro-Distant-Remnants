@@ -291,7 +291,7 @@ SMODS.Joker {
     cost = 4,
     config = {
         extra = {
-            draw = 4,
+            draw = 5,
             flag = 0
         }
     },
@@ -307,22 +307,23 @@ SMODS.Joker {
         if context.cardarea == G.jokers then
 
             if context.before and not context.blueprint then
-                card.ability.extra.flag = 0
                 if next(context.poker_hands['Straight']) then
                     card.ability.extra.flag = 1
+                else
+                    card.ability.extra.flag = 0
                 end
             end
 
-            if context.pre_discard then
+            if context.pre_discard and not context.blueprint then
                 card.ability.extra.flag = 0
             end
 
-            if card.ability.extra.flag == 1 and context.hand_space then
+            if card.ability.extra.flag == 1 and context.drawing_cards then
                 card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('k_safe_ex'), colour = G.C.CHIPS})
                 for i=1, card.ability.extra.draw do
                     draw_card(G.deck,G.hand, i*100/(card.ability.extra.draw), 'up', true)
                 end
-                --card.ability.extra.flag = 0
+                
             end
 
             if context.end_of_round then
