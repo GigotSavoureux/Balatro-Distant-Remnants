@@ -34,7 +34,7 @@ ___
 
 ### Safe Password
 ![image](https://github.com/user-attachments/assets/0ba357bd-134e-4267-9f27-9d2f9ee32074)<br>
-**Draw 4 more cards** if played hand contains a **Straight**<br>
+**Draw 5 more cards** if played hand contains a **Straight**<br>
 ___
 
 ### Radical Joker
@@ -50,8 +50,7 @@ ___
 
 ### High on Joker
 ![image](https://github.com/user-attachments/assets/dce039ae-f844-4127-8feb-bf8887ee6913)<br>
-This Joker gains **+15** Mult per **Blind** skipped, resets after defeating **Boss Blind**<br>
-*(Currently +0 Mult)*<br>
+**Earn $5** when you skip a **Blind**<br>
 ___
 
 # Uncommon
@@ -96,7 +95,7 @@ ___
 ### Metamorphosis
 ![image](https://github.com/user-attachments/assets/001c7a0a-4e2e-476e-8ecb-a9c2c9a969ff)<br>
 When **Blind is selected**, ***set hands to 1***<br>
-This Joker gains **X1.5 Mult** this round for each **hand lost**<br>
+This Joker gains **X2 Mult** this round for each **hand lost**<br>
 *(Currently X1 Mult)* <br>
 ___
 
@@ -129,12 +128,12 @@ ___
 
 ### Don Juan
 ![image](https://github.com/user-attachments/assets/ce458ae2-a9cf-4e5e-84a1-dc4d2ef252c7)<br>
-Each scoring **Wild card has 1 in 4 chance** to upgrade every **flush hand**<br>
+Each scoring **Wild card has 1 in 3 chance** to upgrade every **flush hand**<br>
 ___
 
 ### Herringen
 ![image](https://github.com/user-attachments/assets/228801da-6358-4bdd-bfeb-4c5c2caa2198)<br>
-This Joker gains **+1 discard** for every **3 Straight Flush** levels<br>
+This Joker gains **+1 discard** for every **2 Straight Flush** levels<br>
 *(Currently +0 discard)* <br>
 ___
 
@@ -157,18 +156,20 @@ ___
 
 ### Anarchy
 ![image](https://github.com/user-attachments/assets/00ce4a47-21ac-4bca-8e14-1da7a6d6379f)<br>
-On **final hand**, all played **non-scoring** cards become **Polychrome Wild** cards<br>
+On **final hand**, all played **non-scoring** cards become **Polychrome Wild** cards with a **Purple Seal**<br>
 ___
 
 ### Decomposition
 ![image](https://github.com/user-attachments/assets/8aeba76e-f01d-485a-b4c5-f6744ca76031)<br>
 If played hand contains **4** or more **Club** cards, create a **Tarot** card and **decrease** rank of played cards by **1**<br>
-*(Minimum rank 2, must have room)*<br>
+*(Minimum rank 2, must have room)* <br>
 ___
 
 ### Rockfall Area
 ![image](https://github.com/user-attachments/assets/3d6ab60f-7ea4-4a2f-8d65-9e10cdf6a58b)<br>
 **Stone cards** are also **Wild cards**<br>
+Create a **Marble Joker**<br>
+*(Must have room)* <br>
 ___
 
 ### Art of War
@@ -178,7 +179,7 @@ ___
 
 ### Foundry
 ![image](https://github.com/user-attachments/assets/ffc8fdf5-7cff-4080-bf18-5c900390bddc)<br>
-Earn **$20** upon destroying a **Gold** or **Steel** card<br>
+Gains **$30** of sell value upon **destroying a Gold or Steel** card<br>
 ___
 
 ### Heads or Tails
@@ -224,6 +225,7 @@ ___
 ### Collector Booster
 ![image](https://github.com/user-attachments/assets/8eb685a8-d652-4b3d-8a37-4e985c882ec2)<br>
 All Jokers in **Shop** and **Booster** are **Uncommon**<br>
+When you sell this card, fill your empty slots with random **Uncommon** Jokers<br>
 ___
 
 ### Dawn
