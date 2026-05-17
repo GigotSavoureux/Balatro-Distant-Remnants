@@ -42,6 +42,16 @@ function Card:get_id()
     return id
 end
 
+-- -- Get cost
+-- local setcost = Card.set_cost
+-- function Card:set_cost()
+--     if next(SMODS.find_card('j_drx1_collector')) and (self.ability.set == 'Planet' or (self.ability.set == 'Booster' and self.ability.name:find('Celestial'))) then
+--         self.cost = self.cost - 1
+--     end
+
+--     return setcost
+-- end
+
 -- Get Face
 local isfaceref = Card.is_face
 function Card:is_face(from_boss)
@@ -320,10 +330,15 @@ SMODS.Joker {
 
             if card.ability.extra.flag == 1 and context.drawing_cards then
                 card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('k_safe_ex'), colour = G.C.CHIPS})
-                for i=1, card.ability.extra.draw do
-                    draw_card(G.deck,G.hand, i*100/(card.ability.extra.draw), 'up', true)
+                if context.amount >= 0 then
+                    return {
+                        cards_to_draw = context.amount + card.ability.extra.draw
+                    }
+                else
+                    return {
+                        cards_to_draw = card.ability.extra.draw
+                    }
                 end
-                
             end
 
             if context.end_of_round then
@@ -706,7 +721,7 @@ SMODS.Joker {
     config = {
         extra = {
             hands = 1,
-            xmultmod = 1.5,
+            xmultmod = 2,
             xmult = 1
         }
     },
@@ -1083,44 +1098,26 @@ SMODS.Joker {
     perishable_compat = true,
     eternal_compat = true,
     rarity = 1,
-    cost = 5,
+    cost = 4,
     config = {
         extra = {
-            mult = 0,
-            multmod = 15,
+            dollars = 5,
         }
     },
 
     loc_vars = function(self, info_queue, card)
         return {
-            vars = {card.ability.extra.mult, card.ability.extra.multmod}
+            vars = {card.ability.extra.dollars}
         }
     end,
 
     calculate = function(self, card, context)
-
-        if not context.blueprint then
-            if context.skip_blind then
-                card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.multmod
-                return {
-                    message = 'Yes yes',
-                    colour = G.C.RED,
-                    message_card = card,
-                }
-            end
-
-            if context.end_of_round and G.GAME.blind.boss and card.ability.extra.mult > 0 then
-                card.ability.extra.mult = 0
-                return {
-                    message = 'Mais naaaan',
-                    colour = G.C.RED,
-                }
-            end
-        end
-
-        if context.joker_main and card.ability.extra.mult > 0 then
+        if context.skip_blind then
+            ease_dollars(card.ability.extra.dollars)
             return {
-                mult = card.ability.extra.mult
+                message = 'Yes yes',
+                colour = G.C.RED,
+                message_card = card,
             }
         end
     end
@@ -1456,7 +1453,7 @@ SMODS.Joker {
     enhancement_gate = 'm_wild',
     config = {
         extra = {
-            odds = 4,
+            odds = 3,
             hands = {'Flush', 'Straight Flush', 'Flush House', 'Flush Five'}
     }
     },
@@ -1542,7 +1539,7 @@ SMODS.Joker {
     cost = 5,
     config = {
         extra = {
-            lvl = 3,
+            lvl = 2,
             discardmod = 1,
             flag = 0,
     }
@@ -2141,13 +2138,13 @@ SMODS.Joker {
     eternal_compat = true,
     rarity = 2,
     cost = 5,
-    config = {
-        extra = {
-        }
-    },
+    config =
+    { extra = { seal = 'Purple' },
+    max_highlighted = 1 },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue+1] = G.P_CENTERS.e_polychrome
         info_queue[#info_queue+1] = G.P_CENTERS.m_wild
+        info_queue[#info_queue + 1] = G.P_SEALS[card.ability.extra.seal]
         return {
         }
     end,
@@ -2172,7 +2169,11 @@ SMODS.Joker {
                         local edition = {polychrome = true}
                         anarcard:set_edition(edition, true, true)
                     end
+                    
                     anarcard:flip()
+                    if not context.full_hand[i].seal then
+                        context.full_hand[i]:set_seal("Purple", nil, true)
+                    end
                 end
             end
             if anar == true then
@@ -2301,7 +2302,6 @@ SMODS.Joker {
     blueprint_compat = false,
     perishable_compat = true,
     eternal_compat = true,
-    enhancement_gate = 'm_stone',
     rarity = 2,
     cost = 6,
     config = {
@@ -2309,10 +2309,26 @@ SMODS.Joker {
         }
     },
     loc_vars = function(self, info_queue, card)
-        info_queue[#info_queue+1] = G.P_CENTERS.m_stone
         info_queue[#info_queue+1] = G.P_CENTERS.m_wild
+        info_queue[#info_queue+1] = G.P_CENTERS.j_marble
         return {
         }
+    end,
+
+    add_to_deck = function(self, card, from_debuff)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'before',
+            func = function()
+                if #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit then
+                    card_eval_status_text(card, 'extra', nil, nil, nil, {message = 'Warning!', colour = G.C.MULT})
+                    local card = create_card('Joker', G.jokers, nil, 0, nil, nil, 'j_marble')
+                    card:add_to_deck()
+                    G.jokers:emplace(card)
+                    card:start_materialize()
+                    G.GAME.joker_buffer = 0
+                end
+            return true
+        end}))
     end,
 
     calculate = function(self, card, context)
@@ -2469,14 +2485,14 @@ SMODS.Joker {
         x = 0,
         y = 6
     },
-    blueprint_compat = true,
+    blueprint_compat = false,
     perishable_compat = true,
     eternal_compat = true,
     rarity = 2,
     cost = 6,
     config = {
         extra = {
-            money = 20,
+            money = 30,
         }
     },
 
@@ -2498,11 +2514,11 @@ SMODS.Joker {
             end
 
             if destroyed > 0 then
-                ease_dollars(destroyed*card.ability.extra.money)
+                card.ability.extra_value = card.ability.extra_value + (destroyed*card.ability.extra.money)
+                card:set_cost()
                 return {
-                    message = localize('$')..(destroyed*card.ability.extra.money),
-                    colour = G.C.MONEY,
-                    message_card = context.blueprint_card or card
+                    message = localize('k_val_up'),
+                    colour = G.C.MONEY
                 }
             end
         end
@@ -2601,11 +2617,11 @@ SMODS.Joker {
             card.children.center:draw_shader('voucher', nil, card.ARGS.send_to_shader)
         end
     end,
-    blueprint_compat = false,
+    blueprint_compat = true,
     perishable_compat = true,
     eternal_compat = true,
     rarity = 3,
-    cost = 7,
+    cost = 9,
     config = {
         extra = {
         }
@@ -2657,6 +2673,34 @@ SMODS.Joker {
             end
         end
     end,
+
+    calculate = function(self, card, context)
+
+        if context.selling_self then
+            local jokers_to_create = G.jokers.config.card_limit - (#G.jokers.cards + G.GAME.joker_buffer) + 1
+            G.GAME.joker_buffer = G.GAME.joker_buffer + jokers_to_create
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    for _ = 1, jokers_to_create do
+                        SMODS.add_card {
+                            set = 'Joker',
+                            rarity = 'Uncommon',
+                            key_append = 'drx1_collector'
+                        }
+                        G.GAME.joker_buffer = 0
+                    end
+                    return true
+                end
+            }))
+            return {
+                message = localize('k_plus_joker'),
+                colour = G.C.GREEN,
+            }
+
+
+        end
+        
+    end
 }
 
 -- Dawn R

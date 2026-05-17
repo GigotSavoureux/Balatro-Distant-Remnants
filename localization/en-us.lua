@@ -37,10 +37,8 @@ return {
             j_drx1_high_on_joker = {
                 name = 'High on Joker',
                 text = {
-                    "This Joker gains {C:red}+#2#{} Mult",
-                    "per {C:attention}Blind{} skipped, resets",
-                    "when {C:attention}Boss Blind{} is defeated",
-                    "{C:inactive} (Currently {C:red}+#1#{C:inactive} Mult)",
+                    "Earn {C:money}$#1#{} when you",
+                    "skip a {C:attention}Blind",
                 },
             },
             j_drx1_royal_bat = {
@@ -299,6 +297,7 @@ return {
                     "On {C:attention}final hand{}, all played",
                     "{C:attention}non-scoring{} cards become",
                     "{C:dark_edition}Polychrome{C:attention} Wild{} cards",
+                    "with a {C:tarot}Purple Seal",
                 },
             },
             j_drx1_decomposition = {
@@ -325,15 +324,19 @@ return {
                 name = "Rockfall Area",
                 text = {
                     "{C:attention}Stone cards{} are",
-                    "also {C:attention}Wild cards",
+                    "also {C:attention}Wild cards{}.",
+                    "Create a {C:attention}Marble Joker",
+                    "{C:inactive} (Must have room)",
                 },
             },
             j_drx1_collector = {
                 name = "Collector Booster",
                 text = {
-                    "All Jokers in",
-                    "{C:attention}Shop{} and {C:attention}Boosters",
-                    "are {C:uncommon}Uncommon",
+                    "All Jokers in {C:attention}Shop{} and",
+                    "{C:attention}Boosters{} are {C:uncommon}Uncommon{}.",
+                    "When you sell this card,",
+                    "fill your empty slots with",
+                    "random {C:uncommon}Uncommon{} Jokers",
                 },
             },
             j_drx1_dawn = {
@@ -349,9 +352,10 @@ return {
             j_drx1_foundry = {
                 name = "Foundry",
                 text = {
-                    "Earn {C:money}$#1#{} upon",
-                    "destroying a",
-                    "{C:attention}Gold{} or {C:attention}Steel{} card",
+                    "Gains {C:money}$#1#{} of",
+                    "{C:attention}sell value{} upon",
+                    "destroying a {C:attention}Gold",
+                    "or {C:attention}Steel{} card",
                 },
             },
             j_drx1_grogoroth = {

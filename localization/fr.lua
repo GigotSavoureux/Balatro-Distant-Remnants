@@ -39,10 +39,8 @@ return {
             j_drx1_high_on_joker = {
                 name = 'Fais Tourner',
                 text = {
-                    "Ce Joker octroie {C:red}+#2#{} Multi.",
-                    "par {C:attention}Blinde{} passée, se réinitialise",
-                    "lorsque la {C:attention}Blinde Boss{} est vaincue",
-                    "{C:inactive} (Actuellement : {C:red}+#1#{C:inactive} Multi.)",
+                    "Gagnez {C:money}#1# ${} lorsque",
+                    "vous passez une {C:attention}Blinde",
                 },
             },
             j_drx1_royal_bat = {
@@ -299,8 +297,8 @@ return {
                 text = {
                     "Quand vous jouez la {C:attention}main finale{},",
                     "toutes les cartes jouées qui ne",
-                    "{C:attention}marquent pas{} deviennent des",
-                    "cartes {C:attention}Sauvages{C:dark_edition} Polychromes",
+                    "{C:attention}marquent pas{} deviennent des cartes",
+                    "{C:attention}Sauvages{C:dark_edition} Polychromes{} avec un {C:tarot}Sceau Violet",
                 },
             },
             j_drx1_decomposition = {
@@ -327,15 +325,19 @@ return {
                 name = "Risque d'Eboulement",
                 text = {
                     "Les {C:attention}Cartes Pierres{} sont",
-                    "aussi des {C:attention}Cartes Sauvages",
+                    "aussi des {C:attention}Cartes Sauvages{}.",
+                    "Crée un {C:attention}Joker de Marbre",
+                    "{C:inactive} (Selon la place disponible)",
                 },
             },
             j_drx1_collector = {
                 name = "Booster Collector",
                 text = {
-                    "Tous les Jokers en",
-                    "{C:attention}Magasin{} et {C:attention}Boosters",
-                    "sont {C:uncommon}peu communs",
+                    "Tous les Jokers en {C:attention}Magasin",
+                    "et {C:attention}Boosters{} sont {C:uncommon}Peu Communs{}.",
+                    "Lorsque vous vendez cette carte,",
+                    "remplissez vos emplacements vides par",
+                    "des {C:uncommon}Jokers Peu Communs{} aléatoires",
                 },
             },
             j_drx1_dawn = {
@@ -351,8 +353,9 @@ return {
             j_drx1_foundry = {
                 name = "Fonderie",
                 text = {
-                    "Gagnez {C:money}#1# ${} en",
-                    "détruisant une",
+                    "Gagnez {C:money}#1# ${} de",
+                    "la {C:attention}valeur de vente",
+                    "en détruisant une",
                     "carte {C:attention}Or{} ou {C:attention}Acier",
                 },
             },
