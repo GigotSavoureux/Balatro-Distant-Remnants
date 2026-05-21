@@ -328,7 +328,7 @@ SMODS.Joker {
                 card.ability.extra.flag = 0
             end
 
-            if card.ability.extra.flag == 1 and context.drawing_cards then
+            if card.ability.extra.flag == 1 and context.drawing_cards and not next(SMODS.find_card('j_drx1_abramar')) then
                 card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('k_safe_ex'), colour = G.C.CHIPS})
                 if context.amount >= 0 then
                     return {
@@ -1101,7 +1101,7 @@ SMODS.Joker {
     cost = 4,
     config = {
         extra = {
-            dollars = 5,
+            dollars = 6,
         }
     },
 
@@ -2762,7 +2762,7 @@ SMODS.Joker {
     cost = 7,
     config = {
         extra = {
-            draw = 18,
+            draw = 15,
             less = 1,
             flag = 0,
         }
