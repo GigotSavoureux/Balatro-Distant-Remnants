@@ -353,10 +353,10 @@ return {
             j_drx1_foundry = {
                 name = "Fonderie",
                 text = {
-                    "Gagnez {C:money}#1# ${} de",
-                    "la {C:attention}valeur de vente",
-                    "en détruisant une",
-                    "carte {C:attention}Or{} ou {C:attention}Acier",
+                    "Gagnez {C:money}#1# ${} de la {C:attention}valeur",
+                    "{C:attention}de vente lorsque vous",
+                    "détruisez un carte {C:attention}Or{},",
+                    "{C:attention}Acier{}, {C:attention}Pierre{} ou {C:attention}Verre",
                 },
             },
             j_drx1_grogoroth = {
@@ -372,7 +372,7 @@ return {
                 name = "Ábramar",
                 text = {
                     "{C:attention}+#1#{} à la taille de la main, réduit de",
-                    "{C:attention}#2#{} quand une carte {C:tarot}Tarot{} est utilisée.",
+                    "{C:mult}#2#{} quand une carte {C:tarot}Tarot{} est utilisée.",
                     "{S:1.1,C:red,E:2}Vous ne pouvez plus piocher.{}",
                     "{C:attention}Détruisez{} un Joker aléatoire",
                     "lorsque cette carte est vendue.",

@@ -2492,13 +2492,15 @@ SMODS.Joker {
     cost = 6,
     config = {
         extra = {
-            money = 30,
+            money = 25,
         }
     },
 
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue+1] = G.P_CENTERS.m_gold
         info_queue[#info_queue+1] = G.P_CENTERS.m_steel
+        info_queue[#info_queue+1] = G.P_CENTERS.m_stone
+        info_queue[#info_queue+1] = G.P_CENTERS.m_glass
         return {
             vars = {card.ability.extra.money}
         }
@@ -2508,7 +2510,10 @@ SMODS.Joker {
         if context.remove_playing_cards then
             local destroyed = 0
             for i = 1, #context.removed do
-                if SMODS.has_enhancement(context.removed[i], 'm_gold') or SMODS.has_enhancement(context.removed[i], 'm_steel') then
+                if SMODS.has_enhancement(context.removed[i], 'm_gold')
+                or SMODS.has_enhancement(context.removed[i], 'm_steel')
+                or SMODS.has_enhancement(context.removed[i], 'm_glass')
+                or SMODS.has_enhancement(context.removed[i], 'm_stone') then
                     destroyed = destroyed + 1
                 end
             end

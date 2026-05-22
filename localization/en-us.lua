@@ -352,10 +352,9 @@ return {
             j_drx1_foundry = {
                 name = "Foundry",
                 text = {
-                    "Gains {C:money}$#1#{} of",
-                    "{C:attention}sell value{} upon",
-                    "destroying a {C:attention}Gold",
-                    "or {C:attention}Steel{} card",
+                    "Gains {C:money}$#1#{} of {C:attention}sell value",
+                    "when destroying a {C:attention}Gold{},",
+                    "{C:attention}Steel{}, {C:attention}Stone{} or {C:attention}Glass{} card",
                 },
             },
             j_drx1_grogoroth = {

@@ -50,7 +50,7 @@ ___
 
 ### High on Joker
 ![image](https://github.com/user-attachments/assets/dce039ae-f844-4127-8feb-bf8887ee6913)<br>
-**Earn $5** when you skip a **Blind**<br>
+**Earn $6** when you skip a **Blind**<br>
 ___
 
 # Uncommon
@@ -179,7 +179,7 @@ ___
 
 ### Foundry
 ![image](https://github.com/user-attachments/assets/ffc8fdf5-7cff-4080-bf18-5c900390bddc)<br>
-Gains **$30** of sell value upon **destroying a Gold or Steel** card<br>
+Gains **$25** of sell value when **destroying a Gold, Steel, Stone or Glass** card<br>
 ___
 
 ### Heads or Tails
