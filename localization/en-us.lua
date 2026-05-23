@@ -294,10 +294,11 @@ return {
             j_drx1_anarchy = {
                 name = "Anarchy",
                 text = {
-                    "On {C:attention}final hand{}, all played",
-                    "{C:attention}non-scoring{} cards become",
-                    "{C:dark_edition}Polychrome{C:attention} Wild{} cards",
-                    "with a {C:tarot}Purple Seal",
+                    "{C:attention}Non-scoring{} cards played on",
+                    "{C:attention}final hand{} become {C:attention}Wild {C:dark_edition}Polychrome{}.",
+                    "Add a {C:tarot}Purple Seal{} every {C:mult}#2#{} cards",
+                    "transformed this way",
+                    "{C:inactive} (Currently {C:mult}#1#{C:inactive})",
                 },
             },
             j_drx1_decomposition = {

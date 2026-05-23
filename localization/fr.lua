@@ -295,10 +295,10 @@ return {
             j_drx1_anarchy = {
                 name = "Anarchie",
                 text = {
-                    "Quand vous jouez la {C:attention}main finale{},",
-                    "toutes les cartes jouées qui ne",
-                    "{C:attention}marquent pas{} deviennent des cartes",
-                    "{C:attention}Sauvages{C:dark_edition} Polychromes{} avec un {C:tarot}Sceau Violet",
+                    "Quand vous jouez la {C:attention}main finale{}, toutes les cartes jouées",
+                    "qui ne marquent pas deviennent {C:attention}Sauvages{} et {C:dark_edition}Polychromes{}.",
+                    "Ajoutez un {C:tarot}Sceau Violet{} toutes les {C:mult}#2#{} cartes transformées",
+                    "{C:inactive} (Actuellement : {C:mult}#1#{C:inactive})",
                 },
             },
             j_drx1_decomposition = {

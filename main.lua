@@ -2139,13 +2139,17 @@ SMODS.Joker {
     rarity = 2,
     cost = 5,
     config =
-    { extra = { seal = 'Purple' },
+    { extra = {
+        transformed = 0,
+        palier = 5,
+        seal = 'Purple', },
     max_highlighted = 1 },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue+1] = G.P_CENTERS.e_polychrome
         info_queue[#info_queue+1] = G.P_CENTERS.m_wild
         info_queue[#info_queue + 1] = G.P_SEALS[card.ability.extra.seal]
         return {
+            vars = {card.ability.extra.transformed, card.ability.extra.palier}
         }
     end,
 
@@ -2163,16 +2167,25 @@ SMODS.Joker {
                 if card_is_scoring == false and not context.full_hand[i].debuff then
                     anar = true
                     local anarcard = context.full_hand[i]
+
                     anarcard:flip()
                     anarcard:set_ability(G.P_CENTERS.m_wild, nil, true)
+                    
                     if not anarcard.edition then
                         local edition = {polychrome = true}
                         anarcard:set_edition(edition, true, true)
                     end
-                    
+
                     anarcard:flip()
-                    if not context.full_hand[i].seal then
-                        context.full_hand[i]:set_seal("Purple", nil, true)
+
+                    card.ability.extra.transformed = card.ability.extra.transformed + 1
+                    
+                    if  card.ability.extra.transformed % card.ability.extra.palier == 0 then
+                        
+                        if not context.full_hand[i].seal then
+                            context.full_hand[i]:set_seal("Purple", nil, true)
+                        end
+
                     end
                 end
             end

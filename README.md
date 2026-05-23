@@ -17,7 +17,7 @@ ___
 
 ### The Great Wall of China
 ![image](https://github.com/user-attachments/assets/86ac6300-adc5-47f9-b2e3-ce29fffc50a1)<br>
-When **Blind** is selected, gain **+1** Hand for every **3 Stone** cards in your **full deck**<br>
+When **Blind** is selected, gain **+1** Hand for every **2 Stone** cards in your **full deck**<br>
 *(Currently +0 hands)*<br>
 ___
 
@@ -156,7 +156,9 @@ ___
 
 ### Anarchy
 ![image](https://github.com/user-attachments/assets/00ce4a47-21ac-4bca-8e14-1da7a6d6379f)<br>
-On **final hand**, all played **non-scoring** cards become **Polychrome Wild** cards with a **Purple Seal**<br>
+**Non-scoring** cards played on **final hand** become **Wild Polychrome**.<br>
+Add a **Purple Seal** every **5** cards transformed this way<br>
+*(Currently 0)*<br>
 ___
 
 ### Decomposition
