@@ -198,7 +198,7 @@ ___
 
 ### Consumptive Reflex
 <img width="166" height="225" alt="image" src="https://github.com/user-attachments/assets/5f871bbc-e29d-49bc-a208-4f5455101d65" />
-If you would lose, destroy a random consumable and gain **+1** hand<b>
+If you would lose, destroy a random consumable and gain **+1** hand<br>
 ___
 
 
