@@ -2,10 +2,10 @@
 Distant Remnants explores the game's existing systems and mechanics in novel ways to create new and strange strategies and dynamics.
 Uses [Lovely](https://github.com/ethangreen-dev/lovely-injector/releases/tag/v0.9.0) and [Steamodded](https://github.com/Steamodded/smods/releases/tag/1.0.0-beta-1620a)
 
-# +42 Jokers
-- 8 Common
-- 24 Uncommon
-- 9 Rare
+# +45 Jokers
+- 9 Common
+- 25 Uncommon
+- 10 Rare
 - 1 Legendary
 
 # Common Jokers
@@ -52,6 +52,12 @@ ___
 ![image](https://github.com/user-attachments/assets/dce039ae-f844-4127-8feb-bf8887ee6913)<br>
 **Earn $6** when you skip a **Blind**<br>
 ___
+
+### Patchoulianism
+<img width="169" height="221" alt="image" src="https://github.com/user-attachments/assets/5b626f9d-5b2f-4b7f-87fe-36c7a0f26cd3" />
+**Upgrade** level of most played **poker hand** twice when (Random Tarot per Run) is used<br>
+___
+
 
 # Uncommon
 ### Slipstream
@@ -123,7 +129,7 @@ ___
 
 ### Tobacco Paper
 ![image](https://github.com/user-attachments/assets/1b0f5f4e-b2e3-41a4-8cd9-09c64c7f7f89)<br>
-**1 in 5 chance** to retrigger played **Lucky Cards** twice when scored<br>
+**1 in 3 chance** to retrigger played **Lucky Cards** twice when scored<br>
 ___
 
 ### Don Juan
@@ -190,6 +196,12 @@ Sell this card for **1 in 2 chance** to permanently **double** prices in shop<br
 Otherwise, **halve** them<br>
 ___
 
+### Consumptive Reflex
+<img width="166" height="225" alt="image" src="https://github.com/user-attachments/assets/5f871bbc-e29d-49bc-a208-4f5455101d65" />
+If you would lose, destroy a random consumable and gain **+1** hand<b>
+___
+
+
 # Rare
 ### One More Time!
 ![image](https://github.com/user-attachments/assets/1dde43ec-c077-4b9c-8862-be3be8dbd14d)<br>
@@ -241,6 +253,12 @@ ___
 **+18** handsize, reduces by **1** when a **Tarot** card is used.<br>
 **You cannot draw anymore.** <br>
 **Destroy** a random Joker when sold.<br>
+___
+
+### Nomai Statue
+<img width="168" height="228" alt="image" src="https://github.com/user-attachments/assets/32521df5-f81c-44d7-b9f6-1772e4d76275" />
+**1 in 2 chance** to go back an Ante when beating **Small Blind**<br>
+(Odds decrease when used)<br>
 ___
 
 
