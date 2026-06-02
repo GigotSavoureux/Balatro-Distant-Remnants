@@ -378,6 +378,32 @@ return {
                     "lorsque cette carte est vendue.",
                 },
             },
+            j_drx1_patchouli = {
+                name = "Patchoulianisme",
+                text = {
+                    "Augmente deux fois le niveau",
+                    "de la {C:attention}main de poker{} la plus jouée",
+                    "lorsque vous utilisez {B:1,V:2}#1#",
+                },
+            },
+            j_drx1_reflex = {
+                name = "Hyperphagie",
+                text = {
+                    "Si vous deviez perdre,",
+                    "détruisez un {C:attention}consommable",
+                    "aléatoire et gagnez {C:chips}+1{} main",
+                },
+            },
+            j_drx1_nomai = {
+                name = "Statue Nomai",
+                text = {
+                    "{C:green}#1# chance(s) sur #2#{} de diminuer",
+                    "la mise initiale de {C:red}-1{} après avoir",
+                    "battu une {C:attention}Petite Blinde",
+                    "{C:inactive} (Les chances diminuent",
+                    "{C:inactive} à chaque utilisation)",
+                },
+            },
         },
     },
 }

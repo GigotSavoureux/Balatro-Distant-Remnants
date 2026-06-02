@@ -376,6 +376,30 @@ return {
                     "{C:attention}Destroy{} a random Joker when sold",
                 },
             },
+            j_drx1_patchouli = {
+                name = "Patchoulianism",
+                text = {
+                    "Upgrade level of most",
+                    "played {C:attention}poker hand{} twice",
+                    "when {B:1,V:2}#1#{} is used",
+                },
+            },
+            j_drx1_reflex = {
+                name = "Consumptive Reflex",
+                text = {
+                    "If you would lose,",
+                    "destroy a random {C:attention}consumable{}",
+                    "and gain {C:chips}+1{} hand",
+                },
+            },
+            j_drx1_nomai = {
+                name = "Nomai Statue",
+                text = {
+                    "{C:green}#1# in #2#{} chance to reduce {C:red}-1",
+                    "Ante after beating a {C:attention}Small Blind",
+                    "{C:inactive} (Odds decrease when used)",
+                },
+            },
         },
     },
 }
