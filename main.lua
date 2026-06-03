@@ -2872,7 +2872,7 @@ SMODS.Joker {
     cost = 8,
     config = {
         extra = {
-            odds = 2,
+            odds = 1,
         }
     },
 
