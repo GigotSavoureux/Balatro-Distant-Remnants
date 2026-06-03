@@ -1,7 +1,7 @@
 # Overview
-Designed and developped by gigot and matt_rhu (discord usernames)
-Distant Remnants explores the game's existing systems and mechanics in novel ways to create new and strange strategies and dynamics.
-Uses [Lovely](https://github.com/ethangreen-dev/lovely-injector/releases/tag/v0.9.0) and [Steamodded](https://github.com/Steamodded/smods/releases/tag/1.0.0-beta-1620a)
+Designed and developped by gigot and matt_rhu (discord usernames)<br>
+Distant Remnants explores the game's existing systems and mechanics in novel ways to create new and strange strategies and dynamics.<br>
+Uses [Lovely](https://github.com/ethangreen-dev/lovely-injector/releases/tag/v0.9.0) and [Steamodded](https://github.com/Steamodded/smods/releases/tag/1.0.0-beta-1620a)<br>
 
 # +45 Jokers
 - 9 Common
