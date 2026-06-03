@@ -2690,7 +2690,7 @@ SMODS.Joker {
     cost = 5,
 
     calculate = function(self, card, context)
-        if context.after and #G.consumeables.cards >= 1 and not context.blueprint and G.GAME.current_round.hands_left == 0 then
+        if context.after and SMODS.calculate_round_score() + G.GAME.chips < G.GAME.blind.chips and #G.consumeables.cards >= 1 and not context.blueprint and G.GAME.current_round.hands_left == 0 then
             local bricks = {}
             for i = 1, #G.consumeables.cards do
                 if not G.consumeables.cards[i].getting_sliced then
