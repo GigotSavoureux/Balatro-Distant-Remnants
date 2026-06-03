@@ -54,7 +54,7 @@ ___
 ___
 
 ### Patchoulianism
-<img width="169" height="221" alt="image" src="https://github.com/user-attachments/assets/5b626f9d-5b2f-4b7f-87fe-36c7a0f26cd3" />
+![image](https://github.com/user-attachments/assets/5b626f9d-5b2f-4b7f-87fe-36c7a0f26cd3)<br>
 **Upgrade** level of most played **poker hand** twice when (Random Tarot per Run) is used<br>
 ___
 
@@ -197,7 +197,7 @@ Otherwise, **halve** them<br>
 ___
 
 ### Consumptive Reflex
-<img width="166" height="225" alt="image" src="https://github.com/user-attachments/assets/5f871bbc-e29d-49bc-a208-4f5455101d65" />
+![image](https://github.com/user-attachments/assets/5f871bbc-e29d-49bc-a208-4f5455101d65)<br>
 If you would lose, destroy a random consumable and gain **+1** hand<br>
 ___
 
@@ -256,7 +256,7 @@ ___
 ___
 
 ### Nomai Statue
-<img width="168" height="228" alt="image" src="https://github.com/user-attachments/assets/32521df5-f81c-44d7-b9f6-1772e4d76275" />
+![image](https://github.com/user-attachments/assets/32521df5-f81c-44d7-b9f6-1772e4d76275)<br>
 **1 in 2 chance** to go back an Ante when beating **Small Blind**<br>
 (Odds decrease when used)<br>
 ___
