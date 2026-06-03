@@ -2634,7 +2634,7 @@ SMODS.Joker {
     perishable_compat = true,
     eternal_compat = true,
     rarity = 1,
-    cost = 6,
+    cost = 4,
     config = {
         extra = {
             tarot = nil
