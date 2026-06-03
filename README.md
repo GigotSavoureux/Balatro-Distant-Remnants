@@ -256,7 +256,7 @@ ___
 ___
 
 ### Nomai Statue
-![image](https://github.com/user-attachments/assets/32521df5-f81c-44d7-b9f6-1772e4d76275)<br>
+![image](https://github.com/user-attachments/assets/d1925077-e1b3-48d9-a189-7f191f1392b0)<br>
 **1 in 2 chance** to go back an Ante when beating **Small Blind**<br>
 (Odds decrease when used)<br>
 ___
