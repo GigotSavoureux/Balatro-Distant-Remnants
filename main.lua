@@ -524,6 +524,7 @@ SMODS.Joker {
             chipsmod = 40
         }
     },
+    pixel_size = { h = 95 / 0.83 },
 
     loc_vars = function(self, info_queue, card)
         local vdr_tag_used = G.GAME.vdr_tag_used or 0
