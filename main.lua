@@ -600,7 +600,7 @@ SMODS.Joker {
             end
         end
 
-        if context.hand_drawn then
+        if context.after then
             card.ability.extra.ef = 0
         end
     end
